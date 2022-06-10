@@ -7,10 +7,15 @@ import { setUser } from './store/authSlice';
 
 import './app.css';
 
-import { publicRoutes, privateRoutes } from './routes';
+import { privateRoutes } from './routes';
 
 import ProtectedRoute from './hoc/ProtectedRoute';
 import Theme from './hoc/Theme';
+
+import GoodsList from './components/GoodsList';
+import Shop from './pages/Shop';
+import Auth from './pages/Auth';
+import ProductDetails from './pages/ProductDetails';
 
 const App = () => {
     const dispatch = useDispatch();
@@ -22,11 +27,14 @@ const App = () => {
     return (
         <Theme>
             <Routes>
-                {publicRoutes.map(({ path, Component }) => {
-                    return (
-                        <Route key={path} path={path} element={<Component />} />
-                    );
-                })}
+                <Route path='/' element={<Shop />}>
+                    <Route index element={<GoodsList />} />
+                    <Route path='product/:id' element={<ProductDetails />} />
+                </Route>
+
+                <Route path='login' element={<Auth />} />
+                <Route path='register' element={<Auth />} />
+
                 {privateRoutes.map(({ path, Component }) => {
                     return (
                         <Route

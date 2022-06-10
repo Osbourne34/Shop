@@ -1,14 +1,34 @@
 import React from 'react';
 
-import { Container } from '@mui/material';
+import { Outlet } from 'react-router-dom';
+
+import { Container, Drawer } from '@mui/material';
 
 import Header from '../components/Header';
-import GoodsList from '../components/GoodsList';
+import Cart from '../components/Cart';
 
 const Shop = () => {
+    const [state, setState] = React.useState({
+        top: false,
+        left: false,
+        bottom: false,
+        right: false,
+    });
+
+    const toggleDrawer = (anchor, open) => (event) => {
+        if (
+            event.type === 'keydown' &&
+            (event.key === 'Tab' || event.key === 'Shift')
+        ) {
+            return;
+        }
+
+        setState({ ...state, [anchor]: open });
+    };
+
     return (
         <>
-            <Header />
+            <Header toggleDrawer={toggleDrawer} />
             <Container
                 sx={{
                     '&:before': {
@@ -23,7 +43,14 @@ const Shop = () => {
                     },
                 }}
                 maxWidth='xl'>
-                <GoodsList />
+                <Outlet />
+
+                <Drawer
+                    anchor={'right'}
+                    open={state['right']}
+                    onClose={toggleDrawer('right', false)}>
+                    <Cart toggleDrawer={toggleDrawer} />
+                </Drawer>
             </Container>
         </>
     );
