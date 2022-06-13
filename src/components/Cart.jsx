@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import { useToggleDrawer } from '../hook/useToggleDrawer';
+
 import { useSelector } from 'react-redux';
 import { useLazyGetProductsFromUserCartQuery } from './../store/cartApi';
 import { Link as RouterLink } from 'react-router-dom';
@@ -7,7 +9,9 @@ import { Box, Button, Typography, CircularProgress } from '@mui/material';
 
 import CartItem from './CartItem';
 
-const Cart = ({ toggleDrawer }) => {
+const Cart = () => {
+    const toggleDrawer = useToggleDrawer();
+
     const { user } = useSelector((state) => state.auth);
     const [getProductsFromUserCart, { data = [], isLoading }] =
         useLazyGetProductsFromUserCartQuery();
@@ -50,6 +54,7 @@ const Cart = ({ toggleDrawer }) => {
                         </Button>
                         <Button
                             variant='outlined'
+                            onClick={toggleDrawer('right', false)}
                             component={RouterLink}
                             to='/login'>
                             Войти
@@ -86,9 +91,8 @@ const Cart = ({ toggleDrawer }) => {
                                             <CartItem
                                                 key={cartItem.id}
                                                 {...cartItem}
-                                                toggleDrawer={toggleDrawer}
                                                 isDisabled={
-                                                    cartItem.amount > 0
+                                                    cartItem.amount > 1
                                                         ? false
                                                         : true
                                                 }

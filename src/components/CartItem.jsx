@@ -1,4 +1,6 @@
 import React from 'react';
+import { useToggleDrawer } from '../hook/useToggleDrawer';
+
 import { Link as RouterLink } from 'react-router-dom';
 import {
     useUpdateProductMutation,
@@ -17,9 +19,11 @@ const CartItem = ({
     thumbnail,
     amount,
     id,
+    productId,
     isDisabled,
-    toggleDrawer,
 }) => {
+    const toggleDrawer = useToggleDrawer();
+
     const [updateProduct, { isLoading: isLoadingUpdate }] =
         useUpdateProductMutation();
     const [removeProduct, { isLoading: isLoadingRemove }] =
@@ -48,7 +52,7 @@ const CartItem = ({
             <Box
                 onClick={toggleDrawer('right', false)}
                 component={RouterLink}
-                to={`/product/${id}`}
+                to={`/product/${productId}`}
                 sx={{
                     display: 'flex',
                     alignItems: 'center',
@@ -60,7 +64,7 @@ const CartItem = ({
                 <CardMedia
                     component='img'
                     height='75px'
-                    sx={{ width: '75px', borderRadius: 1 }}
+                    sx={{ maxWidth: '75px', borderRadius: 1 }}
                     image={thumbnail}
                     alt={title}
                 />

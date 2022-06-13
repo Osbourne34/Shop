@@ -1,11 +1,5 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import {
-    useAddProductMutation,
-    useLazyGetProductsFromUserCartQuery,
-    useUpdateProductMutation,
-} from './../store/cartApi';
 
 import {
     Card,
@@ -17,59 +11,11 @@ import {
     Box,
 } from '@mui/material';
 
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-const GoodItem = ({
-    id,
-    title,
-    description,
-    price,
-    thumbnail,
-    handleClickOpenDialog,
-    setOpenAdding,
-}) => {
-    const [isLoading, setIsLoading] = useState(false);
+import AddProductButton from './AddProductButton';
 
-    const { user } = useSelector((state) => state.auth);
-    const [addProduct] = useAddProductMutation();
-    const [updateProduct] = useUpdateProductMutation();
-    const [getProductsFromUserCart] = useLazyGetProductsFromUserCartQuery();
-
-    const handleAddProduct = () => {
-        setIsLoading(true);
-        if (user) {
-            getProductsFromUserCart(user.id).then(({ data }) => {
-                const { cart } = data;
-                const product = cart.find((item) => item.productId === id);
-
-                if (!product) {
-                    addProduct({
-                        userId: user.id,
-                        productId: id,
-                        title,
-                        price,
-                        thumbnail,
-                        amount: 1,
-                    }).then(() => {
-                        setIsLoading(false);
-                        setOpenAdding(true);
-                    });
-                } else {
-                    updateProduct({
-                        id: product.id,
-                        amount: product.amount + 1,
-                    }).then(() => {
-                        setIsLoading(false);
-                        setOpenAdding(true);
-                    });
-                }
-            });
-        } else {
-            handleClickOpenDialog(true);
-        }
-    };
-
+const GoodItem = ({ id, title, description, price, thumbnail }) => {
     return (
         <>
             <Card sx={{ boxShadow: 5 }}>
@@ -84,7 +30,7 @@ const GoodItem = ({
                         alt={title}
                     />
                     <CardContent>
-                        <Typography variant='h5'>{price} $</Typography>
+                        <Typography variant='h5'>${price}</Typography>
                         <Typography
                             sx={{ textTransform: 'capitalize' }}
                             noWrap
@@ -111,9 +57,12 @@ const GoodItem = ({
                         <FavoriteIcon />
                     </IconButton>
 
-                    <IconButton disabled={isLoading} onClick={handleAddProduct}>
-                        <AddShoppingCartIcon />
-                    </IconButton>
+                    <AddProductButton
+                        id={id}
+                        title={title}
+                        price={price}
+                        thumbnail={thumbnail}
+                    />
                 </CardActions>
             </Card>
         </>

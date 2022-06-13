@@ -41,9 +41,6 @@ export const cartApi = createApi({
             }),
             invalidatesTags: [{ type: 'Cart', id: 'LIST' }],
         }),
-        clearCart: build.mutation({
-            
-        })
     }),
 });
 

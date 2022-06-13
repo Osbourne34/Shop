@@ -1,4 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { useToggleDrawer } from '../hook/useToggleDrawer';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from '../store/authSlice';
 import { useLazyGetProductsFromUserCartQuery } from './../store/cartApi';
@@ -28,7 +30,9 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 
 import Search from './Search';
 
-const Header = ({ toggleDrawer }) => {
+const Header = () => {
+    const toggleDrawer = useToggleDrawer();
+
     const { toggleColorMode } = useContext(ColorModeContext);
     const { palette } = useTheme();
 

@@ -1,34 +1,38 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useToggleDrawer } from '../hook/useToggleDrawer';
+import { useCloseNotification } from '../hook/useCloseNotification';
+import { hideDialog } from './../store/materialUiSlice';
 
-import { Outlet } from 'react-router-dom';
+import { Link as RouterLink, Outlet } from 'react-router-dom';
 
-import { Container, Drawer } from '@mui/material';
+import {
+    Container,
+    Drawer,
+    Snackbar,
+    Alert,
+    DialogActions,
+    DialogContentText,
+    Button,
+    Dialog,
+    DialogContent,
+} from '@mui/material';
 
 import Header from '../components/Header';
 import Cart from '../components/Cart';
 
 const Shop = () => {
-    const [state, setState] = React.useState({
-        top: false,
-        left: false,
-        bottom: false,
-        right: false,
-    });
+    const dispatch = useDispatch();
 
-    const toggleDrawer = (anchor, open) => (event) => {
-        if (
-            event.type === 'keydown' &&
-            (event.key === 'Tab' || event.key === 'Shift')
-        ) {
-            return;
-        }
-
-        setState({ ...state, [anchor]: open });
-    };
+    const { anchor } = useSelector((state) => state.materialUi);
+    const { isShowNotification } = useSelector((state) => state.materialUi);
+    const { isShowDialog } = useSelector((state) => state.materialUi);
+    const toggleDrawer = useToggleDrawer();
+    const closeNotification = useCloseNotification();
 
     return (
         <>
-            <Header toggleDrawer={toggleDrawer} />
+            <Header />
             <Container
                 sx={{
                     '&:before': {
@@ -44,14 +48,51 @@ const Shop = () => {
                 }}
                 maxWidth='xl'>
                 <Outlet />
-
-                <Drawer
-                    anchor={'right'}
-                    open={state['right']}
-                    onClose={toggleDrawer('right', false)}>
-                    <Cart toggleDrawer={toggleDrawer} />
-                </Drawer>
             </Container>
+
+            <Drawer
+                anchor={'right'}
+                open={anchor}
+                onClose={toggleDrawer('right', false)}>
+                <Cart />
+            </Drawer>
+
+            <Snackbar
+                open={isShowNotification}
+                autoHideDuration={2000}
+                onClose={closeNotification}>
+                <Alert
+                    variant='filled'
+                    onClose={closeNotification}
+                    severity='success'
+                    sx={{ width: '100%' }}>
+                    Товар добавлен в корзину
+                </Alert>
+            </Snackbar>
+
+            <Dialog open={isShowDialog} onClose={() => dispatch(hideDialog())}>
+                <DialogContent>
+                    <DialogContentText id='alert-dialog-description'>
+                        Для добавления товаров в корзину необходимо
+                        авторизоваться.
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions sx={{ p: 3, pt: 0 }}>
+                    <Button
+                        variant='outlined'
+                        onClick={() => dispatch(hideDialog())}>
+                        Позже
+                    </Button>
+                    <Button
+                        sx={{ ml: 2 }}
+                        component={RouterLink}
+                        to='/login'
+                        variant='outlined'
+                        onClick={() => dispatch(hideDialog())}>
+                        Войти
+                    </Button>
+                </DialogActions>
+            </Dialog>
         </>
     );
 };

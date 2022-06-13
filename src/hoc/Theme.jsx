@@ -1,7 +1,7 @@
 import React, { useState, useMemo, createContext } from 'react';
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-export const ColorModeContext = createContext({ toggleColorMode: () => {} });
+export const ColorModeContext = createContext();
 
 const Theme = ({ children }) => {
     const [mode, setMode] = useState(localStorage.getItem('theme') || 'light');

@@ -5,26 +5,68 @@
       "password": "$2a$10$TPguxkAf5QBM1lV/SA2vd.qM1xgQL06yRwfhIWVkNCbtDOMy4nKYy",
       "role": "user",
       "id": 1
+    },
+    {
+      "email": "evgeniy@mail.com",
+      "password": "$2a$10$EQr8jXD2Lk9Zg8DDPZWpJu7yd/RkWWKW7lS1qG76RBmHQo2vw5kY.",
+      "role": "user",
+      "id": 2
     }
   ],
   "cart": [
+    {
+      "userId": 2,
+      "productId": 8,
+      "title": "Microsoft Surface Laptop 4",
+      "price": 1499,
+      "thumbnail": "https://dummyjson.com/image/i/products/8/thumbnail.jpg",
+      "amount": 2,
+      "id": 11
+    },
+    {
+      "userId": 2,
+      "productId": 22,
+      "title": "Elbow Macaroni - 400 gm",
+      "price": 14,
+      "thumbnail": "https://dummyjson.com/image/i/products/22/thumbnail.jpg",
+      "amount": 1,
+      "id": 12
+    },
+    {
+      "userId": 2,
+      "productId": 3,
+      "title": "Samsung Universe 9",
+      "price": 1249,
+      "thumbnail": "https://dummyjson.com/image/i/products/3/thumbnail.jpg",
+      "amount": 1,
+      "id": 17
+    },
+    {
+      "userId": 2,
+      "productId": 4,
+      "title": "OPPOF19",
+      "price": 280,
+      "thumbnail": "https://dummyjson.com/image/i/products/4/thumbnail.jpg",
+      "amount": 2,
+      "id": 18
+    },
     {
       "userId": 1,
       "productId": 3,
       "title": "Samsung Universe 9",
       "price": 1249,
       "thumbnail": "https://dummyjson.com/image/i/products/3/thumbnail.jpg",
-      "amount": 3,
-      "id": 1
+      "amount": 5,
+      "id": 21
     },
     {
       "userId": 1,
-      "productId": 1,
-      "title": "iPhone 9",
-      "price": 549,
-      "thumbnail": "https://dummyjson.com/image/i/products/1/thumbnail.jpg",
-      "amount": 1,
-      "id": 2
+      "productId": 4,
+      "title": "OPPOF19",
+      "price": 280,
+      "thumbnail": "https://dummyjson.com/image/i/products/4/thumbnail.jpg",
+      "amount": 7,
+      "id": 22
     },
     {
       "userId": 1,
@@ -32,8 +74,53 @@
       "title": "iPhone X",
       "price": 899,
       "thumbnail": "https://dummyjson.com/image/i/products/2/thumbnail.jpg",
+      "amount": 3,
+      "id": 23
+    },
+    {
+      "userId": 1,
+      "productId": 6,
+      "title": "MacBook Pro",
+      "price": 1749,
+      "thumbnail": "https://dummyjson.com/image/i/products/6/thumbnail.png",
       "amount": 1,
-      "id": 3
+      "id": 24
+    },
+    {
+      "userId": 1,
+      "productId": 1,
+      "title": "iPhone 9",
+      "price": 549,
+      "thumbnail": "https://dummyjson.com/image/i/products/1/thumbnail.jpg",
+      "amount": 2,
+      "id": 25
+    },
+    {
+      "userId": 1,
+      "productId": 13,
+      "title": "Fog Scent Xpressio Perfume",
+      "price": 13,
+      "thumbnail": "https://dummyjson.com/image/i/products/13/thumbnail.webp",
+      "amount": 1,
+      "id": 26
+    },
+    {
+      "userId": 1,
+      "productId": 14,
+      "title": "Non-Alcoholic Concentrated Perfume Oil",
+      "price": 120,
+      "thumbnail": "https://dummyjson.com/image/i/products/14/thumbnail.jpg",
+      "amount": 1,
+      "id": 27
+    },
+    {
+      "userId": 2,
+      "productId": 15,
+      "title": "Eau De Perfume Spray",
+      "price": 30,
+      "thumbnail": "https://dummyjson.com/image/i/products/15/thumbnail.jpg",
+      "amount": 2,
+      "id": 28
     }
   ],
   "products": [
@@ -68,10 +155,10 @@
       "category": "smartphones",
       "thumbnail": "https://dummyjson.com/image/i/products/2/thumbnail.jpg",
       "images": [
+        "https://dummyjson.com/image/i/products/2/thumbnail.jpg",
         "https://dummyjson.com/image/i/products/2/1.jpg",
         "https://dummyjson.com/image/i/products/2/2.jpg",
-        "https://dummyjson.com/image/i/products/2/3.jpg",
-        "https://dummyjson.com/image/i/products/2/thumbnail.jpg"
+        "https://dummyjson.com/image/i/products/2/3.jpg"
       ]
     },
     {

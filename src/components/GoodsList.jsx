@@ -1,20 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
 import { useLazyGetProductsQuery } from './../store/productsApi';
 
-import {
-    Grid,
-    CircularProgress,
-    Box,
-    Typography,
-    Dialog,
-    DialogContent,
-    DialogContentText,
-    DialogActions,
-    Button,
-    Snackbar,
-    Alert,
-} from '@mui/material';
+import { Grid, CircularProgress, Box, Typography } from '@mui/material';
 import GoodItem from './GoodItem';
 
 const GoodsList = () => {
@@ -23,43 +10,25 @@ const GoodsList = () => {
     const [totalCount, setTotalCount] = useState(0);
     const [fetching, setFetching] = useState(true);
 
-    const [openDialog, setOpenDialog] = useState(false);
-    const handleClickOpenDialog = () => {
-        setOpenDialog(true);
-    };
-    const handleCloseDialog = () => {
-        setOpenDialog(false);
-    };
-
-    const [openAdding, setOpenAdding] = useState(false);
-    const [openUpdate, setOpenUpdate] = useState(false);
-    const handleClose = (event, reason) => {
-        if (reason === 'clickaway') {
-            return;
-        }
-
-        setOpenAdding(false);
-    };
-
     const [getProducts, { isLoading, isError }] = useLazyGetProductsQuery();
 
     useEffect(() => {
-        const handleScroll = (e) => {
-            if (
-                e.target.documentElement.scrollHeight -
-                    (e.target.documentElement.scrollTop + window.innerHeight) <
-                    100 &&
-                products.length < totalCount
-            ) {
-                setFetching(true);
-            }
-        };
-
         document.addEventListener('scroll', handleScroll);
         return () => {
             document.removeEventListener('scroll', handleScroll);
         };
-    }, [products, totalCount]);
+    }, [totalCount]);
+
+    const handleScroll = (e) => {
+        if (
+            e.target.documentElement.scrollHeight -
+                (e.target.documentElement.scrollTop + window.innerHeight) <
+                100 &&
+            products.length < totalCount
+        ) {
+            setFetching(true);
+        }
+    };
 
     useEffect(() => {
         if (fetching) {
@@ -103,53 +72,13 @@ const GoodsList = () => {
                         {products.map((product) => {
                             return (
                                 <Grid key={product?.id} item xs={3}>
-                                    <GoodItem
-                                        handleClickOpenDialog={
-                                            handleClickOpenDialog
-                                        }
-                                        setOpenAdding={setOpenAdding}
-                                        {...product}
-                                    />
+                                    <GoodItem {...product} />
                                 </Grid>
                             );
                         })}
                     </Grid>
                 </>
             )}
-
-            <Dialog open={openDialog} onClose={handleCloseDialog}>
-                <DialogContent>
-                    <DialogContentText id='alert-dialog-description'>
-                        Для добавления товаров в корзину необходимо
-                        авторизоваться.
-                    </DialogContentText>
-                </DialogContent>
-                <DialogActions sx={{ p: 3, pt: 0 }}>
-                    <Button variant='outlined' onClick={handleCloseDialog}>
-                        Позже
-                    </Button>
-                    <Button
-                        sx={{ ml: 2 }}
-                        component={RouterLink}
-                        to='/login'
-                        variant='outlined'
-                        onClick={handleCloseDialog}>
-                        Войти
-                    </Button>
-                </DialogActions>
-            </Dialog>
-
-            <Snackbar
-                open={openAdding}
-                autoHideDuration={2000}
-                onClose={handleClose}>
-                <Alert
-                    onClose={handleClose}
-                    severity='success'
-                    sx={{ width: '100%' }}>
-                    Товар добавлен в корзину
-                </Alert>
-            </Snackbar>
         </>
     );
 };
