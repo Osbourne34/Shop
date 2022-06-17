@@ -24,104 +24,108 @@
       "id": 11
     },
     {
-      "userId": 2,
-      "productId": 22,
-      "title": "Elbow Macaroni - 400 gm",
-      "price": 14,
-      "thumbnail": "https://dummyjson.com/image/i/products/22/thumbnail.jpg",
-      "amount": 1,
-      "id": 12
-    },
-    {
-      "userId": 2,
-      "productId": 3,
-      "title": "Samsung Universe 9",
-      "price": 1249,
-      "thumbnail": "https://dummyjson.com/image/i/products/3/thumbnail.jpg",
-      "amount": 1,
-      "id": 17
-    },
-    {
-      "userId": 2,
-      "productId": 4,
-      "title": "OPPOF19",
-      "price": 280,
-      "thumbnail": "https://dummyjson.com/image/i/products/4/thumbnail.jpg",
-      "amount": 2,
-      "id": 18
-    },
-    {
-      "userId": 1,
-      "productId": 3,
-      "title": "Samsung Universe 9",
-      "price": 1249,
-      "thumbnail": "https://dummyjson.com/image/i/products/3/thumbnail.jpg",
-      "amount": 5,
-      "id": 21
-    },
-    {
-      "userId": 1,
-      "productId": 4,
-      "title": "OPPOF19",
-      "price": 280,
-      "thumbnail": "https://dummyjson.com/image/i/products/4/thumbnail.jpg",
-      "amount": 7,
-      "id": 22
-    },
-    {
-      "userId": 1,
-      "productId": 2,
-      "title": "iPhone X",
-      "price": 899,
-      "thumbnail": "https://dummyjson.com/image/i/products/2/thumbnail.jpg",
-      "amount": 3,
-      "id": 23
-    },
-    {
       "userId": 1,
       "productId": 6,
       "title": "MacBook Pro",
       "price": 1749,
       "thumbnail": "https://dummyjson.com/image/i/products/6/thumbnail.png",
       "amount": 1,
-      "id": 24
+      "id": 36
     },
     {
       "userId": 1,
+      "productId": 3,
+      "title": "Samsung Universe 9",
+      "price": 1249,
+      "thumbnail": "https://dummyjson.com/image/i/products/3/thumbnail.jpg",
+      "amount": 3,
+      "id": 37
+    },
+    {
+      "userId": 1,
+      "productId": 27,
+      "title": "Flying Wooden Bird",
+      "price": 51,
+      "thumbnail": "https://dummyjson.com/image/i/products/27/thumbnail.webp",
+      "amount": 1,
+      "id": 38
+    },
+    {
+      "userId": 1,
+      "productId": 39,
+      "title": "Women Sweaters Wool",
+      "price": 600,
+      "thumbnail": "https://dummyjson.com/image/i/products/39/thumbnail.jpg",
+      "amount": 3,
+      "id": 39
+    },
+    {
+      "userId": 1,
+      "productId": 9,
+      "title": "Infinix INBOOK",
+      "price": 1099,
+      "thumbnail": "https://dummyjson.com/image/i/products/9/thumbnail.jpg",
+      "amount": 1,
+      "id": 40
+    },
+    {
+      "userId": 2,
+      "productId": 19,
+      "title": "Skin Beauty Serum.",
+      "price": 46,
+      "thumbnail": "https://dummyjson.com/image/i/products/19/thumbnail.jpg",
+      "amount": 1,
+      "id": 41
+    },
+    {
+      "userId": 2,
+      "productId": 18,
+      "title": "Oil Free Moisturizer 100ml",
+      "price": 40,
+      "thumbnail": "https://dummyjson.com/image/i/products/18/thumbnail.jpg",
+      "amount": 3,
+      "id": 42
+    },
+    {
+      "userId": 2,
       "productId": 1,
       "title": "iPhone 9",
       "price": 549,
       "thumbnail": "https://dummyjson.com/image/i/products/1/thumbnail.jpg",
-      "amount": 2,
-      "id": 25
-    },
-    {
-      "userId": 1,
-      "productId": 13,
-      "title": "Fog Scent Xpressio Perfume",
-      "price": 13,
-      "thumbnail": "https://dummyjson.com/image/i/products/13/thumbnail.webp",
       "amount": 1,
-      "id": 26
-    },
-    {
-      "userId": 1,
-      "productId": 14,
-      "title": "Non-Alcoholic Concentrated Perfume Oil",
-      "price": 120,
-      "thumbnail": "https://dummyjson.com/image/i/products/14/thumbnail.jpg",
-      "amount": 1,
-      "id": 27
+      "id": 43
     },
     {
       "userId": 2,
-      "productId": 15,
-      "title": "Eau De Perfume Spray",
-      "price": 30,
-      "thumbnail": "https://dummyjson.com/image/i/products/15/thumbnail.jpg",
-      "amount": 2,
-      "id": 28
+      "productId": 3,
+      "title": "Samsung Universe 9",
+      "price": 1249,
+      "thumbnail": "https://dummyjson.com/image/i/products/3/thumbnail.jpg",
+      "amount": 1,
+      "id": 44
     }
+  ],
+  "categories": [
+    "smartphones",
+    "laptops",
+    "fragrances",
+    "skincare",
+    "groceries",
+    "home-decoration",
+    "furniture",
+    "tops",
+    "womens-dresses",
+    "womens-shoes",
+    "mens-shirts",
+    "mens-shoes",
+    "mens-watches",
+    "womens-watches",
+    "womens-bags",
+    "womens-jewellery",
+    "sunglasses",
+    "automotive",
+    "motorcycle",
+    "lighting"
   ],
   "products": [
     {

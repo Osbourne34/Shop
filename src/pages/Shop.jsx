@@ -20,12 +20,15 @@ import {
 
 import Header from '../components/Header';
 import Cart from '../components/Cart';
+import Categories from '../components/Categories';
 
 const Shop = () => {
     const dispatch = useDispatch();
 
     const { anchor } = useSelector((state) => state.materialUi);
-    const { isShowNotification } = useSelector((state) => state.materialUi);
+    const { isShowNotification, vertical, horizontal } = useSelector(
+        (state) => state.materialUi.notification,
+    );
     const { isShowDialog } = useSelector((state) => state.materialUi);
     const toggleDrawer = useToggleDrawer();
     const closeNotification = useCloseNotification();
@@ -47,6 +50,7 @@ const Shop = () => {
                     },
                 }}
                 maxWidth='xl'>
+                <Categories />
                 <Outlet />
             </Container>
 
@@ -58,6 +62,7 @@ const Shop = () => {
             </Drawer>
 
             <Snackbar
+                anchorOrigin={{ vertical, horizontal }}
                 open={isShowNotification}
                 autoHideDuration={2000}
                 onClose={closeNotification}>

@@ -16,6 +16,7 @@ import GoodsList from './components/GoodsList';
 import Shop from './pages/Shop';
 import Auth from './pages/Auth';
 import ProductDetails from './pages/ProductDetails';
+import Category from './pages/Category';
 
 const App = () => {
     const dispatch = useDispatch();
@@ -30,6 +31,7 @@ const App = () => {
                 <Route path='/' element={<Shop />}>
                     <Route index element={<GoodsList />} />
                     <Route path='product/:id' element={<ProductDetails />} />
+                    <Route path='category/:category' element={<Category />} />
                 </Route>
 
                 <Route path='login' element={<Auth />} />

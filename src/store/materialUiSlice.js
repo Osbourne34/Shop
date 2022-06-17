@@ -3,7 +3,11 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     anchor: false,
     isShowDialog: false,
-    isShowNotification: false,
+    notification: {
+        isShowNotification: false,
+        vertical: 'bottom',
+        horizontal: 'right',
+    },
 };
 
 const materialUi = createSlice({
@@ -20,10 +24,10 @@ const materialUi = createSlice({
             state.isShowDialog = false;
         },
         showNotification: (state, action) => {
-            state.isShowNotification = true;
+            state.notification.isShowNotification = true;
         },
         hideNotification: (state, action) => {
-            state.isShowNotification = false;
+            state.notification.isShowNotification = false;
         },
     },
 });

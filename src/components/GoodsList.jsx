@@ -17,7 +17,7 @@ const GoodsList = () => {
         return () => {
             document.removeEventListener('scroll', handleScroll);
         };
-    }, [totalCount]);
+    }, [totalCount, products]);
 
     const handleScroll = (e) => {
         if (

@@ -7,7 +7,7 @@ export const cartApi = createApi({
     endpoints: (build) => ({
         getProductsFromUserCart: build.query({
             query: (userId) => ({
-                url: `http://localhost:3001/users/${userId}?_embed=cart`,
+                url: `/users/${userId}?_embed=cart`,
             }),
             providesTags: (result) => {
                 return result.data

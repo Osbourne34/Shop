@@ -16,6 +16,11 @@ export const productsApi = createApi({
                 };
             },
         }),
+        getProductsByCategory: build.query({
+            query: (category) => ({
+                url: `/products?category=${category}`,
+            }),
+        }),
         getAllProducts: build.query({
             query: () => ({
                 url: '/products',
@@ -33,4 +38,5 @@ export const {
     useLazyGetProductsQuery,
     useGetAllProductsQuery,
     useGetProductQuery,
+    useGetProductsByCategoryQuery,
 } = productsApi;
