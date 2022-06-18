@@ -50,9 +50,15 @@ const ProductDetails = () => {
                     to='/'>
                     Главная
                 </Link>
+                <Link
+                    component={RouterLink}
+                    underline='hover'
+                    color='inherit'
+                    to={`/category/${data.category}`}>
+                    {data.category}
+                </Link>
                 <Typography color='text.primary'>{data.title}</Typography>
             </Breadcrumbs>
-
             <Grid container spacing={2}>
                 <Grid
                     sx={{ display: 'flex', justifyContent: 'center' }}

@@ -5,7 +5,15 @@ import { useSelector } from 'react-redux';
 import { useLazyGetProductsFromUserCartQuery } from './../store/cartApi';
 import { Link as RouterLink } from 'react-router-dom';
 
-import { Box, Button, Typography, CircularProgress } from '@mui/material';
+import {
+    Box,
+    Button,
+    Typography,
+    CircularProgress,
+    IconButton,
+} from '@mui/material';
+
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 
 import CartItem from './CartItem';
 
@@ -81,9 +89,19 @@ const Cart = () => {
                         </Box>
                     ) : (
                         <>
-                            <Typography sx={{ mb: 2 }} variant='h4'>
-                                Корзина
-                            </Typography>
+                            <Box
+                                sx={{
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    alignItems: 'center',
+                                    mb: 2,
+                                }}>
+                                <Typography variant='h4'>Корзина</Typography>
+                                <IconButton
+                                    onClick={toggleDrawer('right', false)}>
+                                    <CloseRoundedIcon />
+                                </IconButton>
+                            </Box>
                             <Box sx={{ flexGrow: 1, overflowY: 'auto' }}>
                                 {data.cart?.length > 0 ? (
                                     data.cart.map((cartItem) => {

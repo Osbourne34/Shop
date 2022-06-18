@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link as RouterLink, useParams } from 'react-router-dom';
 import { useGetProductsByCategoryQuery } from './../store/productsApi';
 
 import {
@@ -13,6 +13,8 @@ import {
     Button,
     ToggleButtonGroup,
     ToggleButton,
+    Breadcrumbs,
+    Link,
 } from '@mui/material';
 
 import ArrowUpwardRoundedIcon from '@mui/icons-material/ArrowUpwardRounded';
@@ -115,6 +117,7 @@ const Category = () => {
         setFrom(0);
         setBrandValues([]);
         setFiltered([...data]);
+        setPrice('');
     };
 
     const handleSetBrandValues = (e) => {
@@ -130,9 +133,16 @@ const Category = () => {
     return (
         <Grid container spacing={2}>
             <Grid sx={{ color: 'text.primary' }} item xs={3}>
-                <Typography sx={{ textTransform: 'capitalize' }} variant='h4'>
-                    {category}
-                </Typography>
+                <Breadcrumbs sx={{ mb: 3 }}>
+                    <Link
+                        component={RouterLink}
+                        underline='hover'
+                        color='inherit'
+                        to='/'>
+                        Главная
+                    </Link>
+                    <Typography color='text.primary'>{category}</Typography>
+                </Breadcrumbs>
 
                 <Typography sx={{ mb: 2, mt: 2 }} variant='h5'>
                     Цена
