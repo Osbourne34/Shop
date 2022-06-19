@@ -17,9 +17,17 @@ export const productsApi = createApi({
             },
         }),
         getProductsByCategory: build.query({
+            query: (params) => ({
+                url: `/products?${params}`,
+            }),
+        }),
+        getProductBrands: build.query({
             query: (category) => ({
                 url: `/products?category=${category}`,
             }),
+            transformResponse: (response) => [
+                ...new Set(response.map((item) => item.brand)),
+            ],
         }),
         getAllProducts: build.query({
             query: () => ({
@@ -39,4 +47,5 @@ export const {
     useGetAllProductsQuery,
     useGetProductQuery,
     useGetProductsByCategoryQuery,
+    useGetProductBrandsQuery,
 } = productsApi;

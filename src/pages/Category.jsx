@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link as RouterLink, useParams } from 'react-router-dom';
-import { useGetProductsByCategoryQuery } from './../store/productsApi';
+import {
+    useGetProductsByCategoryQuery,
+    useGetProductBrandsQuery,
+} from './../store/productsApi';
 
 import {
     Grid,
@@ -15,6 +18,7 @@ import {
     ToggleButton,
     Breadcrumbs,
     Link,
+    CircularProgress,
 } from '@mui/material';
 
 import ArrowUpwardRoundedIcon from '@mui/icons-material/ArrowUpwardRounded';
@@ -23,109 +27,53 @@ import ArrowDownwardRoundedIcon from '@mui/icons-material/ArrowDownwardRounded';
 import GoodItem from '../components/GoodItem';
 
 const Category = () => {
-    const [brandsValues, setBrandValues] = useState([]);
-    const [from, setFrom] = useState(0);
-    const [to, setTo] = useState(0);
-    const [filtered, setFiltered] = useState([]);
-    const [price, setPrice] = useState('');
-
     const { category } = useParams();
-    const { data, isSuccess } = useGetProductsByCategoryQuery(category);
+    const [selectedBrands, setSelectedBrands] = useState([]);
+    const [sortType, setSortType] = useState('');
+
+    const [filteredByPrice, setFilteredByPrice] = useState([]);
+    const [fromValue, setFromValue] = useState('');
+    const [toValue, setToValue] = useState('');
+
+    const { data: brands, isLoading: isLoadingBrands } =
+        useGetProductBrandsQuery(category);
+
+    const { data: products, isLoading: isLoadingCategory } =
+        useGetProductsByCategoryQuery(
+            `category=${category}${
+                selectedBrands.length > 0
+                    ? selectedBrands.map((item) => `&brand=${item}`).join('')
+                    : ''
+            }${sortType ? `&_sort=price&_order=${sortType}` : ''}
+        `,
+        );
 
     useEffect(() => {
-        if (isSuccess) {
-            setFiltered(data);
+        if (products) {
+            setFilteredByPrice(
+                products.filter(
+                    (product) =>
+                        product.price >= fromValue &&
+                        product.price <= (toValue || product.price),
+                ),
+            );
         }
-    }, [category, isSuccess, data]);
+    }, [fromValue, toValue, products]);
 
-    useEffect(() => {
-        if (isSuccess) {
-            clearFilter();
-        }
-    }, [category]);
-
-    const brands = Array.from(
-        new Set(data && data.map((item) => JSON.stringify(item.brand))),
-    ).map(JSON.parse);
-
-    const handleFilterProducts = () => {
-        const brandsFiltered = [];
-
-        brandsValues.forEach((brand) => {
-            data.forEach((product) => {
-                if (product.brand === brand) {
-                    brandsFiltered.push(product);
-                }
-            });
-        });
-
-        if (brandsValues.length > 0) {
-            setFiltered([...brandsFiltered]);
-        } else {
-            setFiltered([...data]);
-        }
-
-        if (from > 0 || to > 0) {
-            if (brandsFiltered.length > 0) {
-                setFiltered([
-                    ...brandsFiltered.filter(
-                        (product) =>
-                            product.price >= from &&
-                            product.price <= (to || product.price),
-                    ),
-                ]);
-            } else {
-                setFiltered([
-                    ...data.filter(
-                        (product) =>
-                            product.price >= from &&
-                            product.price <= (to || product.price),
-                    ),
-                ]);
-            }
-        }
-
-        if (price === 'cheaper') {
-            setFiltered((prevState) => {
-                return [...prevState.slice().sort((a, b) => a.price - b.price)];
-            });
-        } else if (price === 'expensive') {
-            setFiltered((prevState) => {
-                return [...prevState.slice().sort((a, b) => b.price - a.price)];
-            });
-        }
+    const handleChangeFromValue = (e) => {
+        setFromValue(e.target.value);
     };
 
-    const handleCheaper = () => {
-        setFiltered((prevState) => {
-            return [...prevState.slice().sort((a, b) => a.price - b.price)];
-        });
+    const handleChangeToValue = (e) => {
+        setToValue(e.target.value);
     };
 
-    const handleExpensive = () => {
-        setFiltered((prevState) => {
-            return [...prevState.slice().sort((a, b) => b.price - a.price)];
-        });
-    };
-
-    const handlePrice = (event, newPrice) => {
-        setPrice(newPrice);
-    };
-
-    const clearFilter = () => {
-        setTo(0);
-        setFrom(0);
-        setBrandValues([]);
-        setFiltered([...data]);
-        setPrice('');
-    };
-
-    const handleSetBrandValues = (e) => {
+    const handleChangeBrands = (e) => {
         if (e.target.checked) {
-            setBrandValues([...brandsValues, e.target.value]);
+            setSelectedBrands([...selectedBrands, e.target.value]);
         } else {
-            setBrandValues((prevState) => {
-                return prevState.filter((item) => item !== e.target.value);
+            setSelectedBrands((prevState) => {
+                return [...prevState.filter((item) => item !== e.target.value)];
             });
         }
     };
@@ -149,15 +97,15 @@ const Category = () => {
                 </Typography>
                 <Box sx={{ display: 'flex' }}>
                     <TextField
-                        value={from}
-                        onChange={(e) => setFrom(e.target.value)}
+                        value={fromValue}
+                        onChange={handleChangeFromValue}
                         type='number'
                         label='От'
                         variant='outlined'
                     />
                     <TextField
-                        value={to}
-                        onChange={(e) => setTo(e.target.value)}
+                        value={toValue}
+                        onChange={handleChangeToValue}
                         type='number'
                         label='До'
                         variant='outlined'
@@ -167,26 +115,28 @@ const Category = () => {
                     Бренд
                 </Typography>
                 <FormGroup>
-                    {brands.map((brand) => {
-                        return (
-                            <FormControlLabel
-                                key={brand}
-                                control={
-                                    <Checkbox
-                                        value={brand}
-                                        onChange={handleSetBrandValues}
-                                    />
-                                }
-                                label={brand}
-                            />
-                        );
-                    })}
+                    {!isLoadingBrands && !isLoadingCategory ? (
+                        brands.map((brand) => {
+                            return (
+                                <FormControlLabel
+                                    key={brand}
+                                    control={
+                                        <Checkbox
+                                            value={brand}
+                                            onChange={handleChangeBrands}
+                                        />
+                                    }
+                                    label={brand}
+                                />
+                            );
+                        })
+                    ) : (
+                        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                            <CircularProgress />
+                        </Box>
+                    )}
                 </FormGroup>
-                <Button
-                    onClick={handleFilterProducts}
-                    sx={{ mt: 2 }}
-                    fullWidth
-                    variant='contained'>
+                <Button sx={{ mt: 2 }} fullWidth variant='contained'>
                     Применить фильтр
                 </Button>
             </Grid>
@@ -200,25 +150,22 @@ const Category = () => {
                     }}>
                     <Typography sx={{ mr: 3 }}>Сортировать: </Typography>
 
-                    <ToggleButtonGroup
-                        value={price}
-                        exclusive
-                        onChange={handlePrice}>
+                    <ToggleButtonGroup value={sortType} exclusive>
                         <ToggleButton
-                            onClick={handleCheaper}
                             color='secondary'
                             sx={{ pr: 2 }}
                             size='small'
-                            value='cheaper'>
+                            onClick={() => setSortType('asc')}
+                            value='asc'>
                             <ArrowDownwardRoundedIcon sx={{ mr: 1 }} />
                             Дешевле
                         </ToggleButton>
                         <ToggleButton
-                            onClick={handleExpensive}
                             color='secondary'
                             sx={{ pr: 2 }}
                             size='small'
-                            value='expensive'>
+                            onClick={() => setSortType('desc')}
+                            value='desc'>
                             <ArrowUpwardRoundedIcon sx={{ mr: 1 }} />
                             Дороже
                         </ToggleButton>
@@ -226,18 +173,33 @@ const Category = () => {
                 </Box>
 
                 <Grid sx={{ mb: 5 }} container spacing={2}>
-                    {filtered.length > 0 ? (
-                        filtered.map((product) => {
-                            return (
-                                <Grid key={product?.id} item xs={4}>
-                                    <GoodItem {...product} />
-                                </Grid>
-                            );
-                        })
+                    {!isLoadingBrands && !isLoadingCategory ? (
+                        filteredByPrice.length > 0 ? (
+                            filteredByPrice.map((product) => {
+                                return (
+                                    <Grid xs={4} item key={product.id}>
+                                        <GoodItem {...product} />
+                                    </Grid>
+                                );
+                            })
+                        ) : (
+                            <Typography
+                                sx={{ mt: 3, pl: 2, flexGrow: 1 }}
+                                textAlign='center'
+                                variant='h3'>
+                                Ничего не найдено
+                            </Typography>
+                        )
                     ) : (
-                        <Typography sx={{ pl: 2 }} variant='h4'>
-                            Ничего не найдено
-                        </Typography>
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                                width: '100%',
+                                mt: 5,
+                            }}>
+                            <CircularProgress />
+                        </Box>
                     )}
                 </Grid>
             </Grid>

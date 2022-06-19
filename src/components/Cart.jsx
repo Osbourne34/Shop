@@ -125,11 +125,6 @@ const Cart = () => {
                                 <Typography sx={{ mb: 1 }} variant='h6'>
                                     Итог: {totalPrice()} $
                                 </Typography>
-
-                                <Button fullWidth variant='outlined'>
-                                    Корзина
-                                </Button>
-
                                 <Button
                                     sx={{ mt: 2 }}
                                     fullWidth

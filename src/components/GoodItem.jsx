@@ -53,10 +53,6 @@ const GoodItem = ({ id, title, description, price, thumbnail }) => {
                         justifyContent: 'flex-end',
                         alignItems: 'center',
                     }}>
-                    <IconButton>
-                        <FavoriteIcon />
-                    </IconButton>
-
                     <AddProductButton
                         id={id}
                         title={title}

@@ -94,11 +94,6 @@ const Header = () => {
                                 <DarkModeIcon />
                             )}
                         </IconButton>
-                        <IconButton sx={{ ml: 1 }} color='inherit'>
-                            <Badge badgeContent={2} color='error'>
-                                <FavoriteBorderIcon />
-                            </Badge>
-                        </IconButton>
                         <IconButton
                             onClick={toggleDrawer('right', true)}
                             sx={{ ml: 1 }}
