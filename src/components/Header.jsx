@@ -1,14 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useToggleDrawer } from '../hook/useToggleDrawer';
+import React, { useContext, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { logOut } from "../store/authSlice";
 
-import { useDispatch, useSelector } from 'react-redux';
-import { logOut } from '../store/authSlice';
-import { useLazyGetProductsFromUserCartQuery } from './../store/cartApi';
+import { useLazyGetProductsFromUserCartQuery } from "./../store/cartApi";
 
-import { Link as RouterLink } from 'react-router-dom';
+import { ColorModeContext } from "./../hoc/Theme";
+import { useTheme } from "@mui/material/styles";
 
-import { ColorModeContext } from './../hoc/Theme';
-import { useTheme } from '@mui/material/styles';
+import { useToggleDrawer } from "../hook/useToggleDrawer";
 
 import {
     Box,
@@ -20,15 +20,15 @@ import {
     Badge,
     Menu,
     MenuItem,
-} from '@mui/material';
+} from "@mui/material";
 
-import DarkModeIcon from '@mui/icons-material/DarkMode';
-import LightModeIcon from '@mui/icons-material/LightMode';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import AccountCircle from '@mui/icons-material/AccountCircle';
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import AccountCircle from "@mui/icons-material/AccountCircle";
 
-import Search from './Search';
+import Search from "./Search";
 
 const Header = () => {
     const toggleDrawer = useToggleDrawer();
@@ -42,6 +42,7 @@ const Header = () => {
         useLazyGetProductsFromUserCartQuery();
 
     const [anchorEl, setAnchorEl] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (user) {
@@ -62,7 +63,8 @@ const Header = () => {
     const handleLogout = () => {
         handleClose();
         dispatch(logOut());
-        localStorage.removeItem('user');
+        localStorage.removeItem("user");
+        navigate("/login");
     };
 
     const handleMenu = (event) => {
@@ -75,32 +77,35 @@ const Header = () => {
 
     return (
         <Box sx={{ flexGrow: 1, mb: 15 }}>
-            <AppBar position='fixed'>
-                <Toolbar sx={{ justifyContent: 'space-between' }}>
-                    <Typography variant='h6' component='div'>
+            <AppBar position="fixed">
+                <Toolbar sx={{ justifyContent: "space-between" }}>
+                    <Typography variant="h6" component="div">
                         Онлайн Магазин
                     </Typography>
 
                     <Search />
 
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <Box sx={{ display: "flex", alignItems: "center" }}>
                         <IconButton
                             sx={{ ml: 1 }}
-                            color='inherit'
-                            onClick={toggleColorMode}>
-                            {palette.mode !== 'light' ? (
+                            color="inherit"
+                            onClick={toggleColorMode}
+                        >
+                            {palette.mode !== "light" ? (
                                 <LightModeIcon />
                             ) : (
                                 <DarkModeIcon />
                             )}
                         </IconButton>
                         <IconButton
-                            onClick={toggleDrawer('right', true)}
+                            onClick={toggleDrawer("right", true)}
                             sx={{ ml: 1 }}
-                            color='inherit'>
+                            color="inherit"
+                        >
                             <Badge
                                 badgeContent={user ? numberOfItemsInCart : 0}
-                                color='error'>
+                                color="error"
+                            >
                                 <ShoppingCartIcon />
                             </Badge>
                         </IconButton>
@@ -110,27 +115,30 @@ const Header = () => {
                                 <IconButton
                                     sx={{ ml: 1 }}
                                     onClick={handleMenu}
-                                    color='inherit'>
+                                    color="inherit"
+                                >
                                     <AccountCircle />
                                 </IconButton>
                                 <Menu
-                                    id='menu-appbar'
+                                    id="menu-appbar"
                                     anchorEl={anchorEl}
                                     anchorOrigin={{
-                                        vertical: 'bottom',
-                                        horizontal: 'right',
+                                        vertical: "bottom",
+                                        horizontal: "right",
                                     }}
                                     keepMounted
                                     transformOrigin={{
-                                        vertical: 'top',
-                                        horizontal: 'right',
+                                        vertical: "top",
+                                        horizontal: "right",
                                     }}
                                     open={Boolean(anchorEl)}
-                                    onClose={handleClose}>
+                                    onClose={handleClose}
+                                >
                                     <MenuItem
                                         component={RouterLink}
-                                        to='/profile'
-                                        onClick={handleClose}>
+                                        to="/profile"
+                                        onClick={handleClose}
+                                    >
                                         Профиль
                                     </MenuItem>
                                     <MenuItem onClick={handleLogout}>
@@ -141,10 +149,11 @@ const Header = () => {
                         ) : (
                             <Button
                                 component={RouterLink}
-                                to='/login'
+                                to="/login"
                                 sx={{ ml: 2 }}
-                                color='inherit'
-                                variant='outlined'>
+                                color="inherit"
+                                variant="outlined"
+                            >
                                 Войти
                             </Button>
                         )}

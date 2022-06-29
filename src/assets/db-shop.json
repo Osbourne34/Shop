@@ -16,75 +16,66 @@
   "cart": [
     {
       "userId": 2,
-      "productId": 8,
-      "title": "Microsoft Surface Laptop 4",
-      "price": 1499,
-      "thumbnail": "https://dummyjson.com/image/i/products/8/thumbnail.jpg",
-      "amount": 2,
-      "id": 11
-    },
-    {
-      "userId": 2,
-      "productId": 19,
-      "title": "Skin Beauty Serum.",
-      "price": 46,
-      "thumbnail": "https://dummyjson.com/image/i/products/19/thumbnail.jpg",
-      "amount": 1,
-      "id": 41
-    },
-    {
-      "userId": 2,
-      "productId": 18,
-      "title": "Oil Free Moisturizer 100ml",
-      "price": 40,
-      "thumbnail": "https://dummyjson.com/image/i/products/18/thumbnail.jpg",
-      "amount": 3,
-      "id": 42
-    },
-    {
-      "userId": 2,
-      "productId": 1,
-      "title": "iPhone 9",
-      "price": 549,
-      "thumbnail": "https://dummyjson.com/image/i/products/1/thumbnail.jpg",
-      "amount": 1,
-      "id": 43
-    },
-    {
-      "userId": 2,
-      "productId": 3,
-      "title": "Samsung Universe 9",
-      "price": 1249,
-      "thumbnail": "https://dummyjson.com/image/i/products/3/thumbnail.jpg",
-      "amount": 1,
-      "id": 44
-    },
-    {
-      "userId": 1,
       "productId": 2,
       "title": "iPhone X",
       "price": 899,
       "thumbnail": "https://dummyjson.com/image/i/products/2/thumbnail.jpg",
       "amount": 2,
-      "id": 45
+      "id": 48
     },
     {
-      "userId": 1,
+      "userId": 2,
       "productId": 1,
       "title": "iPhone 9",
       "price": 549,
       "thumbnail": "https://dummyjson.com/image/i/products/1/thumbnail.jpg",
-      "amount": 3,
-      "id": 46
+      "amount": 1,
+      "id": 49
     },
     {
-      "userId": 1,
+      "userId": 2,
+      "productId": 10,
+      "title": "HP Pavilion 15-DK1056WM",
+      "price": 1099,
+      "thumbnail": "https://dummyjson.com/image/i/products/10/thumbnail.jpeg",
+      "amount": 2,
+      "id": 50
+    },
+    {
+      "userId": 2,
       "productId": 9,
       "title": "Infinix INBOOK",
       "price": 1099,
       "thumbnail": "https://dummyjson.com/image/i/products/9/thumbnail.jpg",
       "amount": 1,
-      "id": 47
+      "id": 51
+    },
+    {
+      "userId": 1,
+      "productId": 3,
+      "title": "Samsung Universe 9",
+      "price": 1249,
+      "thumbnail": "https://dummyjson.com/image/i/products/3/thumbnail.jpg",
+      "amount": 3,
+      "id": 52
+    },
+    {
+      "userId": 1,
+      "productId": 4,
+      "title": "OPPOF19",
+      "price": 280,
+      "thumbnail": "https://dummyjson.com/image/i/products/4/thumbnail.jpg",
+      "amount": 1,
+      "id": 53
+    },
+    {
+      "userId": 1,
+      "productId": 25,
+      "title": "Gulab Powder 50 Gram",
+      "price": 70,
+      "thumbnail": "https://dummyjson.com/image/i/products/25/thumbnail.jpg",
+      "amount": 3,
+      "id": 54
     }
   ],
   "categories": [

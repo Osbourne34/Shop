@@ -70,15 +70,22 @@ const CartItem = ({
                 />
                 <Box sx={{ ml: 2 }}>
                     <Typography
-                        sx={{ mb: 1, maxHeight: '48px', overflow: 'hidden' }}
+                        sx={{
+                            mb: 1,
+                            maxHeight: '48px',
+                            overflow: 'hidden',
+                            color: 'text.primary',
+                        }}
                         variant='body1'>
                         {title}
                     </Typography>
-                    <Typography variant='body2'>
-                        {price}$ x {amount}
+                    <Typography
+                        sx={{ color: 'text.secondary' }}
+                        variant='body2'>
+                        ${price} x {amount}
                     </Typography>
                     <Typography color='primary' variant='body1'>
-                        {price * amount}$
+                        ${price * amount}
                     </Typography>
                 </Box>
             </Box>
@@ -99,7 +106,7 @@ const CartItem = ({
                         },
                     }}></Button>
                 <Typography
-                    sx={{ ml: 1.5, mr: 1.5 }}
+                    sx={{ ml: 1.5, mr: 1.5, color: 'text.primary' }}
                     align='center'
                     color='dark'
                     variant='body2'>
