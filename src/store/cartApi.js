@@ -5,9 +5,9 @@ export const cartApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001' }),
     tagTypes: ['Cart'],
     endpoints: (build) => ({
-        getProductsFromUserCart: build.query({
-            query: (userId) => ({
-                url: `/users/${userId}?_embed=cart`,
+        getProductFromUserCart: build.query({
+            query: ({ userId, productId }) => ({
+                url: `/cart?userId=${userId}&productId=${productId}`,
             }),
             providesTags: (result) => {
                 return result.data
@@ -17,6 +17,34 @@ export const cartApi = createApi({
                       ]
                     : [{ type: 'Cart', id: 'LIST' }];
             },
+        }),
+        getUserCart: build.query({
+            query: (userId) => ({
+                url: `cart?userId=${userId}&_expand=product`,
+            }),
+            transformResponse(result) {
+                if (result.length > 0) {
+                    const totalCount = result.reduce((start, next) => {
+                        return start + next.amount;
+                    }, 0);
+                    const totalPrice = result
+                        .map((item) => {
+                            return item.amount * item.product.price;
+                        })
+                        .reduce((start, next) => start + next);
+                    return {
+                        cart: result,
+                        totalCount,
+                        totalPrice,
+                    };
+                }
+                return {
+                    cart: [],
+                    totalCount: 0,
+                    totalPrice: 0,
+                };
+            },
+            providesTags: [{ type: 'Cart', id: 'LIST' }],
         }),
         addProduct: build.mutation({
             query: (body) => ({
@@ -45,8 +73,9 @@ export const cartApi = createApi({
 });
 
 export const {
+    useLazyGetProductFromUserCartQuery,
     useAddProductMutation,
     useUpdateProductMutation,
     useRemoveProductMutation,
-    useLazyGetProductsFromUserCartQuery,
+    useLazyGetUserCartQuery,
 } = cartApi;

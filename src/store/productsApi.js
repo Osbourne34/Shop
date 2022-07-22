@@ -5,6 +5,23 @@ export const productsApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001' }),
     tagTypes: ['Products'],
     endpoints: (build) => ({
+        getAllProducts: build.query({
+            query: () => ({
+                url: '/products',
+            }),
+            transformResponse(result) {
+                return result.map((item) => ({
+                    id: item.id,
+                    title: item.title,
+                    thumbnail: item.thumbnail,
+                }));
+            },
+        }),
+        getProduct: build.query({
+            query: (id) => ({
+                url: `/products/${id}`,
+            }),
+        }),
         getProducts: build.query({
             query: (page) => ({ url: `/products?_page=${page}&_limit=12` }),
             transformResponse(apiResponse, meta) {
@@ -29,23 +46,13 @@ export const productsApi = createApi({
                 ...new Set(response.map((item) => item.brand)),
             ],
         }),
-        getAllProducts: build.query({
-            query: () => ({
-                url: '/products',
-            }),
-        }),
-        getProduct: build.query({
-            query: (id) => ({
-                url: `/products/${id}`,
-            }),
-        }),
     }),
 });
 
 export const {
-    useLazyGetProductsQuery,
     useGetAllProductsQuery,
     useGetProductQuery,
+    useLazyGetProductsQuery,
     useGetProductsByCategoryQuery,
     useGetProductBrandsQuery,
 } = productsApi;

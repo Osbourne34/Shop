@@ -1,12 +1,16 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-.image {
-    border: 1px solid #c4c4c4;
-}
+.product-photo {
+    display: block;
+    object-fit: cover;
+    flex-shrink: 0;
 
-.image.active {
-    border: 1px solid red;
+    width: 75px;
+    height: 75px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }

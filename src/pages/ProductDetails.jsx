@@ -2,16 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link as RouterLink, useParams } from 'react-router-dom';
 import { useGetProductQuery } from './../store/productsApi';
 
-import {
-    Typography,
-    CircularProgress,
-    Grid,
-    Box,
-    Breadcrumbs,
-    Link,
-} from '@mui/material';
+import { Typography, CircularProgress, Grid, Box, Link } from '@mui/material';
 
-import AddProductButton from './../components/AddProductButton';
+import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
 
 const ProductDetails = () => {
     const { id } = useParams();
@@ -34,7 +27,8 @@ const ProductDetails = () => {
                     height: '200px',
                     justifyContent: 'center',
                     alignItems: 'center',
-                }}>
+                }}
+            >
                 <CircularProgress />;
             </Box>
         );
@@ -42,28 +36,14 @@ const ProductDetails = () => {
 
     return (
         <>
-            <Breadcrumbs sx={{ mb: 3 }} aria-label='breadcrumb'>
-                <Link
-                    component={RouterLink}
-                    underline='hover'
-                    color='inherit'
-                    to='/'>
-                    Главная
-                </Link>
-                <Link
-                    component={RouterLink}
-                    underline='hover'
-                    color='inherit'
-                    to={`/category/${data.category}`}>
-                    {data.category}
-                </Link>
-                <Typography color='text.primary'>{data.title}</Typography>
-            </Breadcrumbs>
+            <Breadcrumbs links={[data.category, data.title]} />
+
             <Grid container spacing={2}>
                 <Grid
                     sx={{ display: 'flex', justifyContent: 'center' }}
                     item
-                    xs={6}>
+                    xs={6}
+                >
                     <img
                         style={{ objectFit: 'cover', borderRadius: '5px' }}
                         width={'70%'}
@@ -73,7 +53,7 @@ const ProductDetails = () => {
                     />
                 </Grid>
                 <Grid sx={{ color: 'text.primary' }} item xs={6}>
-                    <Typography mb={3} variant='h3'>
+                    <Typography mb={3} variant="h3">
                         {data.title}
                     </Typography>
                     <Typography mt={2}>
@@ -97,22 +77,16 @@ const ProductDetails = () => {
                             alignItems: 'center',
                             maxWidth: '250px',
                             mt: 2,
-                        }}>
-                        <Typography variant='h4'>${data.price}</Typography>
-
-                        <AddProductButton
-                            id={data.id}
-                            title={data.title}
-                            price={data.price}
-                            thumbnail={data.thumbnail}
-                            size={'large'}
-                        />
+                        }}
+                    >
+                        <Typography variant="h4">${data.price}</Typography>
                     </Box>
                 </Grid>
                 <Grid
                     xs={6}
                     item
-                    sx={{ display: 'flex', justifyContent: 'center', mt: 1 }}>
+                    sx={{ display: 'flex', justifyContent: 'center', mt: 1 }}
+                >
                     {data?.images.map((image) => {
                         return (
                             <img
@@ -122,8 +96,8 @@ const ProductDetails = () => {
                                         : 'image'
                                 }
                                 onClick={() => handleToggleImage(image)}
-                                width='70px'
-                                height='70px'
+                                width="70px"
+                                height="70px"
                                 key={image}
                                 src={image}
                                 alt={data.title}

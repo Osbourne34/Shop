@@ -1,4 +1,4 @@
-import { setAnchor } from './../store/materialUiSlice';
+import { toggleDrawer } from './../store/materialUiSlice';
 import { useDispatch } from 'react-redux';
 
 export const useToggleDrawer = () => {
@@ -11,7 +11,7 @@ export const useToggleDrawer = () => {
         ) {
             return;
         }
-        dispatch(setAnchor(open));
+        dispatch(toggleDrawer(open));
     };
 
     return togglerDrawer;

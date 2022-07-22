@@ -1,38 +1,15 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useToggleDrawer } from '../hook/useToggleDrawer';
-import { useCloseNotification } from '../hook/useCloseNotification';
-import { hideDialog } from './../store/materialUiSlice';
+import { Outlet } from 'react-router-dom';
 
-import { Link as RouterLink, Outlet } from 'react-router-dom';
+import { Container } from '@mui/material';
 
-import {
-    Container,
-    Drawer,
-    Snackbar,
-    Alert,
-    DialogActions,
-    DialogContentText,
-    Button,
-    Dialog,
-    DialogContent,
-} from '@mui/material';
-
-import Header from '../components/Header';
-import Cart from '../components/Cart';
-import Categories from '../components/Categories';
+import Header from '../components/Header/Header';
+import Modal from '../components/Modal/Modal';
+import DrawerMui from '../components/Drawer/DrawerMui';
+import CartForDrawer from '../components/Cart/CartForDrawer/CartForDrawer';
+import Categories from '../components/Categories/Categories';
 
 const Shop = () => {
-    const dispatch = useDispatch();
-
-    const { anchor } = useSelector((state) => state.materialUi);
-    const { isShowNotification, vertical, horizontal } = useSelector(
-        (state) => state.materialUi.notification,
-    );
-    const { isShowDialog } = useSelector((state) => state.materialUi);
-    const toggleDrawer = useToggleDrawer();
-    const closeNotification = useCloseNotification();
-
     return (
         <>
             <Header />
@@ -48,56 +25,19 @@ const Shop = () => {
                         backgroundColor: 'background.default',
                         zIndex: '-1',
                     },
+                    mt: 13,
+                    mb: 5,
                 }}
-                maxWidth='xl'>
+                maxWidth="xl"
+            >
                 <Categories />
                 <Outlet />
+
+                <DrawerMui>
+                    <CartForDrawer />
+                </DrawerMui>
+                <Modal />
             </Container>
-
-            <Drawer
-                anchor={'right'}
-                open={anchor}
-                onClose={toggleDrawer('right', false)}>
-                <Cart />
-            </Drawer>
-
-            <Snackbar
-                anchorOrigin={{ vertical, horizontal }}
-                open={isShowNotification}
-                autoHideDuration={2000}
-                onClose={closeNotification}>
-                <Alert
-                    variant='filled'
-                    onClose={closeNotification}
-                    severity='success'
-                    sx={{ width: '100%' }}>
-                    Товар добавлен в корзину
-                </Alert>
-            </Snackbar>
-
-            <Dialog open={isShowDialog} onClose={() => dispatch(hideDialog())}>
-                <DialogContent>
-                    <DialogContentText id='alert-dialog-description'>
-                        Для добавления товаров в корзину необходимо
-                        авторизоваться.
-                    </DialogContentText>
-                </DialogContent>
-                <DialogActions sx={{ p: 3, pt: 0 }}>
-                    <Button
-                        variant='outlined'
-                        onClick={() => dispatch(hideDialog())}>
-                        Позже
-                    </Button>
-                    <Button
-                        sx={{ ml: 2 }}
-                        component={RouterLink}
-                        to='/login'
-                        variant='outlined'
-                        onClick={() => dispatch(hideDialog())}>
-                        Войти
-                    </Button>
-                </DialogActions>
-            </Dialog>
         </>
     );
 };

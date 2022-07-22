@@ -1,81 +1,17 @@
 {
   "users": [
     {
-      "email": "jenya@gmail.com",
-      "password": "$2a$10$TPguxkAf5QBM1lV/SA2vd.qM1xgQL06yRwfhIWVkNCbtDOMy4nKYy",
-      "role": "user",
+      "email": "test@mail.com",
+      "password": "$2a$10$BeO6qDfjLM64Afjne9Ce9.ciCRY3b84lMpulztGzZJvaKKoi.dW9O",
       "id": 1
-    },
-    {
-      "email": "evgeniy@mail.com",
-      "password": "$2a$10$EQr8jXD2Lk9Zg8DDPZWpJu7yd/RkWWKW7lS1qG76RBmHQo2vw5kY.",
-      "role": "user",
-      "id": 2
     }
   ],
   "cart": [
     {
-      "userId": 2,
-      "productId": 2,
-      "title": "iPhone X",
-      "price": 899,
-      "thumbnail": "https://dummyjson.com/image/i/products/2/thumbnail.jpg",
-      "amount": 2,
-      "id": 48
-    },
-    {
-      "userId": 2,
       "productId": 1,
-      "title": "iPhone 9",
-      "price": 549,
-      "thumbnail": "https://dummyjson.com/image/i/products/1/thumbnail.jpg",
-      "amount": 1,
-      "id": 49
-    },
-    {
-      "userId": 2,
-      "productId": 10,
-      "title": "HP Pavilion 15-DK1056WM",
-      "price": 1099,
-      "thumbnail": "https://dummyjson.com/image/i/products/10/thumbnail.jpeg",
-      "amount": 2,
-      "id": 50
-    },
-    {
-      "userId": 2,
-      "productId": 9,
-      "title": "Infinix INBOOK",
-      "price": 1099,
-      "thumbnail": "https://dummyjson.com/image/i/products/9/thumbnail.jpg",
-      "amount": 1,
-      "id": 51
-    },
-    {
       "userId": 1,
-      "productId": 3,
-      "title": "Samsung Universe 9",
-      "price": 1249,
-      "thumbnail": "https://dummyjson.com/image/i/products/3/thumbnail.jpg",
       "amount": 3,
-      "id": 52
-    },
-    {
-      "userId": 1,
-      "productId": 4,
-      "title": "OPPOF19",
-      "price": 280,
-      "thumbnail": "https://dummyjson.com/image/i/products/4/thumbnail.jpg",
-      "amount": 1,
-      "id": 53
-    },
-    {
-      "userId": 1,
-      "productId": 25,
-      "title": "Gulab Powder 50 Gram",
-      "price": 70,
-      "thumbnail": "https://dummyjson.com/image/i/products/25/thumbnail.jpg",
-      "amount": 3,
-      "id": 54
+      "id": 2
     }
   ],
   "categories": [

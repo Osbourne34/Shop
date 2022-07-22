@@ -1,43 +1,45 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    anchor: false,
     isShowDialog: false,
     notification: {
         isShowNotification: false,
         vertical: 'bottom',
         horizontal: 'right',
+        message: null,
     },
+    isShowDrawer: false,
 };
 
 const materialUi = createSlice({
     name: 'materialUi',
     initialState,
     reducers: {
-        setAnchor: (state, action) => {
-            state.anchor = action.payload;
-        },
-        showDialog: (state, action) => {
+        showDialog(state, action) {
             state.isShowDialog = true;
         },
-        hideDialog: (state, action) => {
+        hideDialog(state, action) {
             state.isShowDialog = false;
         },
-        showNotification: (state, action) => {
+        showNotification(state, action) {
             state.notification.isShowNotification = true;
+            state.notification.message = action.payload;
         },
-        hideNotification: (state, action) => {
+        hideNotification(state, action) {
             state.notification.isShowNotification = false;
         },
+        toggleDrawer(state, action) {
+            state.isShowDrawer = action.payload;
+        }
     },
 });
 
 export const {
-    setAnchor,
     showDialog,
     hideDialog,
     showNotification,
     hideNotification,
+    toggleDrawer,
 } = materialUi.actions;
 
 export default materialUi.reducer;
