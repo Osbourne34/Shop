@@ -4,8 +4,6 @@ import { Link as RouterLink } from 'react-router-dom';
 import { Breadcrumbs as BreadcrumbsMui, Link, Typography } from '@mui/material';
 
 const Breadcrumbs = ({ links }) => {
-    console.log(links);
-
     return (
         <BreadcrumbsMui sx={{ mb: 3 }}>
             <Link
@@ -23,10 +21,11 @@ const Breadcrumbs = ({ links }) => {
                         return (
                             <Link
                                 component={RouterLink}
-                                to="/"
+                                to={`/${link}`}
+                                key={link}
                                 color="inherit"
                                 underline="hover"
-                                key={link}
+                                sx={{ textTransform: 'capitalize' }}
                             >
                                 {link}
                             </Link>
@@ -34,11 +33,14 @@ const Breadcrumbs = ({ links }) => {
                     }
                 })}
 
-            <Typography color="text.primary">
+            <Typography
+                color="text.primary"
+                sx={{ textTransform: 'capitalize' }}
+            >
                 {links[links.length - 1]}
             </Typography>
         </BreadcrumbsMui>
     );
 };
 
-export default Breadcrumbs;
+export default React.memo(Breadcrumbs);

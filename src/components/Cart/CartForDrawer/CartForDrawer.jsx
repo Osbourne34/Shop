@@ -77,9 +77,9 @@ const CartForDrawer = () => {
                             Позже
                         </Button>
                         <Button
+                            onClick={toggleDrawer('right', false)}
                             component={RouterLink}
                             to="/login"
-                            onClick={toggleDrawer('right', false)}
                             variant="contained"
                         >
                             Войти

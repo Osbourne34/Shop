@@ -4,7 +4,7 @@ import { Paper } from '@mui/material';
 
 import SearchItem from './SearchItem';
 
-const SearchResults = ({ result, onClick }) => {
+const SearchResults = ({ result }) => {
     return (
         <Paper
             elevation={3}
@@ -20,7 +20,7 @@ const SearchResults = ({ result, onClick }) => {
             }}
         >
             {result.map((item) => {
-                return <SearchItem key={item.id} {...item} onClick={onClick} />;
+                return <SearchItem key={item.id} {...item} />;
             })}
         </Paper>
     );

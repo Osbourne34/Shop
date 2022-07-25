@@ -67,7 +67,7 @@ const CartItem = ({ product, amount, id, disabledDecrease }) => {
                 }}
             >
                 <img
-                    className="product-photo"
+                    className="product-photo product-photo_small"
                     src={product.thumbnail}
                     alt={product.title}
                 />

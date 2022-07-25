@@ -7,10 +7,23 @@
 .product-photo {
     display: block;
     object-fit: cover;
-    flex-shrink: 0;
 
+    border: 1px solid #fff;
+    border-radius: 5px;
+}
+
+.product-photo_large {
+    width: 400px;
+    height: 400px;
+}
+
+.product-photo_small {
     width: 75px;
     height: 75px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+
+    flex-shrink: 0;
+}
+
+.product-photo.active {
+    border-color: #90caf9;
 }

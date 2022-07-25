@@ -74,8 +74,8 @@ export const cartApi = createApi({
 
 export const {
     useLazyGetProductFromUserCartQuery,
+    useLazyGetUserCartQuery,
     useAddProductMutation,
     useUpdateProductMutation,
     useRemoveProductMutation,
-    useLazyGetUserCartQuery,
 } = cartApi;

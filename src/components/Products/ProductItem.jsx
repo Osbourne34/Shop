@@ -10,7 +10,7 @@ import {
     CardActionArea,
 } from '@mui/material';
 
-import AddProductInCart from '../AddProductInCart/AddProductInCart';
+import AddToCartButton from '../AddToCartButton/AddToCartButton';
 
 const ProductItem = ({ id, title, thumbnail, price, description }) => {
     return (
@@ -22,7 +22,7 @@ const ProductItem = ({ id, title, thumbnail, price, description }) => {
             >
                 <CardMedia
                     component="img"
-                    height="200"
+                    height="250"
                     image={thumbnail}
                     alt={title}
                 />
@@ -47,7 +47,7 @@ const ProductItem = ({ id, title, thumbnail, price, description }) => {
                 </CardContent>
             </CardActionArea>
             <CardActions sx={{ p: 2, pt: 0, justifyContent: 'flex-end' }}>
-                <AddProductInCart productId={id} />
+                <AddToCartButton productId={id} typeButton="icon" />
             </CardActions>
         </Card>
     );

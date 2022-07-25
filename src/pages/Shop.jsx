@@ -5,7 +5,7 @@ import { Container } from '@mui/material';
 
 import Header from '../components/Header/Header';
 import Modal from '../components/Modal/Modal';
-import DrawerMui from '../components/Drawer/DrawerMui';
+import Drawer from '../components/Drawer/Drawer';
 import CartForDrawer from '../components/Cart/CartForDrawer/CartForDrawer';
 import Categories from '../components/Categories/Categories';
 
@@ -33,9 +33,9 @@ const Shop = () => {
                 <Categories />
                 <Outlet />
 
-                <DrawerMui>
+                <Drawer>
                     <CartForDrawer />
-                </DrawerMui>
+                </Drawer>
                 <Modal />
             </Container>
         </>

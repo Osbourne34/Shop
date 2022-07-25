@@ -1,24 +1,24 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { useToggleDrawer } from './../../hook/useToggleDrawer';
+import { useToggleDrawer } from '../../hook/useToggleDrawer';
 
-import { Drawer } from '@mui/material';
+import { Drawer as DrawerMui } from '@mui/material';
 
-const DrawerMui = ({ children }) => {
+const Drawer = ({ children }) => {
     const { isShowDrawer } = useSelector((state) => state.materialUi);
 
     const toggleDrawer = useToggleDrawer();
 
     return (
-        <Drawer
+        <DrawerMui
             anchor={'right'}
             open={isShowDrawer}
             onClose={toggleDrawer('right', false)}
         >
             {children}
-        </Drawer>
+        </DrawerMui>
     );
 };
 
-export default DrawerMui;
+export default Drawer;

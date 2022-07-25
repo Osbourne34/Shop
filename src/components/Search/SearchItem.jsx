@@ -9,21 +9,22 @@ import {
     Box,
 } from '@mui/material';
 
-const SearchItem = ({ title, thumbnail, id, onClick }) => {
+const SearchItem = ({ title, thumbnail, id }) => {
     return (
-        <Card sx={{ mb: 1 }} onClick={onClick}>
+        <Card sx={{ mb: 1 }}>
             <CardActionArea component={RouterLink} to={`/product/${id}`}>
                 <Box sx={{ display: 'flex', alignItems: 'center', p: 1 }}>
                     <CardMedia
                         component="img"
-                        sx={{
-                            width: 50,
-                            border: '1px solid #fff',
-                            flexShrink: 0,
-                        }}
                         height="50"
                         image={thumbnail}
                         alt={title}
+                        sx={{
+                            width: 50,
+                            border: '1px solid #fff',
+                            borderRadius: 2,
+                            flexShrink: 0,
+                        }}
                     />
                     <Typography sx={{ ml: 2 }} component="div">
                         {title}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLazyGetProductsQuery } from './../../store/productsApi';
+import { useLazyGetProductsPageQuery } from './../../store/productsApi';
 
 import ProductsList from './ProductsList';
 import Loader from '../Loader/Loader';
@@ -12,7 +12,8 @@ const Products = () => {
     const [totalCount, setTotalCount] = useState(0);
     const [fetching, setFetching] = useState(true);
 
-    const [getProducts, { isLoading, error }] = useLazyGetProductsQuery();
+    const [getProductsPage, { isLoading, error }] =
+        useLazyGetProductsPageQuery();
 
     const handleScroll = useCallback(
         (e) => {
@@ -39,7 +40,7 @@ const Products = () => {
         const get = async () => {
             if (fetching) {
                 try {
-                    const { data } = await getProducts(currentPage);
+                    const { data } = await getProductsPage(currentPage);
                     setProducts((prevState) => [
                         ...prevState,
                         ...data.apiResponse,
@@ -53,7 +54,7 @@ const Products = () => {
         };
 
         get();
-    }, [fetching, getProducts, currentPage]);
+    }, [fetching, getProductsPage, currentPage]);
 
     if (isLoading) {
         return <Loader />;
@@ -75,7 +76,7 @@ const Products = () => {
 
     return (
         <>
-            <ProductsList products={products} />
+            <ProductsList products={products} row={3} />
         </>
     );
 };

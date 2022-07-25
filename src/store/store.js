@@ -11,10 +11,13 @@ import { categoriesApi } from './categoriesApi';
 
 import MaterialUiReducer from './materialUiSlice';
 
+import filterReducer from './filterSlice';
+
 export const store = configureStore({
     reducer: {
         auth: authReducer,
         materialUi: MaterialUiReducer,
+        filter: filterReducer,
         [authApi.reducerPath]: authApi.reducer,
         [productsApi.reducerPath]: productsApi.reducer,
         [cartApi.reducerPath]: cartApi.reducer,

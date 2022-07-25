@@ -4,28 +4,28 @@ import {
     useLazyGetProductFromUserCartQuery,
     useAddProductMutation,
     useUpdateProductMutation,
-} from './../../store/cartApi';
+} from '../../store/cartApi';
 import { showDialog } from '../../store/materialUiSlice';
 
 import { useSnackbar } from 'notistack';
 
-import { IconButton } from '@mui/material';
+import { Button, IconButton } from '@mui/material';
 
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
-const AddProductInCart = ({ productId }) => {
+const AddToCartButton = ({ productId, typeButton }) => {
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
 
-    const { enqueueSnackbar } = useSnackbar();
-
     const [loading, setLoading] = useState(false);
+
+    const { enqueueSnackbar } = useSnackbar();
 
     const [getProductFromUserCart] = useLazyGetProductFromUserCartQuery();
     const [addProduct] = useAddProductMutation();
     const [updateProduct] = useUpdateProductMutation();
 
-    const addingProductToCart = async () => {
+    const addProductToCart = async () => {
         if (user) {
             setLoading(true);
             try {
@@ -91,15 +91,27 @@ const AddProductInCart = ({ productId }) => {
 
     return (
         <>
-            <IconButton
-                disabled={loading}
-                onClick={addingProductToCart}
-                size="large"
-            >
-                <AddShoppingCartIcon sx={{ fontSize: 'inherit' }} />
-            </IconButton>
+            {typeButton === 'icon' ? (
+                <IconButton
+                    disabled={loading}
+                    onClick={addProductToCart}
+                    size="large"
+                >
+                    <AddShoppingCartIcon sx={{ fontSize: 'inherit' }} />
+                </IconButton>
+            ) : (
+                <Button
+                    disabled={loading}
+                    onClick={addProductToCart}
+                    size="large"
+                    variant="contained"
+                    sx={{ width: '300px' }}
+                >
+                    Добавить в корзину
+                </Button>
+            )}
         </>
     );
 };
 
-export default React.memo(AddProductInCart);
+export default React.memo(AddToCartButton);

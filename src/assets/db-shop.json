@@ -4,14 +4,37 @@
       "email": "test@mail.com",
       "password": "$2a$10$BeO6qDfjLM64Afjne9Ce9.ciCRY3b84lMpulztGzZJvaKKoi.dW9O",
       "id": 1
+    },
+    {
+      "email": "test2@mail.com",
+      "password": "$2a$10$PnW3Hb0q02Qd..4ZV5LAiugYWp2EE4SnKDai7YgweQnGaozbNsEkG",
+      "id": 2
     }
   ],
   "cart": [
     {
       "productId": 1,
-      "userId": 1,
+      "userId": 2,
+      "amount": 2,
+      "id": 20
+    },
+    {
+      "productId": 78,
+      "userId": 2,
       "amount": 3,
-      "id": 2
+      "id": 22
+    },
+    {
+      "productId": 72,
+      "userId": 2,
+      "amount": 1,
+      "id": 23
+    },
+    {
+      "productId": 5,
+      "userId": 2,
+      "amount": 1,
+      "id": 24
     }
   ],
   "categories": [

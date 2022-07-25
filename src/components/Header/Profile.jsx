@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logoutUser } from './../../store/authSlice';
 
 import { IconButton, Menu, MenuItem } from '@mui/material';
 
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import { useState } from 'react';
 
 const Profile = () => {
     const dispatch = useDispatch();

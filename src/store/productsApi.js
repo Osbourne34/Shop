@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { nanoid } from '@reduxjs/toolkit';
 
 export const productsApi = createApi({
     reducerPath: 'productsApi',
@@ -22,7 +23,7 @@ export const productsApi = createApi({
                 url: `/products/${id}`,
             }),
         }),
-        getProducts: build.query({
+        getProductsPage: build.query({
             query: (page) => ({ url: `/products?_page=${page}&_limit=12` }),
             transformResponse(apiResponse, meta) {
                 return {
@@ -38,13 +39,19 @@ export const productsApi = createApi({
                 url: `/products?${params}`,
             }),
         }),
-        getProductBrands: build.query({
+        getBrandsFromCategory: build.query({
             query: (category) => ({
                 url: `/products?category=${category}`,
             }),
-            transformResponse: (response) => [
-                ...new Set(response.map((item) => item.brand)),
-            ],
+            transformResponse: (response) => {
+                const uniqueBrands = [
+                    ...new Set(response.map((item) => item.brand)),
+                ];
+                return uniqueBrands.map((brand) => ({
+                    brand,
+                    id: nanoid(),
+                }));
+            },
         }),
     }),
 });
@@ -52,7 +59,7 @@ export const productsApi = createApi({
 export const {
     useGetAllProductsQuery,
     useGetProductQuery,
-    useLazyGetProductsQuery,
+    useLazyGetProductsPageQuery,
     useGetProductsByCategoryQuery,
-    useGetProductBrandsQuery,
+    useGetBrandsFromCategoryQuery,
 } = productsApi;
