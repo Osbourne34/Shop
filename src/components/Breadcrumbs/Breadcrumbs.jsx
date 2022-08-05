@@ -15,30 +15,31 @@ const Breadcrumbs = ({ links }) => {
                 Главная
             </Link>
 
-            {links.length > 1 &&
-                links.map((link, i) => {
-                    if (links.length - 1 !== i) {
-                        return (
-                            <Link
-                                component={RouterLink}
-                                to={`/${link}`}
-                                key={link}
-                                color="inherit"
-                                underline="hover"
-                                sx={{ textTransform: 'capitalize' }}
-                            >
-                                {link}
-                            </Link>
-                        );
-                    }
-                })}
-
-            <Typography
-                color="text.primary"
-                sx={{ textTransform: 'capitalize' }}
-            >
-                {links[links.length - 1]}
-            </Typography>
+            {links.map(({ link, title }) => {
+                if (!link) {
+                    return (
+                        <Typography
+                            color="text.primary"
+                            key={title}
+                            sx={{ textTransform: 'capitalize' }}
+                        >
+                            {title}
+                        </Typography>
+                    );
+                }
+                return (
+                    <Link
+                        component={RouterLink}
+                        to={link}
+                        key={link}
+                        underline="hover"
+                        color="inherit"
+                        sx={{ textTransform: 'capitalize' }}
+                    >
+                        {title}
+                    </Link>
+                );
+            })}
         </BreadcrumbsMui>
     );
 };

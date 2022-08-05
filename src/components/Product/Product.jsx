@@ -7,7 +7,7 @@ import ProductImage from './ProductImage';
 
 const Product = ({ product }) => {
     return (
-        <Grid container spacing={2}>
+        <Grid container spacing={3}>
             <ProductImage images={product.images} alt={product.title} />
             <ProductInfo {...product} />
         </Grid>

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { useToggleDrawer } from '../../hook/useToggleDrawer';
+import { cartHOC } from '../Cart/cartHOC';
 
 import { IconButton, Badge } from '@mui/material';
 
@@ -22,4 +23,4 @@ const CartButton = ({ cart }) => {
     );
 };
 
-export default CartButton;
+export default cartHOC(CartButton);

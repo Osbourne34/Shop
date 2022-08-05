@@ -1,13 +1,20 @@
-import { Box, Typography } from '@mui/material';
 import React from 'react';
 
-const TotalPrice = ({ cart }) => {
+import { Box, Typography } from '@mui/material';
+
+import { cartHOC } from './cartHOC';
+
+const TotalPrice = ({ cart, mt }) => {
     return (
-        <Box sx={{ justifyContent: 'space-between', display: 'flex' }}>
-            <Typography variant="h5">Итог:</Typography>
-            <Typography variant="h5">${cart?.totalPrice || 0}</Typography>
+        <Box sx={{ justifyContent: 'space-between', display: 'flex', mt: mt ? mt : 0 }}>
+            <Typography color="text.primary" variant="h5">
+                Итог:
+            </Typography>
+            <Typography color="text.primary" variant="h5">
+                ${cart?.totalPrice || 0}
+            </Typography>
         </Box>
     );
 };
 
-export default TotalPrice;
+export default cartHOC(React.memo(TotalPrice));

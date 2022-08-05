@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useGetProductsByCategoryQuery } from './../store/productsApi';
 
-import { Grid } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
 import Filter from '../components/Filter/Filter';
@@ -42,7 +42,14 @@ const Category = () => {
 
     return (
         <>
-            <Breadcrumbs links={[category]} />
+            <Breadcrumbs
+                links={[
+                    {
+                        link: null,
+                        title: category,
+                    },
+                ]}
+            />
             <Grid container spacing={3}>
                 <Filter category={category} />
 
@@ -50,8 +57,12 @@ const Category = () => {
                     <Sorting category={category} />
                     {isLoadingProducts ? (
                         <Loader />
-                    ) : (
+                    ) : filteredByPrice.length > 0 ? (
                         <ProductsList products={filteredByPrice} row={4} />
+                    ) : (
+                        <Typography textAlign="center" variant="h4">
+                            Ничего не найдено
+                        </Typography>
                     )}
                 </Grid>
             </Grid>

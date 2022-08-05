@@ -8,9 +8,10 @@ import { Box, Typography, Button, IconButton } from '@mui/material';
 
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 
-import Cart from '../Cart';
-import CartList from './CartList';
+import CartList from '../CartList';
 import TotalPrice from '../TotalPrice';
+import CartItem from './CartItem';
+import CheckoutButton from '../CheckoutButton';
 
 const CartForDrawer = () => {
     const { user } = useSelector((state) => state.auth);
@@ -43,16 +44,21 @@ const CartForDrawer = () => {
                         </IconButton>
                     </Box>
 
-                    <Cart Component={CartList} />
-                    <Cart Component={TotalPrice} />
+                    <CartList CartItem={CartItem} />
+                    <TotalPrice />
 
                     <Box sx={{ mt: 2 }}>
-                        <Button variant="outlined" sx={{ mb: 1 }} fullWidth>
+                        <Button
+                            component={RouterLink}
+                            to="/cart"
+                            onClick={toggleDrawer('rigth', false)}
+                            variant="outlined"
+                            sx={{ mb: 1 }}
+                            fullWidth
+                        >
                             Корзина
                         </Button>
-                        <Button variant="contained" fullWidth>
-                            Оформить заказ
-                        </Button>
+                        <CheckoutButton />
                     </Box>
                 </>
             ) : (

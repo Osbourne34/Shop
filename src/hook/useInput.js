@@ -7,8 +7,8 @@ export const useValidForm = (...errors) => {
     return true;
 };
 
-export const useInput = (validate) => {
-    const [value, setValue] = useState('');
+export const useInput = (validate, initialValue = '') => {
+    const [value, setValue] = useState(initialValue);
     const [blur, setBlur] = useState(false);
 
     const valueIsValid = validate(value);
@@ -23,11 +23,17 @@ export const useInput = (validate) => {
         setBlur(true);
     };
 
+    const clearValue = () => {
+        setValue('');
+        setBlur(false);
+    };
+
     return {
         value,
         onChange,
         onBlur,
         hasError,
         errorForView,
+        clearValue,
     };
 };

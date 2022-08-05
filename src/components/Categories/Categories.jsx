@@ -71,7 +71,7 @@ const Categories = () => {
                         <SwiperSlide key={category}>
                             <Button
                                 component={RouterLink}
-                                to={`/${category}`}
+                                to={`/category/${category}`}
                                 size="large"
                                 fullWidth
                                 variant="contained"

@@ -1,32 +1,31 @@
-import React from "react";
+import React from 'react';
 
-import { Link as RouterLink } from "react-router-dom";
+import { Grid } from '@mui/material';
 
-import { Grid, Typography, Breadcrumbs, Link } from "@mui/material";
-
-import CheckoutForm from "./../components/CheckoutForm";
-import OrderInfo from "../components/OrderInfo";
+import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
+import CheckoutForm from '../components/CheckoutForm/CheckoutForm';
+import OrderInfo from '../components/OrderInfo/OrderInfo';
 
 const Checkout = () => {
     return (
         <>
-            <Breadcrumbs sx={{ mb: 3 }}>
-                <Link
-                    component={RouterLink}
-                    to="/"
-                    underline="hover"
-                    color="inherit"
-                >
-                    Главная
-                </Link>
-                <Typography color="text.primary">Оформление заказа</Typography>
-            </Breadcrumbs>
+            <Breadcrumbs
+                links={[
+                    {
+                        link: '/cart',
+                        title: 'Корзина',
+                    },
+                    {
+                        title: 'Оформление заказа',
+                    },
+                ]}
+            />
 
             <Grid container spacing={3}>
-                <Grid item xs={8}>
+                <Grid item xs={9}>
                     <CheckoutForm />
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item xs={3}>
                     <OrderInfo />
                 </Grid>
             </Grid>

@@ -16,7 +16,18 @@ const ProductDetails = () => {
 
     return (
         <>
-            <Breadcrumbs links={[data.category, data.title]} />
+            <Breadcrumbs
+                links={[
+                    {
+                        link: `/category/${data.category}`,
+                        title: data.category,
+                    },
+                    {
+                        link: null,
+                        title: data.title,
+                    },
+                ]}
+            />
             <Product product={data} />
         </>
     );

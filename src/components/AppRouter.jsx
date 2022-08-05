@@ -8,6 +8,9 @@ import Register from '../pages/Auth/Register';
 import Products from './Products/Products';
 import ProductDetails from '../pages/ProductDetails';
 import Category from '../pages/Category';
+import Cart from '../pages/Cart';
+import Checkout from '../pages/Checkout';
+import Payment from '../pages/Payment';
 
 const AppRouter = () => {
     return (
@@ -15,7 +18,10 @@ const AppRouter = () => {
             <Route path="/" element={<Shop />}>
                 <Route index element={<Products />} />
                 <Route path="product/:id" element={<ProductDetails />} />
-                <Route path="/:category" element={<Category />} />
+                <Route path="category/:category" element={<Category />} />
+                <Route path="cart" element={<Cart />} />
+                <Route path="checkout" element={<Checkout />} />
+                <Route path="payment" element={<Payment />} />
             </Route>
 
             <Route path="login" element={<Login />} />

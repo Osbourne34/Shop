@@ -6,7 +6,6 @@ import ThemeModeToggler from './ThemeModeToggler';
 import CartButton from './CartButton';
 import Profile from './Profile';
 import SignIn from './SignIn';
-import Cart from '../Cart/Cart';
 import Search from './../Search/Search';
 
 import { Box, AppBar, Toolbar } from '@mui/material';
@@ -24,11 +23,7 @@ const Header = () => {
 
                     <Box>
                         <ThemeModeToggler />
-                        {isAuth ? (
-                            <Cart Component={CartButton} />
-                        ) : (
-                            <CartButton />
-                        )}
+                        {isAuth ? <CartButton /> : <CartButton cart={[]} />}
                         {isAuth ? <Profile /> : <SignIn />}
                     </Box>
                 </Toolbar>

@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 
-import { useToggleDrawer } from './../../../hook/useToggleDrawer';
+import { useToggleDrawer } from '../../hook/useToggleDrawer';
 
 import { Box, Button, Typography } from '@mui/material';
 
-import CartItem from './CartItem';
-import Loader from '../../Loader/Loader';
+import Loader from '../Loader/Loader';
+import { cartHOC } from './cartHOC';
 
 const Container = ({ children }) => {
     return (
@@ -22,7 +23,7 @@ const Container = ({ children }) => {
     );
 };
 
-const CartList = ({ cart, error }) => {
+const CartList = ({ cart, error, CartItem }) => {
     const toggleDrawer = useToggleDrawer();
 
     if (!cart && !error) {
@@ -36,7 +37,7 @@ const CartList = ({ cart, error }) => {
     if (error) {
         return (
             <Container>
-                <Typography variant="h5" sx={{ mb: 2 }}>
+                <Typography color="text.primary" variant="h5" sx={{ mb: 2 }}>
                     Ошибка при загрузке данных
                 </Typography>
             </Container>
@@ -49,9 +50,9 @@ const CartList = ({ cart, error }) => {
                 cart.cart.map((item) => {
                     return (
                         <CartItem
-                            key={item.product.id}
+                            key={item.id}
                             product={item.product}
-                            id={item.id}
+                            cartId={item.id}
                             amount={item.amount}
                             disabledDecrease={item.amount === 1}
                         />
@@ -60,10 +61,20 @@ const CartList = ({ cart, error }) => {
             ) : (
                 <Container>
                     <Box>
-                        <Typography variant="h5" sx={{ mb: 2 }}>
+                        <Typography
+                            color="text.primary"
+                            textAlign="center"
+                            variant="h5"
+                            sx={{ mb: 2 }}
+                        >
                             Корзина пуста
                         </Typography>
-                        <Button onClick={toggleDrawer('right', false)}>
+                        <Button
+                            component={RouterLink}
+                            to="/"
+                            variant="outlined"
+                            onClick={toggleDrawer('right', false)}
+                        >
                             Добавить товары
                         </Button>
                     </Box>
@@ -73,4 +84,4 @@ const CartList = ({ cart, error }) => {
     );
 };
 
-export default CartList;
+export default cartHOC(CartList);
