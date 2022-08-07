@@ -27,68 +27,90 @@ const AddToCartButton = ({ productId, typeButton }) => {
     const [updateCart] = useUpdateCartMutation();
 
     const addProductToCart = async () => {
+        setLoading(true);
         if (user) {
-            setLoading(true);
-            getUserCart(user.id)
-                .then(async ({ data: cart }) => {
-                    if (!cart) {
-                        const { data: product } = await getProduct(productId);
-                        await createCartAndAddProduct({
-                            products: [{ product, amount: 1 }],
-                            userId: user.id,
-                        });
-                        enqueueSnackbar('Товар добавлен', {
-                            variant: 'success',
-                        });
-                        setLoading(false);
-                        // CREATE AND ADD PRODUCT
-                    } else {
-                        const product = cart.products.find(
-                            ({ product }) => product.id === productId,
-                        );
-                        if (!product) {
-                            const { data: product } = await getProduct(
-                                productId,
-                            );
-                            await updateCart({
-                                products: [
-                                    ...cart.products,
-                                    { product, amount: 1 },
-                                ],
-                                id: cart.id,
-                            });
-                            setLoading(false);
-                            enqueueSnackbar('Товар добавлен', {
-                                variant: 'success',
-                            });
-                            // ADD NEW PRODUCT
-                        } else {
-                            const newProducts = cart.products.map(
-                                ({ amount, product }) => {
-                                    if (product.id === productId) {
-                                        return { product, amount: amount + 1 };
-                                    }
-                                    return { product, amount };
-                                },
-                            );
-                            updateCart({
-                                products: newProducts,
-                                id: cart.id,
-                            });
-                            setLoading(false);
-                            enqueueSnackbar('Товар добавлен', {
-                                variant: 'success',
-                            });
-                            // UPDATE AMOUNT
-                        }
-                    }
-                })
-                .catch((e) => {
-                    enqueueSnackbar('Ошибка при добавлений товара', {
+            const { data: cart, error } = await getUserCart(user.id);
+            if (error) {
+                enqueueSnackbar('Произошла ошибка', {
+                    variant: 'error',
+                });
+                setLoading(false);
+                return;
+            }
+            if (!cart) {
+                const { data: product, error } = await getProduct(productId);
+
+                if (error) {
+                    enqueueSnackbar('Произошла ошибка', {
                         variant: 'error',
                     });
                     setLoading(false);
+                    return;
+                }
+
+                const newCart = {
+                    userId: user.id,
+                    products: [{ ...product, amount: 1 }],
+                };
+
+                await createCartAndAddProduct(newCart);
+
+                enqueueSnackbar('Товар добавлен в корзину', {
+                    variant: 'success',
                 });
+                setLoading(false);
+            } else {
+                const product = cart.products.find(
+                    (item) => item.id === productId,
+                );
+                if (product) {
+                    const newProducts = cart.products.map((item) => {
+                        if (item.id === product.id) {
+                            return { ...item, amount: item.amount + 1 };
+                        }
+                        return item;
+                    });
+                    const { error } = await updateCart({
+                        id: cart.id,
+                        products: newProducts,
+                    });
+
+                    if (error) {
+                        enqueueSnackbar('Произошла ошибка', {
+                            variant: 'error',
+                        });
+                        setLoading(false);
+                        return;
+                    }
+
+                    enqueueSnackbar('Товар добавлен в корзину', {
+                        variant: 'success',
+                    });
+                    setLoading(false);
+                } else {
+                    const { data: product, error } = await getProduct(
+                        productId,
+                    );
+
+                    if (error) {
+                        enqueueSnackbar('Произошла ошибка', {
+                            variant: 'error',
+                        });
+                        setLoading(false);
+                        return;
+                    }
+
+                    await updateCart({
+                        id: cart.id,
+                        products: [...cart.products, { ...product, amount: 1 }],
+                    });
+
+                    enqueueSnackbar('Товар добавлен в корзину', {
+                        variant: 'success',
+                    });
+                    setLoading(false);
+                }
+            }
         } else {
             dispatch(showDialog());
         }

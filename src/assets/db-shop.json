@@ -4,36 +4,62 @@
       "email": "test@mail.com",
       "password": "$2a$10$gkmYKOR1srVSSxu5rD8IQO933JZCIJ7lMGCRsLh01g4avYW/CcM7i",
       "id": 1
+    },
+    {
+      "email": "test2@mail.com",
+      "password": "$2a$10$G6xsa4/CF75HtWeY08GzrO2azM.jczjTCxAtABnMBAeoZPsKuh6xC",
+      "id": 2
     }
   ],
   "orders": [],
   "cart": [
     {
+      "userId": 2,
       "products": [
         {
-          "product": {
-            "id": 2,
-            "title": "iPhone X",
-            "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-            "price": 899,
-            "discountPercentage": 17.94,
-            "rating": 4.44,
-            "stock": 34,
-            "brand": "Apple",
-            "category": "smartphones",
-            "thumbnail": "https://dummyjson.com/image/i/products/2/thumbnail.jpg",
-            "images": [
-              "https://dummyjson.com/image/i/products/2/thumbnail.jpg",
-              "https://dummyjson.com/image/i/products/2/1.jpg",
-              "https://dummyjson.com/image/i/products/2/2.jpg",
-              "https://dummyjson.com/image/i/products/2/3.jpg"
-            ]
-          },
+          "id": 3,
+          "title": "Samsung Universe 9",
+          "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
+          "price": 1249,
+          "discountPercentage": 15.46,
+          "rating": 4.09,
+          "stock": 36,
+          "brand": "Samsung",
+          "category": "smartphones",
+          "thumbnail": "https://dummyjson.com/image/i/products/3/thumbnail.jpg",
+          "images": [
+            "https://dummyjson.com/image/i/products/3/1.jpg"
+          ],
           "amount": 1
         }
       ],
-      "userId": 1,
       "id": 1
+    },
+    {
+      "userId": 1,
+      "products": [
+        {
+          "id": 4,
+          "title": "OPPOF19",
+          "description": "OPPO F19 is officially announced on April 2021.",
+          "price": 280,
+          "discountPercentage": 17.91,
+          "rating": 4.3,
+          "stock": 123,
+          "brand": "OPPO",
+          "category": "smartphones",
+          "thumbnail": "https://dummyjson.com/image/i/products/4/thumbnail.jpg",
+          "images": [
+            "https://dummyjson.com/image/i/products/4/1.jpg",
+            "https://dummyjson.com/image/i/products/4/2.jpg",
+            "https://dummyjson.com/image/i/products/4/3.jpg",
+            "https://dummyjson.com/image/i/products/4/4.jpg",
+            "https://dummyjson.com/image/i/products/4/thumbnail.jpg"
+          ],
+          "amount": 1
+        }
+      ],
+      "id": 2
     }
   ],
   "categories": [

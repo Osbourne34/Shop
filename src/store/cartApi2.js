@@ -1,8 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const cartApi2 = createApi({
-    reducerPath: 'cartApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://ocalhost:3001' }),
+    reducerPath: 'cartApi2',
+    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001' }),
     tagTypes: ['Cart2'],
     endpoints: (build) => ({
         getUserCart: build.query({
@@ -22,7 +22,7 @@ export const cartApi2 = createApi({
             query: ({ products, id }) => ({
                 url: `/cart/${id}`,
                 method: 'PATCH',
-                body: { products: [...products] },
+                body: { products },
             }),
         }),
     }),
