@@ -6,7 +6,13 @@ import { cartHOC } from './cartHOC';
 
 const TotalPrice = ({ cart, mt }) => {
     return (
-        <Box sx={{ justifyContent: 'space-between', display: 'flex', mt: mt ? mt : 0 }}>
+        <Box
+            sx={{
+                justifyContent: 'space-between',
+                display: 'flex',
+                mt: mt ? mt : 0,
+            }}
+        >
             <Typography color="text.primary" variant="h5">
                 Итог:
             </Typography>

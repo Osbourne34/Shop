@@ -5,77 +5,60 @@ export const cartApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001' }),
     tagTypes: ['Cart'],
     endpoints: (build) => ({
-        getProductFromUserCart: build.query({
-            query: ({ userId, productId }) => ({
-                url: `/cart?userId=${userId}&productId=${productId}`,
-            }),
-            providesTags: (result) => {
-                return result.data
-                    ? [
-                          ...result.map(({ id }) => ({ type: 'Cart', id })),
-                          { type: 'Cart', id: 'LIST' },
-                      ]
-                    : [{ type: 'Cart', id: 'LIST' }];
-            },
-        }),
         getUserCart: build.query({
             query: (userId) => ({
-                url: `cart?userId=${userId}&_expand=product`,
+                url: `/cart?userId=${userId}`,
             }),
-            transformResponse(result) {
-                if (result.length > 0) {
-                    const totalCount = result.reduce((start, next) => {
-                        return start + next.amount;
-                    }, 0);
-                    const totalPrice = result
-                        .map((item) => {
-                            return item.amount * item.product.price;
-                        })
-                        .reduce((start, next) => start + next);
+            providesTags: ['Cart'],
+            transformResponse: (response) => {
+                if (!response.length || response[0].products.length === 0) {
                     return {
-                        cart: result,
-                        totalCount,
-                        totalPrice,
+                        totalPrice: 0,
+                        totalCount: 0,
+                        products: [],
                     };
                 }
+                const totalPrice = response[0].products
+                    .map((item) => {
+                        return item.price * item.amount;
+                    })
+                    .reduce((curr, next) => {
+                        return curr + next;
+                    });
+                const totalCount = response[0].products.reduce(
+                    (start, next) => {
+                        return start + next.amount;
+                    },
+                    0
+                );
                 return {
-                    cart: [],
-                    totalCount: 0,
-                    totalPrice: 0,
+                    ...response[0],
+                    totalPrice,
+                    totalCount,
                 };
             },
-            providesTags: [{ type: 'Cart', id: 'LIST' }],
         }),
-        addProduct: build.mutation({
+        createCartAndAndProduct: build.mutation({
             query: (body) => ({
                 url: '/cart',
                 method: 'POST',
                 body,
             }),
-            invalidatesTags: [{ type: 'Cart', id: 'LIST' }],
+            invalidatesTags: ['Cart'],
         }),
-        updateProduct: build.mutation({
-            query: ({ id, amount }) => ({
+        updateCart: build.mutation({
+            query: ({ products, id }) => ({
                 url: `/cart/${id}`,
                 method: 'PATCH',
-                body: { amount },
+                body: { products },
             }),
-            invalidatesTags: [{ type: 'Cart', id: 'LIST' }],
-        }),
-        removeProduct: build.mutation({
-            query: (id) => ({
-                url: `/cart/${id}`,
-                method: 'DELETE',
-            }),
-            invalidatesTags: [{ type: 'Cart', id: 'LIST' }],
+            invalidatesTags: ['Cart'],
         }),
     }),
 });
 
 export const {
-    useLazyGetProductFromUserCartQuery,
     useLazyGetUserCartQuery,
-    useAddProductMutation,
-    useUpdateProductMutation,
-    useRemoveProductMutation,
+    useCreateCartAndAndProductMutation,
+    useUpdateCartMutation,
 } = cartApi;

@@ -14,52 +14,9 @@
   "orders": [],
   "cart": [
     {
-      "userId": 2,
-      "products": [
-        {
-          "id": 3,
-          "title": "Samsung Universe 9",
-          "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
-          "price": 1249,
-          "discountPercentage": 15.46,
-          "rating": 4.09,
-          "stock": 36,
-          "brand": "Samsung",
-          "category": "smartphones",
-          "thumbnail": "https://dummyjson.com/image/i/products/3/thumbnail.jpg",
-          "images": [
-            "https://dummyjson.com/image/i/products/3/1.jpg"
-          ],
-          "amount": 1
-        }
-      ],
-      "id": 1
-    },
-    {
       "userId": 1,
-      "products": [
-        {
-          "id": 4,
-          "title": "OPPOF19",
-          "description": "OPPO F19 is officially announced on April 2021.",
-          "price": 280,
-          "discountPercentage": 17.91,
-          "rating": 4.3,
-          "stock": 123,
-          "brand": "OPPO",
-          "category": "smartphones",
-          "thumbnail": "https://dummyjson.com/image/i/products/4/thumbnail.jpg",
-          "images": [
-            "https://dummyjson.com/image/i/products/4/1.jpg",
-            "https://dummyjson.com/image/i/products/4/2.jpg",
-            "https://dummyjson.com/image/i/products/4/3.jpg",
-            "https://dummyjson.com/image/i/products/4/4.jpg",
-            "https://dummyjson.com/image/i/products/4/thumbnail.jpg"
-          ],
-          "amount": 1
-        }
-      ],
-      "id": 2
+      "products": [],
+      "id": 1
     }
   ],
   "categories": [

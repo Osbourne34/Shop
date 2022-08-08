@@ -5,7 +5,7 @@ import { Box, Typography, CardMedia, Paper } from '@mui/material';
 
 import ItemActions from './ItemActions';
 
-const CartItem = ({ product, amount, cartId, disabledDecrease }) => {
+const CartItem = ({ cart, product }) => {
     return (
         <Paper
             sx={{
@@ -40,17 +40,13 @@ const CartItem = ({ product, amount, cartId, disabledDecrease }) => {
                 <Box sx={{ ml: 3 }}>
                     <Typography fontWeight={700}>{product.title}</Typography>
                     <Typography color="primary">
-                        {amount} x ${product.price}
+                        {product.amount} x ${product.price}
                     </Typography>
-                    <Typography>${product.price * amount}</Typography>
+                    <Typography>${product.price * product.amount}</Typography>
                 </Box>
             </Box>
 
-            <ItemActions
-                amount={amount}
-                cartId={cartId}
-                disabledDecrease={disabledDecrease}
-            />
+            <ItemActions cart={cart} product={product} />
         </Paper>
     );
 };

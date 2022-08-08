@@ -46,15 +46,13 @@ const CartList = ({ cart, error, CartItem }) => {
 
     return (
         <Box sx={{ flexGrow: 1, overflowY: 'auto' }}>
-            {cart.cart.length > 0 ? (
-                cart.cart.map((item) => {
+            {cart.products.length > 0 ? (
+                cart.products.map((product) => {
                     return (
                         <CartItem
-                            key={item.id}
-                            product={item.product}
-                            cartId={item.id}
-                            amount={item.amount}
-                            disabledDecrease={item.amount === 1}
+                            key={product.id}
+                            cart={cart}
+                            product={{ ...product }}
                         />
                     );
                 })

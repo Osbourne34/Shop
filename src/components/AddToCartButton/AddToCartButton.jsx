@@ -6,7 +6,7 @@ import {
     useLazyGetUserCartQuery,
     useCreateCartAndAndProductMutation,
     useUpdateCartMutation,
-} from '../../store/cartApi2';
+} from '../../store/cartApi';
 import { useLazyGetProductQuery } from '../../store/productsApi';
 
 import { useSnackbar } from 'notistack';
@@ -37,7 +37,8 @@ const AddToCartButton = ({ productId, typeButton }) => {
                 setLoading(false);
                 return;
             }
-            if (!cart) {
+            console.log(cart);
+            if (!cart?.id) {
                 const { data: product, error } = await getProduct(productId);
 
                 if (error) {
@@ -61,7 +62,7 @@ const AddToCartButton = ({ productId, typeButton }) => {
                 setLoading(false);
             } else {
                 const product = cart.products.find(
-                    (item) => item.id === productId,
+                    (item) => item.id === productId
                 );
                 if (product) {
                     const newProducts = cart.products.map((item) => {
@@ -89,7 +90,7 @@ const AddToCartButton = ({ productId, typeButton }) => {
                     setLoading(false);
                 } else {
                     const { data: product, error } = await getProduct(
-                        productId,
+                        productId
                     );
 
                     if (error) {

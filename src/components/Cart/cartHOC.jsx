@@ -6,13 +6,12 @@ export const cartHOC = (Component) => {
     return (props) => {
         const { user } = useSelector((state) => state.auth);
         const [getUserCart, { data: cart, error }] = useLazyGetUserCartQuery();
-
         useEffect(() => {
             if (user) {
                 getUserCart(user.id);
             }
         }, [user, getUserCart]);
-
+        console.log(cart);
         return <Component cart={cart} error={error} {...props} />;
     };
 };

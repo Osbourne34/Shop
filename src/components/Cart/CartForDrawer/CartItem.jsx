@@ -6,9 +6,8 @@ import { useToggleDrawer } from '../../../hook/useToggleDrawer';
 import { Box, Typography } from '@mui/material';
 import ItemActions from '../ItemActions';
 
-const CartItem = ({ product, amount, cartId, disabledDecrease }) => {
+const CartItem = ({ product, cart }) => {
     const toggleDrawer = useToggleDrawer();
-
     return (
         <Box
             sx={{
@@ -44,18 +43,14 @@ const CartItem = ({ product, amount, cartId, disabledDecrease }) => {
                         {product.title}
                     </Typography>
                     <Typography variant="body2" color="primary">
-                        {amount} x ${product.price}
+                        {product.amount} x ${product.price}
                     </Typography>
                     <Typography variant="body2">
-                        ${amount * product.price}
+                        ${product.amount * product.price}
                     </Typography>
                 </Box>
             </Box>
-            <ItemActions
-                cartId={cartId}
-                disabledDecrease={disabledDecrease}
-                amount={amount}
-            />
+            <ItemActions cart={cart} product={product} />
         </Box>
     );
 };
