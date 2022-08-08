@@ -15,7 +15,7 @@ const ItemActions = ({ cart, product }) => {
 
     const [updateCart] = useUpdateCartMutation();
 
-    const handleIncrease = () => {
+    const handleIncrease = async () => {
         const newProducts = cart.products.map((item) => {
             if (item.id === product.id) {
                 return { ...item, amount: item.amount + 1 };
@@ -23,7 +23,20 @@ const ItemActions = ({ cart, product }) => {
             return item;
         });
 
-        updateCart({ id: cart.id, products: newProducts });
+        const { error } = await updateCart({
+            id: cart.id,
+            products: newProducts,
+        });
+
+        if (error) {
+            enqueueSnackbar('Ошибка при обновлений', {
+                variant: 'error',
+            });
+        }
+
+        enqueueSnackbar('Значение обновлено', {
+            variant: 'success',
+        });
     };
 
     const handleDecrease = () => {

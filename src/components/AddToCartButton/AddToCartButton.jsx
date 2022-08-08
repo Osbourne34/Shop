@@ -37,7 +37,6 @@ const AddToCartButton = ({ productId, typeButton }) => {
                 setLoading(false);
                 return;
             }
-            console.log(cart);
             if (!cart?.id) {
                 const { data: product, error } = await getProduct(productId);
 

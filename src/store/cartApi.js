@@ -11,31 +11,34 @@ export const cartApi = createApi({
             }),
             providesTags: ['Cart'],
             transformResponse: (response) => {
-                if (!response.length || response[0].products.length === 0) {
+                if (!response.length) {
                     return {
                         totalPrice: 0,
                         totalCount: 0,
                         products: [],
                     };
                 }
-                const totalPrice = response[0].products
-                    .map((item) => {
-                        return item.price * item.amount;
-                    })
-                    .reduce((curr, next) => {
-                        return curr + next;
-                    });
-                const totalCount = response[0].products.reduce(
-                    (start, next) => {
-                        return start + next.amount;
-                    },
-                    0
-                );
-                return {
-                    ...response[0],
-                    totalPrice,
-                    totalCount,
-                };
+                if (response[0].products.length > 0) {
+                    const totalPrice = response[0].products
+                        .map((item) => {
+                            return item.price * item.amount;
+                        })
+                        .reduce((curr, next) => {
+                            return curr + next;
+                        });
+                    const totalCount = response[0].products.reduce(
+                        (start, next) => {
+                            return start + next.amount;
+                        },
+                        0
+                    );
+                    return {
+                        ...response[0],
+                        totalPrice,
+                        totalCount,
+                    };
+                }
+                return response[0];
             },
         }),
         createCartAndAndProduct: build.mutation({
