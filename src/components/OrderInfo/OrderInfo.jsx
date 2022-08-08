@@ -3,7 +3,7 @@ import React from 'react';
 import { Paper, Box, Typography } from '@mui/material';
 
 const OrderInfo = () => {
-    const { cart, totalPrice } = JSON.parse(
+    const { products, totalPrice } = JSON.parse(
         sessionStorage.getItem('orderCart'),
     );
 
@@ -22,7 +22,7 @@ const OrderInfo = () => {
                 Ваш заказ
             </Typography>
 
-            {cart.map((item) => {
+            {products.map((item) => {
                 return (
                     <Box
                         key={item.id}
@@ -40,10 +40,10 @@ const OrderInfo = () => {
                             <Typography component="span" fontWeight={700}>
                                 {item.amount}&nbsp;
                             </Typography>
-                            x {item.product.title}
+                            x {item.title}
                         </Typography>
                         <Typography color="primary" sx={{ flexShrink: 0 }}>
-                            ${item.product.price}
+                            ${item.price}
                         </Typography>
                     </Box>
                 );

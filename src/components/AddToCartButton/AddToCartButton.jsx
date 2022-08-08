@@ -27,8 +27,8 @@ const AddToCartButton = ({ productId, typeButton }) => {
     const [updateCart] = useUpdateCartMutation();
 
     const addProductToCart = async () => {
-        setLoading(true);
         if (user) {
+            setLoading(true);
             const { data: cart, error } = await getUserCart(user.id);
             if (error) {
                 enqueueSnackbar('Произошла ошибка', {
@@ -61,7 +61,7 @@ const AddToCartButton = ({ productId, typeButton }) => {
                 setLoading(false);
             } else {
                 const product = cart.products.find(
-                    (item) => item.id === productId
+                    (item) => item.id === productId,
                 );
                 if (product) {
                     const newProducts = cart.products.map((item) => {
@@ -89,7 +89,7 @@ const AddToCartButton = ({ productId, typeButton }) => {
                     setLoading(false);
                 } else {
                     const { data: product, error } = await getProduct(
-                        productId
+                        productId,
                     );
 
                     if (error) {

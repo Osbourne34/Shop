@@ -30,7 +30,7 @@ export const cartApi = createApi({
                         (start, next) => {
                             return start + next.amount;
                         },
-                        0
+                        0,
                     );
                     return {
                         ...response[0],
@@ -57,6 +57,13 @@ export const cartApi = createApi({
             }),
             invalidatesTags: ['Cart'],
         }),
+        clearCart: build.mutation({
+            query: (id) => ({
+                url: `/cart/${id}`,
+                method: 'DELETE',
+            }),
+            invalidatesTags: ['Cart'],
+        }),
     }),
 });
 
@@ -64,4 +71,5 @@ export const {
     useLazyGetUserCartQuery,
     useCreateCartAndAndProductMutation,
     useUpdateCartMutation,
+    useClearCartMutation,
 } = cartApi;

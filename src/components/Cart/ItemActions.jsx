@@ -13,7 +13,7 @@ import AddIcon from '@mui/icons-material/Add';
 const ItemActions = ({ cart, product }) => {
     const { enqueueSnackbar } = useSnackbar();
 
-    const [updateCart] = useUpdateCartMutation();
+    const [updateCart, { isLoading }] = useUpdateCartMutation();
 
     const handleIncrease = async () => {
         const newProducts = cart.products.map((item) => {
@@ -23,23 +23,17 @@ const ItemActions = ({ cart, product }) => {
             return item;
         });
 
-        const { error } = await updateCart({
+        await updateCart({
             id: cart.id,
             products: newProducts,
         });
 
-        if (error) {
-            enqueueSnackbar('Ошибка при обновлений', {
-                variant: 'error',
-            });
-        }
-
-        enqueueSnackbar('Значение обновлено', {
+        enqueueSnackbar('Товар добавлен', {
             variant: 'success',
         });
     };
 
-    const handleDecrease = () => {
+    const handleDecrease = async () => {
         const newProducts = cart.products.map((item) => {
             if (item.id === product.id) {
                 return { ...item, amount: item.amount - 1 };
@@ -47,23 +41,31 @@ const ItemActions = ({ cart, product }) => {
             return item;
         });
 
-        updateCart({ id: cart.id, products: newProducts });
+        await updateCart({ id: cart.id, products: newProducts });
+
+        enqueueSnackbar('Товар уменьшен', {
+            variant: 'success',
+        });
     };
 
-    const handleRemove = () => {
+    const handleRemove = async () => {
         const newProducts = cart.products.filter((item) => {
             if (product.id !== item.id) {
                 return item;
             }
         });
 
-        updateCart({ id: cart.id, products: newProducts });
+        await updateCart({ id: cart.id, products: newProducts });
+
+        enqueueSnackbar('Товар удален', {
+            variant: 'error',
+        });
     };
 
     return (
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <IconButton
-                disabled={product.amount === 1}
+                disabled={product.amount === 1 || isLoading}
                 onClick={handleDecrease}
                 size="small"
             >
@@ -72,10 +74,19 @@ const ItemActions = ({ cart, product }) => {
             <Typography color="primary" sx={{ mx: 1 }}>
                 {product.amount}
             </Typography>
-            <IconButton onClick={handleIncrease} size="small">
+            <IconButton
+                disabled={isLoading}
+                onClick={handleIncrease}
+                size="small"
+            >
                 <AddIcon />
             </IconButton>
-            <IconButton onClick={handleRemove} sx={{ ml: 1 }} size="small">
+            <IconButton
+                disabled={isLoading}
+                onClick={handleRemove}
+                sx={{ ml: 1 }}
+                size="small"
+            >
                 <DeleteIcon />
             </IconButton>
         </Box>

@@ -11,7 +11,6 @@ export const cartHOC = (Component) => {
                 getUserCart(user.id);
             }
         }, [user, getUserCart]);
-        console.log(cart);
         return <Component cart={cart} error={error} {...props} />;
     };
 };

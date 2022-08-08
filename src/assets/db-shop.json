@@ -2,19 +2,17 @@
   "users": [
     {
       "email": "test@mail.com",
-      "password": "$2a$10$gkmYKOR1srVSSxu5rD8IQO933JZCIJ7lMGCRsLh01g4avYW/CcM7i",
+      "password": "$2a$10$yIp0MfAqbt.rmDe66F3PuOqYprjjB/JbNFfL68ALq/wKH6oNOHPhm",
       "id": 1
     },
     {
       "email": "test2@mail.com",
-      "password": "$2a$10$G6xsa4/CF75HtWeY08GzrO2azM.jczjTCxAtABnMBAeoZPsKuh6xC",
+      "password": "$2a$10$NcZJnj7DNEeu0Uu4zZCkZONfZadDoHid0xzCgPRDy2CP0PxzUyjmO",
       "id": 2
     }
   ],
-  "orders": [],
-  "cart": [
+  "orders": [
     {
-      "userId": 1,
       "products": [
         {
           "id": 1,
@@ -34,12 +32,280 @@
             "https://dummyjson.com/image/i/products/1/4.jpg",
             "https://dummyjson.com/image/i/products/1/thumbnail.jpg"
           ],
-          "amount": 3
+          "amount": 1
+        },
+        {
+          "id": 2,
+          "title": "iPhone X",
+          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+          "price": 899,
+          "discountPercentage": 17.94,
+          "rating": 4.44,
+          "stock": 34,
+          "brand": "Apple",
+          "category": "smartphones",
+          "thumbnail": "https://dummyjson.com/image/i/products/2/thumbnail.jpg",
+          "images": [
+            "https://dummyjson.com/image/i/products/2/thumbnail.jpg",
+            "https://dummyjson.com/image/i/products/2/1.jpg",
+            "https://dummyjson.com/image/i/products/2/2.jpg",
+            "https://dummyjson.com/image/i/products/2/3.jpg"
+          ],
+          "amount": 1
+        },
+        {
+          "id": 3,
+          "title": "Samsung Universe 9",
+          "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
+          "price": 1249,
+          "discountPercentage": 15.46,
+          "rating": 4.09,
+          "stock": 36,
+          "brand": "Samsung",
+          "category": "smartphones",
+          "thumbnail": "https://dummyjson.com/image/i/products/3/thumbnail.jpg",
+          "images": [
+            "https://dummyjson.com/image/i/products/3/1.jpg"
+          ],
+          "amount": 1
         }
       ],
+      "totalPrice": 2697,
+      "totalCount": 3,
+      "orderInfo": {
+        "fullName": "Волков Евгений",
+        "phone": "97 507 10 18",
+        "deliveryType": "takeWithMe"
+      },
+      "payment": {
+        "paymentType": "card",
+        "cardNumber": "8600 1013 555 888",
+        "cardData": "20/10"
+      },
+      "user": {
+        "email": "test@mail.com",
+        "id": 1
+      },
       "id": 1
+    },
+    {
+      "products": [
+        {
+          "id": 2,
+          "title": "iPhone X",
+          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+          "price": 899,
+          "discountPercentage": 17.94,
+          "rating": 4.44,
+          "stock": 34,
+          "brand": "Apple",
+          "category": "smartphones",
+          "thumbnail": "https://dummyjson.com/image/i/products/2/thumbnail.jpg",
+          "images": [
+            "https://dummyjson.com/image/i/products/2/thumbnail.jpg",
+            "https://dummyjson.com/image/i/products/2/1.jpg",
+            "https://dummyjson.com/image/i/products/2/2.jpg",
+            "https://dummyjson.com/image/i/products/2/3.jpg"
+          ],
+          "amount": 2
+        },
+        {
+          "id": 4,
+          "title": "OPPOF19",
+          "description": "OPPO F19 is officially announced on April 2021.",
+          "price": 280,
+          "discountPercentage": 17.91,
+          "rating": 4.3,
+          "stock": 123,
+          "brand": "OPPO",
+          "category": "smartphones",
+          "thumbnail": "https://dummyjson.com/image/i/products/4/thumbnail.jpg",
+          "images": [
+            "https://dummyjson.com/image/i/products/4/1.jpg",
+            "https://dummyjson.com/image/i/products/4/2.jpg",
+            "https://dummyjson.com/image/i/products/4/3.jpg",
+            "https://dummyjson.com/image/i/products/4/4.jpg",
+            "https://dummyjson.com/image/i/products/4/thumbnail.jpg"
+          ],
+          "amount": 1
+        }
+      ],
+      "totalPrice": 2078,
+      "totalCount": 3,
+      "orderInfo": {
+        "fullName": "Тестовый заказ",
+        "phone": "тестовый номер",
+        "deliveryType": "delivery",
+        "city": "Нукус",
+        "street": "21",
+        "house": "15",
+        "zipCode": "23100"
+      },
+      "payment": {
+        "paymentType": "cash"
+      },
+      "user": {
+        "email": "test@mail.com",
+        "id": 1
+      },
+      "id": 2
+    },
+    {
+      "products": [
+        {
+          "id": 1,
+          "title": "iPhone 9",
+          "description": "An apple mobile which is nothing like apple",
+          "price": 549,
+          "discountPercentage": 12.96,
+          "rating": 3.69,
+          "stock": 94,
+          "brand": "Apple",
+          "category": "smartphones",
+          "thumbnail": "https://dummyjson.com/image/i/products/1/thumbnail.jpg",
+          "images": [
+            "https://dummyjson.com/image/i/products/1/1.jpg",
+            "https://dummyjson.com/image/i/products/1/2.jpg",
+            "https://dummyjson.com/image/i/products/1/3.jpg",
+            "https://dummyjson.com/image/i/products/1/4.jpg",
+            "https://dummyjson.com/image/i/products/1/thumbnail.jpg"
+          ],
+          "amount": 1
+        },
+        {
+          "id": 7,
+          "title": "Samsung Galaxy Book",
+          "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
+          "price": 1499,
+          "discountPercentage": 4.15,
+          "rating": 4.25,
+          "stock": 50,
+          "brand": "Samsung",
+          "category": "laptops",
+          "thumbnail": "https://dummyjson.com/image/i/products/7/thumbnail.jpg",
+          "images": [
+            "https://dummyjson.com/image/i/products/7/1.jpg",
+            "https://dummyjson.com/image/i/products/7/2.jpg",
+            "https://dummyjson.com/image/i/products/7/3.jpg",
+            "https://dummyjson.com/image/i/products/7/thumbnail.jpg"
+          ],
+          "amount": 1
+        },
+        {
+          "id": 6,
+          "title": "MacBook Pro",
+          "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
+          "price": 1749,
+          "discountPercentage": 11.02,
+          "rating": 4.57,
+          "stock": 83,
+          "brand": "APPle",
+          "category": "laptops",
+          "thumbnail": "https://dummyjson.com/image/i/products/6/thumbnail.png",
+          "images": [
+            "https://dummyjson.com/image/i/products/6/1.png",
+            "https://dummyjson.com/image/i/products/6/2.jpg",
+            "https://dummyjson.com/image/i/products/6/3.png",
+            "https://dummyjson.com/image/i/products/6/4.jpg"
+          ],
+          "amount": 1
+        },
+        {
+          "id": 9,
+          "title": "Infinix INBOOK",
+          "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
+          "price": 1099,
+          "discountPercentage": 11.83,
+          "rating": 4.54,
+          "stock": 96,
+          "brand": "Infinix",
+          "category": "laptops",
+          "thumbnail": "https://dummyjson.com/image/i/products/9/thumbnail.jpg",
+          "images": [
+            "https://dummyjson.com/image/i/products/9/1.jpg",
+            "https://dummyjson.com/image/i/products/9/2.png",
+            "https://dummyjson.com/image/i/products/9/3.png",
+            "https://dummyjson.com/image/i/products/9/4.jpg",
+            "https://dummyjson.com/image/i/products/9/thumbnail.jpg"
+          ],
+          "amount": 1
+        }
+      ],
+      "totalPrice": 4896,
+      "totalCount": 4,
+      "orderInfo": {
+        "fullName": "фывфыв",
+        "phone": "фывфвфыв",
+        "deliveryType": "takeWithMe"
+      },
+      "payment": {
+        "paymentType": "card",
+        "cardNumber": "фывф",
+        "cardData": "ывфыв"
+      },
+      "user": {
+        "email": "test@mail.com",
+        "id": 1
+      },
+      "id": 3
+    },
+    {
+      "products": [
+        {
+          "id": 3,
+          "title": "Samsung Universe 9",
+          "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
+          "price": 1249,
+          "discountPercentage": 15.46,
+          "rating": 4.09,
+          "stock": 36,
+          "brand": "Samsung",
+          "category": "smartphones",
+          "thumbnail": "https://dummyjson.com/image/i/products/3/thumbnail.jpg",
+          "images": [
+            "https://dummyjson.com/image/i/products/3/1.jpg"
+          ],
+          "amount": 1
+        },
+        {
+          "id": 4,
+          "title": "OPPOF19",
+          "description": "OPPO F19 is officially announced on April 2021.",
+          "price": 280,
+          "discountPercentage": 17.91,
+          "rating": 4.3,
+          "stock": 123,
+          "brand": "OPPO",
+          "category": "smartphones",
+          "thumbnail": "https://dummyjson.com/image/i/products/4/thumbnail.jpg",
+          "images": [
+            "https://dummyjson.com/image/i/products/4/1.jpg",
+            "https://dummyjson.com/image/i/products/4/2.jpg",
+            "https://dummyjson.com/image/i/products/4/3.jpg",
+            "https://dummyjson.com/image/i/products/4/4.jpg",
+            "https://dummyjson.com/image/i/products/4/thumbnail.jpg"
+          ],
+          "amount": 1
+        }
+      ],
+      "totalPrice": 1529,
+      "totalCount": 2,
+      "orderInfo": {
+        "fullName": "Ещё один заказ",
+        "phone": "ещё номер",
+        "deliveryType": "takeWithMe"
+      },
+      "payment": {
+        "paymentType": "cash"
+      },
+      "user": {
+        "email": "test2@mail.com",
+        "id": 2
+      },
+      "id": 4
     }
   ],
+  "cart": [],
   "categories": [
     "smartphones",
     "laptops",

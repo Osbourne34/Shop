@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useOrderCreateMutation } from '../../store/orderApi';
+import { useClearCartMutation } from '../../store/cartApi';
 
 import { useInput, useValidForm } from '../../hook/useInput';
 import { empty } from '../../utils/validateUtils';
@@ -33,6 +34,7 @@ const PaymentForm = () => {
     const [paymentType, setPaymentType] = useState(CARD);
 
     const [orderCreate, { isLoading, error }] = useOrderCreateMutation();
+    const [clearCart] = useClearCartMutation();
 
     const cardNumber = useInput(empty);
     const cardData = useInput(empty);
@@ -47,10 +49,27 @@ const PaymentForm = () => {
     }, [paymentType]);
 
     const handleOrder = async () => {
-        const orderCart = JSON.parse(sessionStorage.getItem('orderCart'));
+        const { products, totalPrice, totalCount, id } = JSON.parse(
+            sessionStorage.getItem('orderCart'),
+        );
         const orderInfo = JSON.parse(sessionStorage.getItem('orderInfo'));
-
-        await orderCreate({ ...orderCart, orderInfo, user });
+        const payment =
+            paymentType === CARD
+                ? {
+                      paymentType,
+                      cardNumber: cardNumber.value,
+                      cardData: cardData.value,
+                  }
+                : { paymentType };
+        await orderCreate({
+            products,
+            totalPrice,
+            totalCount,
+            orderInfo,
+            payment,
+            user,
+        });
+        await clearCart(id);
 
         setShowDialog(true);
         sessionStorage.clear();
@@ -186,7 +205,7 @@ const PaymentForm = () => {
                             sx={{ width: 80, height: 80 }}
                         />
                         <Typography sx={{ my: 2 }} variant="h5">
-                            Ваш заказ успешно оплачен!
+                            Ваш заказ успешно оформлен!
                         </Typography>
                         <Box sx={{ display: 'flex' }}>
                             <Button

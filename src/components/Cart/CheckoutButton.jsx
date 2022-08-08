@@ -20,7 +20,7 @@ const CheckoutButton = ({ cart, mt }) => {
             onClick={handleClick}
             component={RouterLink}
             to="/checkout"
-            disabled={cart?.totalCount < 1}
+            disabled={cart?.products.length < 1 || !cart}
             fullWidth
             variant="contained"
             color="success"
