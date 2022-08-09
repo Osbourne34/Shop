@@ -1,4 +1,5 @@
 import React from 'react';
+import { Navigate } from 'react-router-dom';
 
 import { Grid } from '@mui/material';
 
@@ -7,6 +8,13 @@ import CheckoutForm from '../components/CheckoutForm/CheckoutForm';
 import OrderInfo from '../components/OrderInfo/OrderInfo';
 
 const Checkout = () => {
+    const orderCart = sessionStorage.getItem('orderCart');
+    const orderInfo = sessionStorage.getItem('orderInfo');
+
+    if (!(orderCart && orderCart)) {
+        return <Navigate to="/" />;
+    }
+
     return (
         <>
             <Breadcrumbs

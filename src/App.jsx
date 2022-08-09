@@ -4,7 +4,7 @@ import { updateUser } from './store/authSlice';
 
 import { SnackbarProvider } from 'notistack';
 
-import './App.css';
+import './app.css';
 
 import Theme from './theme/Theme';
 import AppRouter from './components/AppRouter';

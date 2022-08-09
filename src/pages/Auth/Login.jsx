@@ -22,7 +22,7 @@ const Login = () => {
         if (data) {
             dispatch(updateUser(data.user));
             localStorage.setItem('user', JSON.stringify(data.user));
-            navigate('/');
+            navigate('/', { replace: true });
         }
     };
 

@@ -1,18 +1,13 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import Layout from './Layout/Layout';
 import Shop from '../pages/Shop';
-import Products from './Products/Products';
-import ProductDetails from '../pages/ProductDetails';
-import Category from '../pages/Category';
-import Cart from '../pages/Cart';
-import Checkout from '../pages/Checkout';
-import Payment from '../pages/Payment';
 
-import Login from '../pages/Auth/Login';
-import Register from '../pages/Auth/Register';
-import { useSelector } from 'react-redux';
+import { ShopPublicRoutes } from '../routes';
+import { ShopProtectedRoutes } from '../routes';
+import { AuthRoutes } from '../routes';
 
 const AppRouter = () => {
     const { user } = useSelector((state) => state.auth);
@@ -20,27 +15,28 @@ const AppRouter = () => {
         <Routes>
             <Route element={<Layout />}>
                 <Route path="/" element={<Shop />}>
-                    <Route index element={<Products />} />
-                    <Route path="product/:id" element={<ProductDetails />} />
-                    <Route path="category/:category" element={<Category />} />
+                    {ShopPublicRoutes.map(({ path, Component }, index) => (
+                        <Route
+                            key={index}
+                            path={path ? path : ''}
+                            element={<Component />}
+                        />
+                    ))}
                     {user &&
-                        [
-                            { path: 'cart', component: <Cart /> },
-                            { path: 'checkout', component: <Checkout /> },
-                            { path: 'payment', component: <Payment /> },
-                        ].map(({ path, component }, index) => {
-                            return (
+                        ShopProtectedRoutes.map(
+                            ({ path, Component }, index) => (
                                 <Route
                                     key={index}
                                     path={path}
-                                    element={component}
+                                    element={<Component />}
                                 />
-                            );
-                        })}
+                            ),
+                        )}
                 </Route>
             </Route>
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+            {AuthRoutes.map(({ path, Component }, index) => (
+                <Route key={index} path={path} element={<Component />} />
+            ))}
         </Routes>
     );
 };
