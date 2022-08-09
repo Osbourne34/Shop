@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logoutUser } from './../../store/authSlice';
 
@@ -41,7 +42,13 @@ const Profile = () => {
                 onClose={handleCloseMenu}
             >
                 <MenuItem onClick={handleCloseMenu}>Профиль</MenuItem>
-                <MenuItem onClick={handleLogout}>Выйти</MenuItem>
+                <MenuItem
+                    component={RouterLink}
+                    to="/login"
+                    onClick={handleLogout}
+                >
+                    Выйти
+                </MenuItem>
             </Menu>
         </>
     );

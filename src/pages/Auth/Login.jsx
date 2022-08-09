@@ -17,8 +17,7 @@ const Login = () => {
     const [login, { isLoading, error }] = useLoginMutation();
 
     const handleLogin = async (body) => {
-        const response = await login(body);
-        const { data } = response;
+        const { data } = await login(body);
 
         if (data) {
             dispatch(updateUser(data.user));
