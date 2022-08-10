@@ -1,9 +1,12 @@
 {
   "users": [
     {
-      "email": "test@mail.com",
+      "email": "jenya@mail.com",
       "password": "$2a$10$yIp0MfAqbt.rmDe66F3PuOqYprjjB/JbNFfL68ALq/wKH6oNOHPhm",
-      "id": 1
+      "id": 1,
+      "firstName": "Евгений",
+      "lastName": "Волков",
+      "phone": "+998 97 507 1018"
     },
     {
       "email": "test2@mail.com",
@@ -11,10 +14,8 @@
       "id": 2
     }
   ],
-  "orders": [],
-  "cart": [
+  "orders": [
     {
-      "userId": 1,
       "products": [
         {
           "id": 52,
@@ -73,6 +74,120 @@
             "https://dummyjson.com/image/i/products/8/3.jpg",
             "https://dummyjson.com/image/i/products/8/4.jpg",
             "https://dummyjson.com/image/i/products/8/thumbnail.jpg"
+          ],
+          "amount": 1
+        }
+      ],
+      "totalPrice": 3176,
+      "totalCount": 7,
+      "orderInfo": {
+        "fullName": "ads",
+        "phone": "asdasd",
+        "deliveryType": "takeWithMe"
+      },
+      "payment": {
+        "paymentType": "cash"
+      },
+      "user": {
+        "email": "test@mail.com",
+        "id": 1
+      },
+      "id": 1
+    },
+    {
+      "products": [
+        {
+          "id": 2,
+          "title": "iPhone X",
+          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+          "price": 899,
+          "discountPercentage": 17.94,
+          "rating": 4.44,
+          "stock": 34,
+          "brand": "Apple",
+          "category": "smartphones",
+          "thumbnail": "https://dummyjson.com/image/i/products/2/thumbnail.jpg",
+          "images": [
+            "https://dummyjson.com/image/i/products/2/thumbnail.jpg",
+            "https://dummyjson.com/image/i/products/2/1.jpg",
+            "https://dummyjson.com/image/i/products/2/2.jpg",
+            "https://dummyjson.com/image/i/products/2/3.jpg"
+          ],
+          "amount": 2
+        },
+        {
+          "id": 3,
+          "title": "Samsung Universe 9",
+          "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
+          "price": 1249,
+          "discountPercentage": 15.46,
+          "rating": 4.09,
+          "stock": 36,
+          "brand": "Samsung",
+          "category": "smartphones",
+          "thumbnail": "https://dummyjson.com/image/i/products/3/thumbnail.jpg",
+          "images": [
+            "https://dummyjson.com/image/i/products/3/1.jpg"
+          ],
+          "amount": 2
+        }
+      ],
+      "totalPrice": 4296,
+      "totalCount": 4,
+      "orderInfo": {
+        "fullName": "Евгений Волков",
+        "phone": "+998 97 507 1018",
+        "deliveryType": "takeWithMe"
+      },
+      "payment": {
+        "paymentType": "cash"
+      },
+      "user": {
+        "email": "test@mail.com",
+        "id": 1,
+        "firstName": "Евгений",
+        "lastName": "Волков",
+        "phone": "+998 97 507 1018"
+      },
+      "id": 2
+    }
+  ],
+  "cart": [
+    {
+      "userId": 1,
+      "products": [
+        {
+          "id": 2,
+          "title": "iPhone X",
+          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+          "price": 899,
+          "discountPercentage": 17.94,
+          "rating": 4.44,
+          "stock": 34,
+          "brand": "Apple",
+          "category": "smartphones",
+          "thumbnail": "https://dummyjson.com/image/i/products/2/thumbnail.jpg",
+          "images": [
+            "https://dummyjson.com/image/i/products/2/thumbnail.jpg",
+            "https://dummyjson.com/image/i/products/2/1.jpg",
+            "https://dummyjson.com/image/i/products/2/2.jpg",
+            "https://dummyjson.com/image/i/products/2/3.jpg"
+          ],
+          "amount": 1
+        },
+        {
+          "id": 3,
+          "title": "Samsung Universe 9",
+          "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
+          "price": 1249,
+          "discountPercentage": 15.46,
+          "rating": 4.09,
+          "stock": 36,
+          "brand": "Samsung",
+          "category": "smartphones",
+          "thumbnail": "https://dummyjson.com/image/i/products/3/thumbnail.jpg",
+          "images": [
+            "https://dummyjson.com/image/i/products/3/1.jpg"
           ],
           "amount": 1
         }

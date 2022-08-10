@@ -11,14 +11,14 @@ const Navigation = () => {
     const theme = useTheme();
 
     return (
-        <Paper sx={{ boxShadow: 5, py: 2, px: 3 }}>
+        <Paper sx={{ boxShadow: 5, p: 2 }}>
             <NavLink className={`link ${theme.palette.mode}`} to={''} end>
                 <PersonIcon />
                 <Typography sx={{ ml: 1 }} fontWeight={400} variant="h6">
                     Профиль
                 </Typography>
             </NavLink>
-            <NavLink className={`link ${theme.palette.mode}`} to="orders" end>
+            <NavLink className={`link ${theme.palette.mode}`} to="orders">
                 <ShoppingBagOutlinedIcon />
                 <Typography sx={{ ml: 1 }} fontWeight={400} variant="h6">
                     Заказы

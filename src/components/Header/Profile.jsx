@@ -22,6 +22,7 @@ const Profile = () => {
     const handleLogout = () => {
         dispatch(logoutUser());
         localStorage.removeItem('user');
+        sessionStorage.clear();
         handleCloseMenu();
     };
 

@@ -15,19 +15,25 @@ import {
     RadioGroup,
     Paper,
 } from '@mui/material';
+import { useMemo } from 'react';
 
 const DELIVERY = 'delivery';
 const TAKE_WITH_ME = 'takeWithMe';
 
 const CheckoutForm = () => {
     const formData = JSON.parse(sessionStorage.getItem('orderInfo'));
+    const userData = JSON.parse(localStorage.getItem('user'));
+
+    const transformFullName = useMemo(() => {
+        return userData?.firstName + ' ' + userData?.lastName;
+    }, []);
 
     const [deliveryType, setDeliveryType] = useState(
         formData?.deliveryType || DELIVERY,
     );
 
-    const fullName = useInput(empty, formData?.fullName);
-    const phone = useInput(empty, formData?.phone);
+    const fullName = useInput(empty, formData?.fullName || transformFullName);
+    const phone = useInput(empty, formData?.phone || userData?.phone);
 
     const city = useInput(empty, formData?.city);
     const street = useInput(empty, formData?.street);

@@ -15,8 +15,7 @@ const Registration = () => {
     const [register, { isLoading, error }] = useRegisterMutation();
 
     const handleRegister = async (body) => {
-        const response = await register(body);
-        const { data } = response;
+        const { data } = await register(body);
 
         if (data) navigate('/login');
     };

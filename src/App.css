@@ -38,14 +38,26 @@
     color: inherit;
     text-decoration: none;
 
-    padding: 15px 0;
+    padding: 15px;
+    border-radius: 10px;
     transition: 0.2s;
 }
+.link + .link {
+    margin-top: 3px;
+}
 .link.light.active,
-.link.light:hover {
+.link.light.active:hover {
     color: #1976d2;
+    background-color: rgba(25, 118, 210, 0.08);
+}
+.link.light:hover {
+    background-color: rgba(0, 0, 0, 0.04);
 }
 .link.dark.active,
-.link.dark:hover {
+.link.dark.active {
     color: #90caf9;
+    background-color: rgba(144, 202, 249, 0.16);
+}
+.link.dark:hover {
+    background-color: rgba(255, 255, 255, 0.08);
 }

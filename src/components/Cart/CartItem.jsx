@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
-import { Box, Typography, CardMedia, Paper } from '@mui/material';
+import { Box, Typography, Paper } from '@mui/material';
 
 import ItemActions from './ItemActions';
 

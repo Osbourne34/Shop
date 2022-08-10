@@ -1,33 +1,37 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 
-import { Box, Typography, Button } from '@mui/icons-material';
+import { Box, Typography, Button } from '@mui/material';
 
-import PersonIcon from '@mui/icons-material/Person';
-
-const Head = () => {
-    const location = useLocation();
-    console.log(location);
-
+const Head = ({ Icon, title, button, link }) => {
     return (
         <Box
             sx={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
+                mb: 3,
             }}
         >
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                <PersonIcon color="primary" fontSize="large" />
+                <Icon fontSize="large" color="primary" />
                 <Typography
                     fontWeight={500}
                     sx={{ ml: 2, color: 'text.primary' }}
                     variant="h4"
                 >
-                    Профиль
+                    {title}
                 </Typography>
             </Box>
-            <Button variant="outlined">Редактировать профиль</Button>
+            {button && (
+                <Button
+                    component={link ? RouterLink : 'button'}
+                    to={link ? link : ''}
+                    variant="outlined"
+                >
+                    {button}
+                </Button>
+            )}
         </Box>
     );
 };

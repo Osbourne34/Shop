@@ -6,6 +6,7 @@ import Checkout from './pages/Checkout';
 import Payment from './pages/Payment';
 
 import Profile from './pages/Profile';
+import ProfileEdit from './pages/ProfileEdit';
 import MyOrders from './pages/MyOrders';
 
 import Login from './pages/Auth/Login';
@@ -49,6 +50,10 @@ export const UserRoutes = [
     {
         path: 'orders',
         Component: MyOrders,
+    },
+    {
+        path: 'edit',
+        Component: ProfileEdit,
     },
 ];
 

@@ -6,6 +6,7 @@ import {
     email as emailValidate,
     password as passwordValidate,
     MIN_LENGTH_PASSWORD,
+    MAX_LENGTH_PASSWORD,
 } from '../../utils/validateUtils';
 
 import {
@@ -109,7 +110,7 @@ const AuthForm = ({
                 error={password.errorForView}
                 helperText={
                     password.errorForView &&
-                    `Пароль должен содержать мининмум ${MIN_LENGTH_PASSWORD} символа`
+                    `Пароль должен содержать мининмум ${MIN_LENGTH_PASSWORD} и максимум ${MAX_LENGTH_PASSWORD} символа`
                 }
                 label="Пароль"
                 type="password"
