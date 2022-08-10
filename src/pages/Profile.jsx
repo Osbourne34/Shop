@@ -1,7 +1,9 @@
 import React from 'react';
 
+import Head from '../components/UserDashboard/Head';
+
 const Profile = () => {
-    return <h1>Profile</h1>;
+    return <Head />;
 };
 
 export default Profile;

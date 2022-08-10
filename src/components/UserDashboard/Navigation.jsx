@@ -14,13 +14,13 @@ const Navigation = () => {
         <Paper sx={{ boxShadow: 5, py: 2, px: 3 }}>
             <NavLink className={`link ${theme.palette.mode}`} to={''} end>
                 <PersonIcon />
-                <Typography sx={{ ml: 1 }} variant="h6">
+                <Typography sx={{ ml: 1 }} fontWeight={400} variant="h6">
                     Профиль
                 </Typography>
             </NavLink>
             <NavLink className={`link ${theme.palette.mode}`} to="orders" end>
                 <ShoppingBagOutlinedIcon />
-                <Typography sx={{ ml: 1 }} variant="h6">
+                <Typography sx={{ ml: 1 }} fontWeight={400} variant="h6">
                     Заказы
                 </Typography>
             </NavLink>
