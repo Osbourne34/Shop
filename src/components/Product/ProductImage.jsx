@@ -38,7 +38,7 @@ const ProductImage = ({ images, alt }) => {
                 {images.map((image) => {
                     return (
                         <img
-                            className={`product-photo product-photo_small 
+                            className={`product-photo product-photo_small product-photo_outline
                             ${image === activeImage ? 'active' : ''}`}
                             onClick={() => handlerClick(image)}
                             key={image}

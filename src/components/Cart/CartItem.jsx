@@ -30,15 +30,13 @@ const CartItem = ({ cart, product }) => {
                     textDecoration: 'none',
                 }}
             >
-                <CardMedia
-                    component="img"
-                    height="80"
-                    image={product.thumbnail}
+                <img
+                    src={product.thumbnail}
                     alt={product.title}
-                    sx={{ width: '80px', borderRadius: 2 }}
+                    className="product-photo product-photo_medium"
                 />
                 <Box sx={{ ml: 3 }}>
-                    <Typography fontWeight={700}>{product.title}</Typography>
+                    <Typography variant="h6">{product.title}</Typography>
                     <Typography color="primary">
                         {product.amount} x ${product.price}
                     </Typography>

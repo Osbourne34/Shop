@@ -41,7 +41,13 @@ const Profile = () => {
                 open={Boolean(anchorEl)}
                 onClose={handleCloseMenu}
             >
-                <MenuItem onClick={handleCloseMenu}>Профиль</MenuItem>
+                <MenuItem
+                    component={RouterLink}
+                    to="/profile"
+                    onClick={handleCloseMenu}
+                >
+                    Профиль
+                </MenuItem>
                 <MenuItem
                     component={RouterLink}
                     to="/login"

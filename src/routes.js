@@ -5,6 +5,9 @@ import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import Payment from './pages/Payment';
 
+import Profile from './pages/Profile';
+import MyOrders from './pages/MyOrders';
+
 import Login from './pages/Auth/Login';
 import Register from './pages/Auth/Register';
 
@@ -35,6 +38,17 @@ export const ShopProtectedRoutes = [
     {
         path: 'payment',
         Component: Payment,
+    },
+];
+
+export const UserRoutes = [
+    {
+        path: null,
+        Component: Profile,
+    },
+    {
+        path: 'orders',
+        Component: MyOrders,
     },
 ];
 
