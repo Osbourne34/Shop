@@ -67,6 +67,8 @@ const PaymentForm = () => {
             totalCount,
             orderInfo,
             payment,
+            status: 'pending',
+            userId: user.id,
             user,
         });
         await clearCart(id);
@@ -220,7 +222,7 @@ const PaymentForm = () => {
 
                             <Button
                                 component={RouterLink}
-                                to="/"
+                                to="/profile/orders"
                                 variant="contained"
                                 onClick={() => setShowDialog(false)}
                             >

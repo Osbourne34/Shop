@@ -102,7 +102,13 @@ const UserEditForm = () => {
                 onClick={handleSubmit}
                 loading={isLoading}
                 variant="contained"
-                disabled={!isValidForm}
+                disabled={
+                    (user.email === email.value &&
+                        user.firstName === firstName.value &&
+                        user.lastName === lastName.value &&
+                        user.phone === phone.value) ||
+                    !isValidForm
+                }
                 size="large"
                 sx={{ mt: 4 }}
             >

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
 import { useInput } from '../../hook/useInput';
@@ -15,7 +15,6 @@ import {
     RadioGroup,
     Paper,
 } from '@mui/material';
-import { useMemo } from 'react';
 
 const DELIVERY = 'delivery';
 const TAKE_WITH_ME = 'takeWithMe';
@@ -25,7 +24,9 @@ const CheckoutForm = () => {
     const userData = JSON.parse(localStorage.getItem('user'));
 
     const transformFullName = useMemo(() => {
-        return userData?.firstName + ' ' + userData?.lastName;
+        return userData.firstName
+            ? userData.firstName + ' ' + userData.lastName
+            : '';
     }, []);
 
     const [deliveryType, setDeliveryType] = useState(

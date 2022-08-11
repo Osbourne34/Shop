@@ -1,42 +1,17 @@
 {
   "users": [
     {
-      "email": "jenya@mail.com",
-      "password": "$2a$10$yIp0MfAqbt.rmDe66F3PuOqYprjjB/JbNFfL68ALq/wKH6oNOHPhm",
+      "email": "test@mail.com",
+      "password": "$2a$10$sO8tXWzsikSiZJLfzpcoSOqK2yxyvP4mDmjyXH8uLM3OAyTB2Y8X2",
       "id": 1,
       "firstName": "Евгений",
       "lastName": "Волков",
-      "phone": "+998 97 507 1018"
-    },
-    {
-      "email": "test2@mail.com",
-      "password": "$2a$10$NcZJnj7DNEeu0Uu4zZCkZONfZadDoHid0xzCgPRDy2CP0PxzUyjmO",
-      "id": 2
+      "phone": "+998975071018"
     }
   ],
   "orders": [
     {
       "products": [
-        {
-          "id": 52,
-          "title": "FREE FIRE T Shirt",
-          "description": "quality and professional print - It doesn't just look high quality, it is high quality.",
-          "price": 10,
-          "discountPercentage": 14.72,
-          "rating": 4.52,
-          "stock": 128,
-          "brand": "FREE FIRE",
-          "category": "mens-shirts",
-          "thumbnail": "https://dummyjson.com/image/i/products/52/thumbnail.jpg",
-          "images": [
-            "https://dummyjson.com/image/i/products/52/1.png",
-            "https://dummyjson.com/image/i/products/52/2.png",
-            "https://dummyjson.com/image/i/products/52/3.jpg",
-            "https://dummyjson.com/image/i/products/52/4.jpg",
-            "https://dummyjson.com/image/i/products/52/thumbnail.jpg"
-          ],
-          "amount": 3
-        },
         {
           "id": 1,
           "title": "iPhone 9",
@@ -55,65 +30,74 @@
             "https://dummyjson.com/image/i/products/1/4.jpg",
             "https://dummyjson.com/image/i/products/1/thumbnail.jpg"
           ],
-          "amount": 3
+          "amount": 1
         },
         {
-          "id": 8,
-          "title": "Microsoft Surface Laptop 4",
-          "description": "Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.",
-          "price": 1499,
-          "discountPercentage": 10.23,
-          "rating": 4.43,
-          "stock": 68,
-          "brand": "Microsoft Surface",
-          "category": "laptops",
-          "thumbnail": "https://dummyjson.com/image/i/products/8/thumbnail.jpg",
+          "id": 2,
+          "title": "iPhone X",
+          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+          "price": 899,
+          "discountPercentage": 17.94,
+          "rating": 4.44,
+          "stock": 34,
+          "brand": "Apple",
+          "category": "smartphones",
+          "thumbnail": "https://dummyjson.com/image/i/products/2/thumbnail.jpg",
           "images": [
-            "https://dummyjson.com/image/i/products/8/1.jpg",
-            "https://dummyjson.com/image/i/products/8/2.jpg",
-            "https://dummyjson.com/image/i/products/8/3.jpg",
-            "https://dummyjson.com/image/i/products/8/4.jpg",
-            "https://dummyjson.com/image/i/products/8/thumbnail.jpg"
+            "https://dummyjson.com/image/i/products/2/thumbnail.jpg",
+            "https://dummyjson.com/image/i/products/2/1.jpg",
+            "https://dummyjson.com/image/i/products/2/2.jpg",
+            "https://dummyjson.com/image/i/products/2/3.jpg"
           ],
           "amount": 1
         }
       ],
-      "totalPrice": 3176,
-      "totalCount": 7,
+      "totalPrice": 1448,
+      "totalCount": 2,
       "orderInfo": {
-        "fullName": "ads",
-        "phone": "asdasd",
-        "deliveryType": "takeWithMe"
+        "fullName": "Евгений Волков",
+        "phone": "+998975071018",
+        "deliveryType": "delivery",
+        "city": "Нукус",
+        "street": "21",
+        "house": "15",
+        "zipCode": "23100"
       },
       "payment": {
         "paymentType": "cash"
       },
+      "status": "pending",
+      "userId": 1,
       "user": {
         "email": "test@mail.com",
-        "id": 1
+        "id": 1,
+        "firstName": "Евгений",
+        "lastName": "Волков",
+        "phone": "+998975071018"
       },
       "id": 1
     },
     {
       "products": [
         {
-          "id": 2,
-          "title": "iPhone X",
-          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-          "price": 899,
-          "discountPercentage": 17.94,
-          "rating": 4.44,
-          "stock": 34,
-          "brand": "Apple",
+          "id": 4,
+          "title": "OPPOF19",
+          "description": "OPPO F19 is officially announced on April 2021.",
+          "price": 280,
+          "discountPercentage": 17.91,
+          "rating": 4.3,
+          "stock": 123,
+          "brand": "OPPO",
           "category": "smartphones",
-          "thumbnail": "https://dummyjson.com/image/i/products/2/thumbnail.jpg",
+          "thumbnail": "https://dummyjson.com/image/i/products/4/thumbnail.jpg",
           "images": [
-            "https://dummyjson.com/image/i/products/2/thumbnail.jpg",
-            "https://dummyjson.com/image/i/products/2/1.jpg",
-            "https://dummyjson.com/image/i/products/2/2.jpg",
-            "https://dummyjson.com/image/i/products/2/3.jpg"
+            "https://dummyjson.com/image/i/products/4/1.jpg",
+            "https://dummyjson.com/image/i/products/4/2.jpg",
+            "https://dummyjson.com/image/i/products/4/3.jpg",
+            "https://dummyjson.com/image/i/products/4/4.jpg",
+            "https://dummyjson.com/image/i/products/4/thumbnail.jpg"
           ],
-          "amount": 2
+          "amount": 1
         },
         {
           "id": 3,
@@ -129,72 +113,32 @@
           "images": [
             "https://dummyjson.com/image/i/products/3/1.jpg"
           ],
-          "amount": 2
+          "amount": 1
         }
       ],
-      "totalPrice": 4296,
-      "totalCount": 4,
+      "totalPrice": 1529,
+      "totalCount": 2,
       "orderInfo": {
         "fullName": "Евгений Волков",
-        "phone": "+998 97 507 1018",
+        "phone": "+998975071018",
         "deliveryType": "takeWithMe"
       },
       "payment": {
         "paymentType": "cash"
       },
+      "status": "pending",
+      "userId": 1,
       "user": {
         "email": "test@mail.com",
         "id": 1,
         "firstName": "Евгений",
         "lastName": "Волков",
-        "phone": "+998 97 507 1018"
+        "phone": "+998975071018"
       },
       "id": 2
     }
   ],
-  "cart": [
-    {
-      "userId": 1,
-      "products": [
-        {
-          "id": 2,
-          "title": "iPhone X",
-          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-          "price": 899,
-          "discountPercentage": 17.94,
-          "rating": 4.44,
-          "stock": 34,
-          "brand": "Apple",
-          "category": "smartphones",
-          "thumbnail": "https://dummyjson.com/image/i/products/2/thumbnail.jpg",
-          "images": [
-            "https://dummyjson.com/image/i/products/2/thumbnail.jpg",
-            "https://dummyjson.com/image/i/products/2/1.jpg",
-            "https://dummyjson.com/image/i/products/2/2.jpg",
-            "https://dummyjson.com/image/i/products/2/3.jpg"
-          ],
-          "amount": 1
-        },
-        {
-          "id": 3,
-          "title": "Samsung Universe 9",
-          "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
-          "price": 1249,
-          "discountPercentage": 15.46,
-          "rating": 4.09,
-          "stock": 36,
-          "brand": "Samsung",
-          "category": "smartphones",
-          "thumbnail": "https://dummyjson.com/image/i/products/3/thumbnail.jpg",
-          "images": [
-            "https://dummyjson.com/image/i/products/3/1.jpg"
-          ],
-          "amount": 1
-        }
-      ],
-      "id": 1
-    }
-  ],
+  "cart": [],
   "categories": [
     "smartphones",
     "laptops",
