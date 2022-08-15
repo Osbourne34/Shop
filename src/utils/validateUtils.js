@@ -1,5 +1,7 @@
-export const MIN_LENGTH_PASSWORD = 4;
-export const MAX_LENGTH_PASSWORD = 24;
+import {
+    MIN_LENGTH_PASSWORD,
+    MAX_LENGTH_PASSWORD,
+} from '../constants/length-password';
 
 export const empty = (value) => {
     return value.trim() !== '';
@@ -14,7 +16,7 @@ export const email = (value) => {
 
 export const password = (value) => {
     return (
-        value.length >= MIN_LENGTH_PASSWORD &&
-        value.length <= MAX_LENGTH_PASSWORD
+        value.trim().length >= MIN_LENGTH_PASSWORD &&
+        value.trim().length <= MAX_LENGTH_PASSWORD
     );
 };

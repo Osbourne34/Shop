@@ -1,15 +1,196 @@
 {
   "users": [
     {
-      "email": "test@mail.com",
-      "password": "$2a$10$sO8tXWzsikSiZJLfzpcoSOqK2yxyvP4mDmjyXH8uLM3OAyTB2Y8X2",
+      "email": "evolkov1804@gmail.com",
+      "password": "$2a$10$D.WhCDuQwb1yVdI8MF7GuOSRO1StMDXy6pn.LnxgsF/fMw4bgScMW",
       "id": 1,
       "firstName": "Евгений",
       "lastName": "Волков",
-      "phone": "+998975071018"
+      "phone": "97 507 10 18"
+    },
+    {
+      "email": "mail@mail.com",
+      "password": "$2a$10$c3fga7VIzc4E7oZWk27kQulbsPfmSOPzKs3SsKQ.ouVvjapjSORmy",
+      "id": 2
+    },
+    {
+      "email": "test@mail.com",
+      "password": "$2a$10$ni.AtK5d2mNFJBuVvtu9qOxQjpiXLJmeg5um6HPu1fh7T6FvhVUCm",
+      "id": 3
     }
   ],
   "orders": [
+    {
+      "products": [
+        {
+          "id": 3,
+          "title": "Samsung Universe 9",
+          "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
+          "price": 1249,
+          "discountPercentage": 15.46,
+          "rating": 4.09,
+          "stock": 36,
+          "brand": "Samsung",
+          "category": "smartphones",
+          "thumbnail": "https://dummyjson.com/image/i/products/3/thumbnail.jpg",
+          "images": [
+            "https://dummyjson.com/image/i/products/3/1.jpg"
+          ],
+          "amount": 3
+        },
+        {
+          "id": 2,
+          "title": "iPhone X",
+          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+          "price": 899,
+          "discountPercentage": 17.94,
+          "rating": 4.44,
+          "stock": 34,
+          "brand": "Apple",
+          "category": "smartphones",
+          "thumbnail": "https://dummyjson.com/image/i/products/2/thumbnail.jpg",
+          "images": [
+            "https://dummyjson.com/image/i/products/2/thumbnail.jpg",
+            "https://dummyjson.com/image/i/products/2/1.jpg",
+            "https://dummyjson.com/image/i/products/2/2.jpg",
+            "https://dummyjson.com/image/i/products/2/3.jpg"
+          ],
+          "amount": 1
+        }
+      ],
+      "totalPrice": 4646,
+      "totalCount": 4,
+      "orderInfo": {
+        "fullName": "Евгений Волков",
+        "phone": "97 507 10 18",
+        "deliveryType": "delivery",
+        "city": "Нукус",
+        "street": "21",
+        "house": "Дом",
+        "zipCode": "23100"
+      },
+      "payment": {
+        "paymentType": "card",
+        "cardNumber": "8600 1325 1158 7789",
+        "cardData": "20/23"
+      },
+      "status": "pending",
+      "userId": 1,
+      "user": {
+        "email": "test@mail.com",
+        "password": "$2a$10$D.WhCDuQwb1yVdI8MF7GuOSRO1StMDXy6pn.LnxgsF/fMw4bgScMW",
+        "id": 1,
+        "firstName": "Евгений",
+        "lastName": "Волков",
+        "phone": "97 507 10 18"
+      },
+      "id": 1
+    },
+    {
+      "products": [
+        {
+          "id": 2,
+          "title": "iPhone X",
+          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+          "price": 899,
+          "discountPercentage": 17.94,
+          "rating": 4.44,
+          "stock": 34,
+          "brand": "Apple",
+          "category": "smartphones",
+          "thumbnail": "https://dummyjson.com/image/i/products/2/thumbnail.jpg",
+          "images": [
+            "https://dummyjson.com/image/i/products/2/thumbnail.jpg",
+            "https://dummyjson.com/image/i/products/2/1.jpg",
+            "https://dummyjson.com/image/i/products/2/2.jpg",
+            "https://dummyjson.com/image/i/products/2/3.jpg"
+          ],
+          "amount": 1
+        }
+      ],
+      "totalPrice": 899,
+      "totalCount": 1,
+      "orderInfo": {
+        "fullName": "Евгений Волков",
+        "phone": "97 507 10 18",
+        "deliveryType": "takeWithMe"
+      },
+      "payment": {
+        "paymentType": "cash"
+      },
+      "status": "pending",
+      "userId": 1,
+      "user": {
+        "email": "test@mail.com",
+        "password": "$2a$10$D.WhCDuQwb1yVdI8MF7GuOSRO1StMDXy6pn.LnxgsF/fMw4bgScMW",
+        "id": 1,
+        "firstName": "Женя",
+        "lastName": "Волков",
+        "phone": "97 507 10 18"
+      },
+      "id": 2
+    },
+    {
+      "products": [
+        {
+          "id": 3,
+          "title": "Samsung Universe 9",
+          "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
+          "price": 1249,
+          "discountPercentage": 15.46,
+          "rating": 4.09,
+          "stock": 36,
+          "brand": "Samsung",
+          "category": "smartphones",
+          "thumbnail": "https://dummyjson.com/image/i/products/3/thumbnail.jpg",
+          "images": [
+            "https://dummyjson.com/image/i/products/3/1.jpg"
+          ],
+          "amount": 1
+        },
+        {
+          "id": 1,
+          "title": "iPhone 9",
+          "description": "An apple mobile which is nothing like apple",
+          "price": 549,
+          "discountPercentage": 12.96,
+          "rating": 3.69,
+          "stock": 94,
+          "brand": "Apple",
+          "category": "smartphones",
+          "thumbnail": "https://dummyjson.com/image/i/products/1/thumbnail.jpg",
+          "images": [
+            "https://dummyjson.com/image/i/products/1/1.jpg",
+            "https://dummyjson.com/image/i/products/1/2.jpg",
+            "https://dummyjson.com/image/i/products/1/3.jpg",
+            "https://dummyjson.com/image/i/products/1/4.jpg",
+            "https://dummyjson.com/image/i/products/1/thumbnail.jpg"
+          ],
+          "amount": 1
+        }
+      ],
+      "totalPrice": 1798,
+      "totalCount": 2,
+      "orderInfo": {
+        "fullName": "Женя Волков",
+        "phone": "97 507 10 18",
+        "deliveryType": "takeWithMe"
+      },
+      "payment": {
+        "paymentType": "cash"
+      },
+      "status": "pending",
+      "userId": 1,
+      "user": {
+        "email": "test@mail.com",
+        "password": "$2a$10$D.WhCDuQwb1yVdI8MF7GuOSRO1StMDXy6pn.LnxgsF/fMw4bgScMW",
+        "id": 1,
+        "firstName": "Женя",
+        "lastName": "Волков",
+        "phone": "97 507 10 18"
+      },
+      "id": 3
+    },
     {
       "products": [
         {
@@ -33,6 +214,68 @@
           "amount": 1
         },
         {
+          "id": 5,
+          "title": "Huawei P30",
+          "description": "Huawei’s re-badged P30 Pro New Edition was officially unveiled yesterday in Germany and now the device has made its way to the UK.",
+          "price": 499,
+          "discountPercentage": 10.58,
+          "rating": 4.09,
+          "stock": 32,
+          "brand": "Huawei",
+          "category": "smartphones",
+          "thumbnail": "https://dummyjson.com/image/i/products/5/thumbnail.jpg",
+          "images": [
+            "https://dummyjson.com/image/i/products/5/1.jpg",
+            "https://dummyjson.com/image/i/products/5/2.jpg",
+            "https://dummyjson.com/image/i/products/5/3.jpg"
+          ],
+          "amount": 1
+        },
+        {
+          "id": 6,
+          "title": "MacBook Pro",
+          "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
+          "price": 1749,
+          "discountPercentage": 11.02,
+          "rating": 4.57,
+          "stock": 83,
+          "brand": "APPle",
+          "category": "laptops",
+          "thumbnail": "https://dummyjson.com/image/i/products/6/thumbnail.png",
+          "images": [
+            "https://dummyjson.com/image/i/products/6/1.png",
+            "https://dummyjson.com/image/i/products/6/2.jpg",
+            "https://dummyjson.com/image/i/products/6/3.png",
+            "https://dummyjson.com/image/i/products/6/4.jpg"
+          ],
+          "amount": 1
+        }
+      ],
+      "totalPrice": 2797,
+      "totalCount": 3,
+      "orderInfo": {
+        "fullName": "Женя Волков",
+        "phone": "97 507 10 18",
+        "deliveryType": "takeWithMe"
+      },
+      "payment": {
+        "paymentType": "cash"
+      },
+      "status": "pending",
+      "userId": 1,
+      "user": {
+        "email": "test@mail.com",
+        "password": "$2a$10$D.WhCDuQwb1yVdI8MF7GuOSRO1StMDXy6pn.LnxgsF/fMw4bgScMW",
+        "id": 1,
+        "firstName": "Женя",
+        "lastName": "Волков",
+        "phone": "97 507 10 18"
+      },
+      "id": 4
+    },
+    {
+      "products": [
+        {
           "id": 2,
           "title": "iPhone X",
           "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
@@ -50,18 +293,30 @@
             "https://dummyjson.com/image/i/products/2/3.jpg"
           ],
           "amount": 1
+        },
+        {
+          "id": 3,
+          "title": "Samsung Universe 9",
+          "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
+          "price": 1249,
+          "discountPercentage": 15.46,
+          "rating": 4.09,
+          "stock": 36,
+          "brand": "Samsung",
+          "category": "smartphones",
+          "thumbnail": "https://dummyjson.com/image/i/products/3/thumbnail.jpg",
+          "images": [
+            "https://dummyjson.com/image/i/products/3/1.jpg"
+          ],
+          "amount": 1
         }
       ],
-      "totalPrice": 1448,
+      "totalPrice": 2148,
       "totalCount": 2,
       "orderInfo": {
-        "fullName": "Евгений Волков",
-        "phone": "+998975071018",
-        "deliveryType": "delivery",
-        "city": "Нукус",
-        "street": "21",
-        "house": "15",
-        "zipCode": "23100"
+        "fullName": "Женя Волков",
+        "phone": "97 507 10 18",
+        "deliveryType": "takeWithMe"
       },
       "payment": {
         "paymentType": "cash"
@@ -70,15 +325,32 @@
       "userId": 1,
       "user": {
         "email": "test@mail.com",
+        "password": "$2a$10$D.WhCDuQwb1yVdI8MF7GuOSRO1StMDXy6pn.LnxgsF/fMw4bgScMW",
         "id": 1,
-        "firstName": "Евгений",
+        "firstName": "Женя",
         "lastName": "Волков",
-        "phone": "+998975071018"
+        "phone": "97 507 10 18"
       },
-      "id": 1
+      "id": 5
     },
     {
       "products": [
+        {
+          "id": 3,
+          "title": "Samsung Universe 9",
+          "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
+          "price": 1249,
+          "discountPercentage": 15.46,
+          "rating": 4.09,
+          "stock": 36,
+          "brand": "Samsung",
+          "category": "smartphones",
+          "thumbnail": "https://dummyjson.com/image/i/products/3/thumbnail.jpg",
+          "images": [
+            "https://dummyjson.com/image/i/products/3/1.jpg"
+          ],
+          "amount": 1
+        },
         {
           "id": 4,
           "title": "OPPOF19",
@@ -100,6 +372,51 @@
           "amount": 1
         },
         {
+          "id": 12,
+          "title": "Brown Perfume",
+          "description": "Royal_Mirage Sport Brown Perfume for Men & Women - 120ml",
+          "price": 40,
+          "discountPercentage": 15.66,
+          "rating": 4,
+          "stock": 52,
+          "brand": "Royal_Mirage",
+          "category": "fragrances",
+          "thumbnail": "https://dummyjson.com/image/i/products/12/thumbnail.jpg",
+          "images": [
+            "https://dummyjson.com/image/i/products/12/1.jpg",
+            "https://dummyjson.com/image/i/products/12/2.jpg",
+            "https://dummyjson.com/image/i/products/12/3.png",
+            "https://dummyjson.com/image/i/products/12/4.jpg",
+            "https://dummyjson.com/image/i/products/12/thumbnail.jpg"
+          ],
+          "amount": 1
+        }
+      ],
+      "totalPrice": 1569,
+      "totalCount": 3,
+      "orderInfo": {
+        "fullName": "Женя Волков",
+        "phone": "97 507 10 18",
+        "deliveryType": "takeWithMe"
+      },
+      "payment": {
+        "paymentType": "cash"
+      },
+      "status": "pending",
+      "userId": 1,
+      "user": {
+        "email": "test@mail.com",
+        "password": "$2a$10$D.WhCDuQwb1yVdI8MF7GuOSRO1StMDXy6pn.LnxgsF/fMw4bgScMW",
+        "id": 1,
+        "firstName": "Женя",
+        "lastName": "Волков",
+        "phone": "97 507 10 18"
+      },
+      "id": 6
+    },
+    {
+      "products": [
+        {
           "id": 3,
           "title": "Samsung Universe 9",
           "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
@@ -113,32 +430,100 @@
           "images": [
             "https://dummyjson.com/image/i/products/3/1.jpg"
           ],
+          "amount": 3
+        },
+        {
+          "id": 4,
+          "title": "OPPOF19",
+          "description": "OPPO F19 is officially announced on April 2021.",
+          "price": 280,
+          "discountPercentage": 17.91,
+          "rating": 4.3,
+          "stock": 123,
+          "brand": "OPPO",
+          "category": "smartphones",
+          "thumbnail": "https://dummyjson.com/image/i/products/4/thumbnail.jpg",
+          "images": [
+            "https://dummyjson.com/image/i/products/4/1.jpg",
+            "https://dummyjson.com/image/i/products/4/2.jpg",
+            "https://dummyjson.com/image/i/products/4/3.jpg",
+            "https://dummyjson.com/image/i/products/4/4.jpg",
+            "https://dummyjson.com/image/i/products/4/thumbnail.jpg"
+          ],
           "amount": 1
         }
       ],
-      "totalPrice": 1529,
-      "totalCount": 2,
+      "totalPrice": 4027,
+      "totalCount": 4,
       "orderInfo": {
-        "fullName": "Евгений Волков",
-        "phone": "+998975071018",
+        "fullName": "тест",
+        "phone": "Тест",
         "deliveryType": "takeWithMe"
       },
       "payment": {
         "paymentType": "cash"
       },
       "status": "pending",
-      "userId": 1,
+      "userId": 3,
       "user": {
         "email": "test@mail.com",
-        "id": 1,
-        "firstName": "Евгений",
-        "lastName": "Волков",
-        "phone": "+998975071018"
+        "id": 3
       },
+      "id": 7
+    }
+  ],
+  "cart": [
+    {
+      "userId": 1,
+      "products": [],
+      "id": 1
+    },
+    {
+      "userId": 3,
+      "products": [
+        {
+          "id": 2,
+          "title": "iPhone X",
+          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+          "price": 899,
+          "discountPercentage": 17.94,
+          "rating": 4.44,
+          "stock": 34,
+          "brand": "Apple",
+          "category": "smartphones",
+          "thumbnail": "https://dummyjson.com/image/i/products/2/thumbnail.jpg",
+          "images": [
+            "https://dummyjson.com/image/i/products/2/thumbnail.jpg",
+            "https://dummyjson.com/image/i/products/2/1.jpg",
+            "https://dummyjson.com/image/i/products/2/2.jpg",
+            "https://dummyjson.com/image/i/products/2/3.jpg"
+          ],
+          "amount": 1
+        },
+        {
+          "id": 1,
+          "title": "iPhone 9",
+          "description": "An apple mobile which is nothing like apple",
+          "price": 549,
+          "discountPercentage": 12.96,
+          "rating": 3.69,
+          "stock": 94,
+          "brand": "Apple",
+          "category": "smartphones",
+          "thumbnail": "https://dummyjson.com/image/i/products/1/thumbnail.jpg",
+          "images": [
+            "https://dummyjson.com/image/i/products/1/1.jpg",
+            "https://dummyjson.com/image/i/products/1/2.jpg",
+            "https://dummyjson.com/image/i/products/1/3.jpg",
+            "https://dummyjson.com/image/i/products/1/4.jpg",
+            "https://dummyjson.com/image/i/products/1/thumbnail.jpg"
+          ],
+          "amount": 3
+        }
+      ],
       "id": 2
     }
   ],
-  "cart": [],
   "categories": [
     "smartphones",
     "laptops",

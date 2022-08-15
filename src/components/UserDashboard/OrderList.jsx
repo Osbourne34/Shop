@@ -1,17 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useGetOrderByUserQuery } from '../../store/orderApi';
+import { useGetUserOrderQuery } from '../../store/orderApi';
 import { Link as RouterLink } from 'react-router-dom';
 
 import { Box, Typography, Button } from '@mui/material';
 
 import OrderItem from './OrderItem';
 import Loader from '../../components/Loader/Loader';
+import Pagination from '../../components/Pagination/Pagination';
+
+const LIMIT = 5;
 
 const OrderList = () => {
+    const [page, setPage] = useState(1);
     const { user } = useSelector((state) => state.auth);
 
-    const { data, isFetching, error } = useGetOrderByUserQuery(user.id);
+    const { data, isFetching, error } = useGetUserOrderQuery({
+        userId: user.id,
+        page,
+        limit: LIMIT,
+    });
 
     if (isFetching) {
         return <Loader />;
@@ -31,7 +39,7 @@ const OrderList = () => {
 
     return (
         <>
-            {data?.orders.length > 0 ? (
+            {data.apiResponse?.length > 0 ? (
                 <>
                     <Box
                         sx={{
@@ -66,10 +74,10 @@ const OrderList = () => {
                                 color: 'text.secondary',
                             }}
                         >
-                            Общая цена
+                            Общая сумма
                         </Typography>
                     </Box>
-                    {data.orders.map((order) => (
+                    {data.apiResponse.map((order) => (
                         <OrderItem key={order.id} {...order} />
                     ))}
                 </>
@@ -93,6 +101,12 @@ const OrderList = () => {
                     </Button>
                 </Box>
             )}
+
+            <Pagination
+                count={Math.ceil(data?.totalCount / LIMIT)}
+                page={page}
+                handleChange={(event, value) => setPage(value)}
+            />
         </>
     );
 };

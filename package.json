@@ -24,6 +24,7 @@
         "web-vitals": "^2.1.4"
     },
     "scripts": {
+        "dev": "concurrently \"react-scripts start\" \"json-server --watch ./src/assets/db-shop.json --port 3001 -m ./node_modules/json-server-auth\"",
         "start": "react-scripts start",
         "json-server": "json-server --watch ./src/assets/db-shop.json --port 3001 -m ./node_modules/json-server-auth",
         "build": "react-scripts build",
@@ -47,5 +48,8 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
+    },
+    "devDependencies": {
+        "concurrently": "^7.3.0"
     }
 }

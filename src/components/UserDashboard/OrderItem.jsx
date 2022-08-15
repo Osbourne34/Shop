@@ -26,13 +26,20 @@ const OrderItem = ({ id, status, totalPrice }) => {
                 {id}
             </Typography>
             <Typography
+                component="div"
                 textTransform="capitalize"
                 sx={{
                     flex: '1 1 0',
                     color: 'text.primary',
                 }}
             >
-                {status === 'pending' && <Chip label="pending" />}
+                {status === 'pending' && <Chip label="Ожидание" />}
+                {status === 'cancelled' && (
+                    <Chip label="Cancelled" color="error" />
+                )}
+                {status === 'success' && (
+                    <Chip label="Success" color="success" />
+                )}
             </Typography>
             <Typography
                 sx={{

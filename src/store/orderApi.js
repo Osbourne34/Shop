@@ -5,11 +5,26 @@ export const orderApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001' }),
     tagTypes: ['Order'],
     endpoints: (build) => ({
-        getOrderByUser: build.query({
-            query: (userId) => ({
-                url: `/users/${userId}?_embed=orders`,
+        getUserOrder: build.query({
+            query: ({ userId, page, limit }) => {
+                return {
+                    url: `/orders?userId${userId}&_page=${page}&_limit=${limit}`,
+                };
+            },
+            transformResponse(apiResponse, meta) {
+                return {
+                    apiResponse,
+                    totalCount: Number(
+                        meta.response.headers.get('X-Total-Count'),
+                    ),
+                };
+            },
+            providesTags: ['Order'],
+        }),
+        getOrder: build.query({
+            query: (id) => ({
+                url: `/orders/${id}`,
             }),
-            providesTags: ['Cart'],
         }),
         orderCreate: build.mutation({
             query: (body) => ({
@@ -17,9 +32,13 @@ export const orderApi = createApi({
                 method: 'POST',
                 body,
             }),
-            invalidatesTags: ['Cart'],
+            invalidatesTags: ['Order'],
         }),
     }),
 });
 
-export const { useOrderCreateMutation, useGetOrderByUserQuery } = orderApi;
+export const {
+    useOrderCreateMutation,
+    useGetUserOrderQuery,
+    useGetOrderQuery,
+} = orderApi;

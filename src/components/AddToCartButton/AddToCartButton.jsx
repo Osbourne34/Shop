@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { showDialog } from '../../store/materialUiSlice';
-
 import {
     useLazyGetUserCartQuery,
     useCreateCartAndAndProductMutation,
@@ -10,6 +9,8 @@ import {
 import { useLazyGetProductQuery } from '../../store/productsApi';
 
 import { useSnackbar } from 'notistack';
+
+import { notificationMessages } from '../../constants/messages';
 
 import { Button, IconButton } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
@@ -31,7 +32,7 @@ const AddToCartButton = ({ productId, typeButton }) => {
             setLoading(true);
             const { data: cart, error } = await getUserCart(user.id);
             if (error) {
-                enqueueSnackbar('Произошла ошибка', {
+                enqueueSnackbar(notificationMessages.ERROR_CART, {
                     variant: 'error',
                 });
                 setLoading(false);
@@ -41,7 +42,7 @@ const AddToCartButton = ({ productId, typeButton }) => {
                 const { data: product, error } = await getProduct(productId);
 
                 if (error) {
-                    enqueueSnackbar('Произошла ошибка', {
+                    enqueueSnackbar(notificationMessages.ERROR_CART, {
                         variant: 'error',
                     });
                     setLoading(false);
@@ -55,7 +56,7 @@ const AddToCartButton = ({ productId, typeButton }) => {
 
                 await createCartAndAddProduct(newCart);
 
-                enqueueSnackbar('Товар добавлен в корзину', {
+                enqueueSnackbar(notificationMessages.PRODUCT_ADDED_TO_CART, {
                     variant: 'success',
                 });
                 setLoading(false);
@@ -76,16 +77,19 @@ const AddToCartButton = ({ productId, typeButton }) => {
                     });
 
                     if (error) {
-                        enqueueSnackbar('Произошла ошибка', {
+                        enqueueSnackbar(notificationMessages.ERROR_CART, {
                             variant: 'error',
                         });
                         setLoading(false);
                         return;
                     }
 
-                    enqueueSnackbar('Товар добавлен в корзину', {
-                        variant: 'success',
-                    });
+                    enqueueSnackbar(
+                        notificationMessages.PRODUCT_ADDED_TO_CART,
+                        {
+                            variant: 'success',
+                        },
+                    );
                     setLoading(false);
                 } else {
                     const { data: product, error } = await getProduct(
@@ -93,7 +97,7 @@ const AddToCartButton = ({ productId, typeButton }) => {
                     );
 
                     if (error) {
-                        enqueueSnackbar('Произошла ошибка', {
+                        enqueueSnackbar(notificationMessages.ERROR_CART, {
                             variant: 'error',
                         });
                         setLoading(false);
@@ -105,9 +109,12 @@ const AddToCartButton = ({ productId, typeButton }) => {
                         products: [...cart.products, { ...product, amount: 1 }],
                     });
 
-                    enqueueSnackbar('Товар добавлен в корзину', {
-                        variant: 'success',
-                    });
+                    enqueueSnackbar(
+                        notificationMessages.PRODUCT_ADDED_TO_CART,
+                        {
+                            variant: 'success',
+                        },
+                    );
                     setLoading(false);
                 }
             }

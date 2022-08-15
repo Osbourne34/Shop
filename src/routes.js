@@ -8,6 +8,7 @@ import Payment from './pages/Payment';
 import Profile from './pages/Profile';
 import ProfileEdit from './pages/ProfileEdit';
 import MyOrders from './pages/MyOrders';
+import OrderDetails from './pages/OrderDetails';
 
 import Login from './pages/Auth/Login';
 import Register from './pages/Auth/Register';
@@ -54,6 +55,10 @@ export const UserRoutes = [
     {
         path: 'edit',
         Component: ProfileEdit,
+    },
+    {
+        path: 'orders/:id',
+        Component: OrderDetails,
     },
 ];
 

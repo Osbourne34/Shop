@@ -5,9 +5,9 @@ import { useInput, useValidForm } from './../../hook/useInput';
 import {
     email as emailValidate,
     password as passwordValidate,
-    MIN_LENGTH_PASSWORD,
-    MAX_LENGTH_PASSWORD,
 } from '../../utils/validateUtils';
+
+import { formErrorMessages } from '../../constants/messages';
 
 import {
     Box,
@@ -94,7 +94,9 @@ const AuthForm = ({
                 onChange={email.onChange}
                 onBlur={email.onBlur}
                 error={email.errorForView}
-                helperText={email.errorForView && 'Невалидный email'}
+                helperText={
+                    email.errorForView && formErrorMessages.INVALID_EMAIL
+                }
                 label="E-mail"
                 type="email"
                 variant="outlined"
@@ -109,8 +111,7 @@ const AuthForm = ({
                 onBlur={password.onBlur}
                 error={password.errorForView}
                 helperText={
-                    password.errorForView &&
-                    `Пароль должен содержать мининмум ${MIN_LENGTH_PASSWORD} и максимум ${MAX_LENGTH_PASSWORD} символа`
+                    password.errorForView && formErrorMessages.PASSWORD_ERROR
                 }
                 label="Пароль"
                 type="password"
