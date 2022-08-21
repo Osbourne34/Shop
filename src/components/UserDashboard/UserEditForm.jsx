@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { auth } from '../../store/authSlice';
 import { updateUser as updateUserLocal } from '../../store/authSlice';
 import { useUpdateUserMutation } from '../../store/usersApi';
 
@@ -14,7 +15,7 @@ import LoadingButton from '@mui/lab/LoadingButton';
 
 const UserEditForm = () => {
     const dispatch = useDispatch();
-    const { user } = useSelector((state) => state.auth);
+    const { user } = useSelector(auth);
 
     const [updateUser, { isLoading }] = useUpdateUserMutation();
 

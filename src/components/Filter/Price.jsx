@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { filter } from '../../store/filterSlice';
 import { setPriceFrom, setPriceTo, clearPrices } from '../../store/filterSlice';
 
 import { Box, TextField } from '@mui/material';
@@ -7,9 +8,7 @@ import { useEffect } from 'react';
 
 const Price = ({ category }) => {
     const dispatch = useDispatch();
-    const { priceFrom: from, priceTo: to } = useSelector(
-        (state) => state.filter,
-    );
+    const { priceFrom: from, priceTo: to } = useSelector(filter);
 
     const handleChangeFrom = (e) => {
         dispatch(setPriceFrom(e.target.value));

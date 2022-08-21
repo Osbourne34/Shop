@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { auth } from '../../store/authSlice';
 
 import Logo from './Logo';
 import ThemeModeToggler from './ThemeModeToggler';
@@ -11,7 +12,7 @@ import Search from './../Search/Search';
 import { Box, AppBar, Toolbar } from '@mui/material';
 
 const Header = () => {
-    const isAuth = useSelector((state) => state.auth.user);
+    const { user } = useSelector(auth);
 
     return (
         <Box sx={{ mb: '64px' }}>
@@ -23,8 +24,8 @@ const Header = () => {
 
                     <Box>
                         <ThemeModeToggler />
-                        {isAuth ? <CartButton /> : <CartButton cart={[]} />}
-                        {isAuth ? <Profile /> : <SignIn />}
+                        {user ? <CartButton /> : <CartButton cart={[]} />}
+                        {user ? <Profile /> : <SignIn />}
                     </Box>
                 </Toolbar>
             </AppBar>

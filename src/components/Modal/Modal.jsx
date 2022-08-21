@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { materialUi } from '../../store/materialUiSlice';
 import { hideDialog } from '../../store/materialUiSlice';
 
 import {
@@ -13,7 +14,7 @@ import {
 
 const Modal = () => {
     const dispatch = useDispatch();
-    const { isShowDialog } = useSelector((state) => state.materialUi);
+    const { isShowDialog } = useSelector(materialUi);
 
     const handleHideDialog = () => {
         dispatch(hideDialog());

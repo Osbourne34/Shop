@@ -5,7 +5,7 @@ const initialState = {
     isShowDrawer: false,
 };
 
-const materialUi = createSlice({
+const materialUiSlice = createSlice({
     name: 'materialUi',
     initialState,
     reducers: {
@@ -21,6 +21,8 @@ const materialUi = createSlice({
     },
 });
 
-export const { showDialog, hideDialog, toggleDrawer } = materialUi.actions;
+export const materialUi = (state) => state.materialUi;
 
-export default materialUi.reducer;
+export const { showDialog, hideDialog, toggleDrawer } = materialUiSlice.actions;
+
+export default materialUiSlice.reducer;

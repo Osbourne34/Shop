@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { auth } from '../store/authSlice';
 
 import MainLayout from './Layout/Layout';
 import UserDashBoardLayout from './UserDashboard/Layout';
@@ -12,7 +13,7 @@ import { AuthRoutes } from '../routes';
 import { UserRoutes } from '../routes';
 
 const AppRouter = () => {
-    const { user } = useSelector((state) => state.auth);
+    const { user } = useSelector(auth);
     return (
         <Routes>
             <Route element={<MainLayout />}>
@@ -32,7 +33,7 @@ const AppRouter = () => {
                                     path={path}
                                     element={<Component />}
                                 />
-                            )
+                            ),
                         )}
                     {user && (
                         <Route path="profile" element={<UserDashBoardLayout />}>

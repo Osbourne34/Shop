@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { auth } from '../../store/authSlice';
 
 import { Box, Paper, Typography } from '@mui/material';
 
@@ -15,7 +16,7 @@ const InfoItem = ({ property, value }) => {
 };
 
 const UserInfo = () => {
-    const { user } = useSelector((state) => state.auth);
+    const { user } = useSelector(auth);
 
     return (
         <Paper

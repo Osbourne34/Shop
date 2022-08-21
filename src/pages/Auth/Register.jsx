@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { auth } from '../../store/authSlice';
 
 import { useRegisterMutation } from './../../store/authApi';
 
@@ -9,7 +10,7 @@ import { Container } from '@mui/material';
 import AuthForm from './AuthForm';
 
 const Registration = () => {
-    const isAuth = useSelector((state) => state.auth.user);
+    const { user } = useSelector(auth);
 
     const navigate = useNavigate();
     const [register, { isLoading, error }] = useRegisterMutation();
@@ -20,7 +21,7 @@ const Registration = () => {
         if (data) navigate('/login');
     };
 
-    if (isAuth) {
+    if (user) {
         return <Navigate to="/" />;
     }
 

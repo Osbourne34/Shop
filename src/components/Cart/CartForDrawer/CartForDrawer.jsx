@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { auth } from '../../../store/authSlice';
 
 import { useToggleDrawer } from '../../../hook/useToggleDrawer';
 
@@ -16,7 +17,7 @@ import CartItem from './CartItem';
 import CheckoutButton from '../CheckoutButton';
 
 const CartForDrawer = () => {
-    const { user } = useSelector((state) => state.auth);
+    const { user } = useSelector(auth);
     const toggleDrawer = useToggleDrawer();
 
     return (

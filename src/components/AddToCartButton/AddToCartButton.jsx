@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { showDialog } from '../../store/materialUiSlice';
+import { auth } from '../../store/authSlice';
 import {
     useLazyGetUserCartQuery,
     useCreateCartAndAndProductMutation,
@@ -18,7 +19,7 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 const AddToCartButton = ({ productId, typeButton }) => {
     const dispatch = useDispatch();
-    const { user } = useSelector((state) => state.auth);
+    const { user } = useSelector(auth);
     const [loading, setLoading] = useState(false);
 
     const { enqueueSnackbar } = useSnackbar();

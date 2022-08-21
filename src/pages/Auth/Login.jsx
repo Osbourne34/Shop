@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { auth } from '../../store/authSlice';
 
 import { useLoginMutation } from './../../store/authApi';
 import { updateUser } from '../../store/authSlice';
@@ -11,7 +12,7 @@ import AuthForm from './AuthForm';
 
 const Login = () => {
     const dispatch = useDispatch();
-    const isAuth = useSelector((state) => state.auth.user);
+    const { user } = useSelector(auth);
 
     const navigate = useNavigate();
     const [login, { isLoading, error }] = useLoginMutation();
@@ -26,7 +27,7 @@ const Login = () => {
         }
     };
 
-    if (isAuth) {
+    if (user) {
         return <Navigate to="/" />;
     }
 

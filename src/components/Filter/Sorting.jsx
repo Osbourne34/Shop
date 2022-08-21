@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { filter } from '../../store/filterSlice';
 import { setSortType, clearSortType } from '../../store/filterSlice';
 
 import {
@@ -14,7 +15,7 @@ import ArrowDownwardRoundedIcon from '@mui/icons-material/ArrowDownwardRounded';
 
 const Sorting = ({ category }) => {
     const dispatch = useDispatch();
-    const { sortType } = useSelector((state) => state.filter);
+    const { sortType } = useSelector(filter);
 
     const onClick = (sortType) => {
         dispatch(setSortType(sortType));

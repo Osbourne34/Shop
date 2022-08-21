@@ -7,7 +7,7 @@ const initialState = {
     sortType: null,
 };
 
-const filter = createSlice({
+const filterSlice = createSlice({
     name: 'filter',
     initialState,
     reducers: {
@@ -41,6 +41,8 @@ const filter = createSlice({
     },
 });
 
+export const filter = (state) => state.filter;
+
 export const {
     addBrand,
     removeBrand,
@@ -50,6 +52,6 @@ export const {
     clearPrices,
     setSortType,
     clearSortType,
-} = filter.actions;
+} = filterSlice.actions;
 
-export default filter.reducer;
+export default filterSlice.reducer;

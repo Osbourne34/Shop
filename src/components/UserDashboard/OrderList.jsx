@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { auth } from '../../store/authSlice';
 import { useGetUserOrderQuery } from '../../store/orderApi';
 import { Link as RouterLink } from 'react-router-dom';
 
@@ -13,7 +14,7 @@ const LIMIT = 5;
 
 const OrderList = () => {
     const [page, setPage] = useState(1);
-    const { user } = useSelector((state) => state.auth);
+    const { user } = useSelector(auth);
 
     const { data, isFetching, error } = useGetUserOrderQuery({
         userId: user.id,

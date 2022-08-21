@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { useGetProductsByCategoryQuery } from './../store/productsApi';
+import { filter } from '../store/filterSlice';
+import { useGetProductsByCategoryQuery } from '../store/productsApi';
 
 import { Grid, Typography } from '@mui/material';
 
@@ -12,9 +13,7 @@ import Loader from '../components/Loader/Loader';
 import Sorting from '../components/Filter/Sorting';
 
 const Category = () => {
-    const { brands, priceFrom, priceTo, sortType } = useSelector(
-        (state) => state.filter,
-    );
+    const { brands, priceFrom, priceTo, sortType } = useSelector(filter);
     const [filteredByPrice, setFilteredByPrice] = useState([]);
 
     const { category } = useParams();

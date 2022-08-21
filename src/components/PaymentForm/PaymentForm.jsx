@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { auth } from '../../store/authSlice';
 import { useOrderCreateMutation } from '../../store/orderApi';
 import { useClearCartMutation } from '../../store/cartApi';
 
@@ -29,7 +30,7 @@ import ErrorRoundedIcon from '@mui/icons-material/ErrorRounded';
 import LoadingButton from '@mui/lab/LoadingButton';
 
 const PaymentForm = () => {
-    const { user } = useSelector((state) => state.auth);
+    const { user } = useSelector(auth);
     const [showDialog, setShowDialog] = useState(false);
     const [paymentType, setPaymentType] = useState(CARD);
 
