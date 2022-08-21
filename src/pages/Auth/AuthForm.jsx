@@ -7,7 +7,8 @@ import {
     password as passwordValidate,
 } from '../../utils/validateUtils';
 
-import { formErrorMessages } from '../../constants/messages';
+import { PASSWORD_ERROR } from '../../constants/messages';
+import { INVALID_EMAIL } from '../../constants/messages';
 
 import {
     Box,
@@ -94,9 +95,7 @@ const AuthForm = ({
                 onChange={email.onChange}
                 onBlur={email.onBlur}
                 error={email.errorForView}
-                helperText={
-                    email.errorForView && formErrorMessages.INVALID_EMAIL
-                }
+                helperText={email.errorForView && INVALID_EMAIL}
                 label="E-mail"
                 type="email"
                 variant="outlined"
@@ -110,9 +109,7 @@ const AuthForm = ({
                 onChange={password.onChange}
                 onBlur={password.onBlur}
                 error={password.errorForView}
-                helperText={
-                    password.errorForView && formErrorMessages.PASSWORD_ERROR
-                }
+                helperText={password.errorForView && PASSWORD_ERROR}
                 label="Пароль"
                 type="password"
                 variant="outlined"

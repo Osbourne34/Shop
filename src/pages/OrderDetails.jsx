@@ -5,9 +5,13 @@ import { useGetOrderQuery } from '../store/orderApi';
 import Head from '../components/UserDashboard/Head';
 import Loader from '../components/Loader/Loader';
 
-import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
-import OrderProductsList from '../components/UserDashboard/OrderProductsList';
+import { DELIVERY, CASH } from '../constants/ui';
+
 import { Grid, Paper, Typography } from '@mui/material';
+
+import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
+
+import OrderProductsList from '../components/UserDashboard/OrderProductsList';
 
 const OrderDetails = () => {
     const { id } = useParams();
@@ -47,7 +51,7 @@ const OrderDetails = () => {
                                 variant="h6"
                                 sx={{ color: 'primary.main' }}
                             >
-                                {data.orderInfo.deliveryType === 'delivery'
+                                {data.orderInfo.deliveryType === DELIVERY
                                     ? `Адрес доставки: ${data.orderInfo.city}, ${data.orderInfo.street}, ${data.orderInfo.house}, ${data.orderInfo.zipCode}`
                                     : 'Забрать из магазина'}
                             </Typography>
@@ -77,7 +81,7 @@ const OrderDetails = () => {
                                 variant="h6"
                                 sx={{ color: 'primary.main' }}
                             >
-                                {data.payment.paymentType === 'cash'
+                                {data.payment.paymentType === CASH
                                     ? 'Наличными'
                                     : 'Банковской картой'}
                             </Typography>

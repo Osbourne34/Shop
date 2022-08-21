@@ -10,7 +10,8 @@ import { useLazyGetProductQuery } from '../../store/productsApi';
 
 import { useSnackbar } from 'notistack';
 
-import { notificationMessages } from '../../constants/messages';
+import { PRODUCT_ADDED_TO_CART } from '../../constants/messages';
+import { ERROR_CART } from '../../constants/messages';
 
 import { Button, IconButton } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
@@ -31,18 +32,20 @@ const AddToCartButton = ({ productId, typeButton }) => {
         if (user) {
             setLoading(true);
             const { data: cart, error } = await getUserCart(user.id);
+
             if (error) {
-                enqueueSnackbar(notificationMessages.ERROR_CART, {
+                enqueueSnackbar(ERROR_CART, {
                     variant: 'error',
                 });
                 setLoading(false);
                 return;
             }
+
             if (!cart?.id) {
                 const { data: product, error } = await getProduct(productId);
 
                 if (error) {
-                    enqueueSnackbar(notificationMessages.ERROR_CART, {
+                    enqueueSnackbar(ERROR_CART, {
                         variant: 'error',
                     });
                     setLoading(false);
@@ -56,7 +59,7 @@ const AddToCartButton = ({ productId, typeButton }) => {
 
                 await createCartAndAddProduct(newCart);
 
-                enqueueSnackbar(notificationMessages.PRODUCT_ADDED_TO_CART, {
+                enqueueSnackbar(PRODUCT_ADDED_TO_CART, {
                     variant: 'success',
                 });
                 setLoading(false);
@@ -77,19 +80,16 @@ const AddToCartButton = ({ productId, typeButton }) => {
                     });
 
                     if (error) {
-                        enqueueSnackbar(notificationMessages.ERROR_CART, {
+                        enqueueSnackbar(ERROR_CART, {
                             variant: 'error',
                         });
                         setLoading(false);
                         return;
                     }
 
-                    enqueueSnackbar(
-                        notificationMessages.PRODUCT_ADDED_TO_CART,
-                        {
-                            variant: 'success',
-                        },
-                    );
+                    enqueueSnackbar(PRODUCT_ADDED_TO_CART, {
+                        variant: 'success',
+                    });
                     setLoading(false);
                 } else {
                     const { data: product, error } = await getProduct(
@@ -97,7 +97,7 @@ const AddToCartButton = ({ productId, typeButton }) => {
                     );
 
                     if (error) {
-                        enqueueSnackbar(notificationMessages.ERROR_CART, {
+                        enqueueSnackbar(ERROR_CART, {
                             variant: 'error',
                         });
                         setLoading(false);
@@ -109,12 +109,9 @@ const AddToCartButton = ({ productId, typeButton }) => {
                         products: [...cart.products, { ...product, amount: 1 }],
                     });
 
-                    enqueueSnackbar(
-                        notificationMessages.PRODUCT_ADDED_TO_CART,
-                        {
-                            variant: 'success',
-                        },
-                    );
+                    enqueueSnackbar(PRODUCT_ADDED_TO_CART, {
+                        variant: 'success',
+                    });
                     setLoading(false);
                 }
             }

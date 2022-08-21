@@ -3,6 +3,8 @@ import { Link as RouterLink } from 'react-router-dom';
 
 import { useToggleDrawer } from '../../hook/useToggleDrawer';
 
+import { DRAWER_SIDE } from '../../constants/ui';
+
 import { Button } from '@mui/material';
 
 import { cartHOC } from './cartHOC';
@@ -12,7 +14,7 @@ const CheckoutButton = ({ cart, mt }) => {
 
     const handleClick = (e) => {
         sessionStorage.setItem('orderCart', JSON.stringify(cart));
-        toggleDrawer('right', false)(e);
+        toggleDrawer(DRAWER_SIDE, false)(e);
     };
 
     return (

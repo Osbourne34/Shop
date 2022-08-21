@@ -3,6 +3,8 @@ import { Link as RouterLink } from 'react-router-dom';
 
 import { useToggleDrawer } from '../../hook/useToggleDrawer';
 
+import { DRAWER_SIDE } from '../../constants/ui';
+
 import { Box, Button, Typography } from '@mui/material';
 
 import Loader from '../Loader/Loader';
@@ -71,7 +73,7 @@ const CartList = ({ cart, error, CartItem }) => {
                             component={RouterLink}
                             to="/"
                             variant="outlined"
-                            onClick={toggleDrawer('right', false)}
+                            onClick={toggleDrawer(DRAWER_SIDE, false)}
                         >
                             Добавить товары
                         </Button>

@@ -1,9 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { nanoid } from '@reduxjs/toolkit';
+import { API_URL } from '../constants/api-url';
 
 export const productsApi = createApi({
     reducerPath: 'productsApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001' }),
+    baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
     tagTypes: ['Products'],
     endpoints: (build) => ({
         getAllProducts: build.query({

@@ -4,6 +4,8 @@ import { updateUser } from './store/authSlice';
 
 import { SnackbarProvider } from 'notistack';
 
+import { SNACKBAR_SIDE, MAX_SNACK, AUTO_HIDE_DURATION } from './constants/ui';
+
 import './App.css';
 
 import Theme from './theme/Theme';
@@ -21,12 +23,9 @@ const App = () => {
     return (
         <Theme>
             <SnackbarProvider
-                anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'right',
-                }}
-                maxSnack={3}
-                autoHideDuration={1000}
+                anchorOrigin={SNACKBAR_SIDE}
+                maxSnack={MAX_SNACK}
+                autoHideDuration={AUTO_HIDE_DURATION}
             >
                 <AppRouter />
             </SnackbarProvider>

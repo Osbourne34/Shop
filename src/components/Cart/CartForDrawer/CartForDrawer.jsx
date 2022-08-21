@@ -1,8 +1,10 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import { useToggleDrawer } from '../../../hook/useToggleDrawer';
+
+import { DRAWER_SIDE } from '../../../constants/ui';
 
 import { Box, Typography, Button, IconButton } from '@mui/material';
 
@@ -39,7 +41,7 @@ const CartForDrawer = () => {
                         }}
                     >
                         <Typography variant="h4">Корзина</Typography>
-                        <IconButton onClick={toggleDrawer('right', false)}>
+                        <IconButton onClick={toggleDrawer(DRAWER_SIDE, false)}>
                             <CloseRoundedIcon />
                         </IconButton>
                     </Box>
@@ -51,7 +53,7 @@ const CartForDrawer = () => {
                         <Button
                             component={RouterLink}
                             to="/cart"
-                            onClick={toggleDrawer('rigth', false)}
+                            onClick={toggleDrawer(DRAWER_SIDE, false)}
                             variant="outlined"
                             sx={{ mb: 1 }}
                             fullWidth
@@ -76,14 +78,14 @@ const CartForDrawer = () => {
                     </Typography>
                     <Box>
                         <Button
-                            onClick={toggleDrawer('right', false)}
+                            onClick={toggleDrawer(DRAWER_SIDE, false)}
                             variant="outlined"
                             sx={{ mr: 2 }}
                         >
                             Позже
                         </Button>
                         <Button
-                            onClick={toggleDrawer('right', false)}
+                            onClick={toggleDrawer(DRAWER_SIDE, false)}
                             component={RouterLink}
                             to="/login"
                             variant="contained"

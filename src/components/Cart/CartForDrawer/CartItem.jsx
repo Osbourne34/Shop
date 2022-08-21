@@ -3,11 +3,15 @@ import { Link as RouterLink } from 'react-router-dom';
 
 import { useToggleDrawer } from '../../../hook/useToggleDrawer';
 
+import { DRAWER_SIDE } from '../../../constants/ui';
+
 import { Box, Typography } from '@mui/material';
+
 import ItemActions from '../ItemActions';
 
 const CartItem = ({ product, cart }) => {
     const toggleDrawer = useToggleDrawer();
+
     return (
         <Box
             sx={{
@@ -18,9 +22,9 @@ const CartItem = ({ product, cart }) => {
             }}
         >
             <Box
+                onClick={toggleDrawer(DRAWER_SIDE, false)}
                 component={RouterLink}
                 to={`/product/${product.id}`}
-                onClick={toggleDrawer('right', false)}
                 sx={{
                     display: 'flex',
                     alignItems: 'center',

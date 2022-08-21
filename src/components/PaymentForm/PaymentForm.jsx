@@ -7,6 +7,9 @@ import { useClearCartMutation } from '../../store/cartApi';
 import { useInput, useValidForm } from '../../hook/useInput';
 import { empty } from '../../utils/validateUtils';
 
+import { EMPTY_ERROR } from '../../constants/messages';
+import { CARD, CASH } from '../../constants/ui';
+
 import {
     Paper,
     Typography,
@@ -24,9 +27,6 @@ import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import ErrorRoundedIcon from '@mui/icons-material/ErrorRounded';
 
 import LoadingButton from '@mui/lab/LoadingButton';
-
-const CARD = 'card';
-const CASH = 'cash';
 
 const PaymentForm = () => {
     const { user } = useSelector((state) => state.auth);
@@ -104,8 +104,7 @@ const PaymentForm = () => {
                                     onBlur={cardNumber.onBlur}
                                     error={cardNumber.errorForView}
                                     helperText={
-                                        cardNumber.errorForView &&
-                                        'Заполните поле'
+                                        cardNumber.errorForView && EMPTY_ERROR
                                     }
                                     label="Номер карты"
                                     required
@@ -118,8 +117,7 @@ const PaymentForm = () => {
                                     onBlur={cardData.onBlur}
                                     error={cardData.errorForView}
                                     helperText={
-                                        cardData.errorForView &&
-                                        'Заполните поле'
+                                        cardData.errorForView && EMPTY_ERROR
                                     }
                                     label="Дата"
                                     required

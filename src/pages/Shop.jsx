@@ -2,6 +2,8 @@ import React from 'react';
 
 import { Outlet } from 'react-router-dom';
 
+import { DRAWER_SIDE } from '../constants/ui';
+
 import Modal from '../components/Modal/Modal';
 import Drawer from '../components/Drawer/Drawer';
 import CartForDrawer from '../components/Cart/CartForDrawer/CartForDrawer';
@@ -14,7 +16,7 @@ const Shop = () => {
 
             <Outlet />
 
-            <Drawer>
+            <Drawer anchor={DRAWER_SIDE}>
                 <CartForDrawer />
             </Drawer>
             <Modal />

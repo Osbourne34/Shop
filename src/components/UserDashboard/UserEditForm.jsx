@@ -6,6 +6,8 @@ import { useUpdateUserMutation } from '../../store/usersApi';
 import { useInput, useValidForm } from '../../hook/useInput';
 import { empty, email as emailValidate } from '../../utils/validateUtils';
 
+import { EMPTY_ERROR } from '../../constants/messages';
+
 import { Paper, TextField } from '@mui/material';
 
 import LoadingButton from '@mui/lab/LoadingButton';
@@ -60,7 +62,7 @@ const UserEditForm = () => {
                 onChange={firstName.onChange}
                 onBlur={firstName.onBlur}
                 error={firstName.errorForView}
-                helperText={firstName.errorForView && 'Заполните поле'}
+                helperText={firstName.errorForView && EMPTY_ERROR}
                 required
                 label="Имя"
                 sx={{ width: 'calc(50% - 8px)' }}
@@ -70,7 +72,7 @@ const UserEditForm = () => {
                 onChange={lastName.onChange}
                 onBlur={lastName.onBlur}
                 error={lastName.errorForView}
-                helperText={lastName.errorForView && 'Заполните поле'}
+                helperText={lastName.errorForView && EMPTY_ERROR}
                 required
                 label="Фамилия"
                 sx={{ width: 'calc(50% - 8px)' }}
@@ -80,7 +82,7 @@ const UserEditForm = () => {
                 onChange={email.onChange}
                 onBlur={email.onBlur}
                 error={email.errorForView}
-                helperText={email.errorForView && 'Не валидный email'}
+                helperText={email.errorForView && EMPTY_ERROR}
                 required
                 label="Email"
                 type="email"
@@ -91,7 +93,7 @@ const UserEditForm = () => {
                 onChange={phone.onChange}
                 onBlur={phone.onBlur}
                 error={phone.errorForView}
-                helperText={phone.errorForView && 'Заполните поле'}
+                helperText={phone.errorForView && EMPTY_ERROR}
                 required
                 label="Номер телефона"
                 type="tel"

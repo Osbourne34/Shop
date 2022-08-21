@@ -4,6 +4,8 @@ import { useUpdateCartMutation } from '../../store/cartApi';
 
 import { useSnackbar } from 'notistack';
 
+import { PRODUCT_REMOVED_FROM_CART } from '../../constants/messages';
+
 import { Box, Typography, IconButton } from '@mui/material';
 
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -27,10 +29,6 @@ const ItemActions = ({ cart, product }) => {
             id: cart.id,
             products: newProducts,
         });
-
-        enqueueSnackbar('Товар добавлен', {
-            variant: 'success',
-        });
     };
 
     const handleDecrease = async () => {
@@ -42,10 +40,6 @@ const ItemActions = ({ cart, product }) => {
         });
 
         await updateCart({ id: cart.id, products: newProducts });
-
-        enqueueSnackbar('Товар уменьшен', {
-            variant: 'success',
-        });
     };
 
     const handleRemove = async () => {
@@ -57,7 +51,7 @@ const ItemActions = ({ cart, product }) => {
 
         await updateCart({ id: cart.id, products: newProducts });
 
-        enqueueSnackbar('Товар удален', {
+        enqueueSnackbar(PRODUCT_REMOVED_FROM_CART, {
             variant: 'error',
         });
     };

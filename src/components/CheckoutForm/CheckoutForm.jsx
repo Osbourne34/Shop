@@ -4,6 +4,9 @@ import { Link as RouterLink } from 'react-router-dom';
 import { useInput } from '../../hook/useInput';
 import { empty } from '../../utils/validateUtils';
 
+import { EMPTY_ERROR } from '../../constants/messages';
+import { DELIVERY, TAKE_WITH_ME } from '../../constants/ui';
+
 import {
     Box,
     Button,
@@ -15,9 +18,6 @@ import {
     RadioGroup,
     Paper,
 } from '@mui/material';
-
-const DELIVERY = 'delivery';
-const TAKE_WITH_ME = 'takeWithMe';
 
 const CheckoutForm = () => {
     const formData = JSON.parse(sessionStorage.getItem('orderInfo'));
@@ -107,7 +107,7 @@ const CheckoutForm = () => {
                         onChange={fullName.onChange}
                         onBlur={fullName.onBlur}
                         error={fullName.errorForView}
-                        helperText={fullName.errorForView && 'Заполните поле'}
+                        helperText={fullName.errorForView && EMPTY_ERROR}
                         label="Имя и фамилия"
                         fullWidth
                         required
@@ -118,7 +118,7 @@ const CheckoutForm = () => {
                         onChange={phone.onChange}
                         onBlur={phone.onBlur}
                         error={phone.errorForView}
-                        helperText={phone.errorForView && 'Заполните поле'}
+                        helperText={phone.errorForView && EMPTY_ERROR}
                         label="Номер телефона"
                         fullWidth
                         required
@@ -152,8 +152,7 @@ const CheckoutForm = () => {
                                         onBlur={city.onBlur}
                                         error={city.errorForView}
                                         helperText={
-                                            city.errorForView &&
-                                            'Заполните поле'
+                                            city.errorForView && EMPTY_ERROR
                                         }
                                         label="Город"
                                         required
@@ -166,8 +165,7 @@ const CheckoutForm = () => {
                                         onBlur={street.onBlur}
                                         error={street.errorForView}
                                         helperText={
-                                            street.errorForView &&
-                                            'Заполните поле'
+                                            street.errorForView && EMPTY_ERROR
                                         }
                                         label="Улица / Микрорайон"
                                         required
@@ -182,8 +180,7 @@ const CheckoutForm = () => {
                                         onBlur={house.onBlur}
                                         error={house.errorForView}
                                         helperText={
-                                            house.errorForView &&
-                                            'Заполните поле'
+                                            house.errorForView && EMPTY_ERROR
                                         }
                                         label="Дом"
                                         required
@@ -196,8 +193,7 @@ const CheckoutForm = () => {
                                         onBlur={zipCode.onBlur}
                                         error={zipCode.errorForView}
                                         helperText={
-                                            zipCode.errorForView &&
-                                            'Заполните поле'
+                                            zipCode.errorForView && EMPTY_ERROR
                                         }
                                         label="Почтовый индекс"
                                         required

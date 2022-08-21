@@ -1,6 +1,9 @@
 import React from 'react';
 
 import { useToggleDrawer } from '../../hook/useToggleDrawer';
+
+import { DRAWER_SIDE } from '../../constants/ui';
+
 import { cartHOC } from '../Cart/cartHOC';
 
 import { IconButton, Badge } from '@mui/material';
@@ -12,7 +15,7 @@ const CartButton = ({ cart }) => {
 
     return (
         <IconButton
-            onClick={toggleDrawer('right', true)}
+            onClick={toggleDrawer(DRAWER_SIDE, true)}
             color="inherit"
             sx={{ ml: 1 }}
         >
