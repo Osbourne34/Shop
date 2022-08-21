@@ -7,7 +7,13 @@ import { useUpdateUserMutation } from '../../store/usersApi';
 import { useInput, useValidForm } from '../../hook/useInput';
 import { empty, email as emailValidate } from '../../utils/validateUtils';
 
-import { EMPTY_ERROR } from '../../constants/messages';
+import { useSnackbar } from 'notistack';
+
+import {
+    EMPTY_ERROR,
+    ERROR_ON_CHANGE,
+    PROFILE_CHANGED,
+} from '../../constants/messages';
 
 import { Paper, TextField } from '@mui/material';
 
@@ -16,6 +22,8 @@ import LoadingButton from '@mui/lab/LoadingButton';
 const UserEditForm = () => {
     const dispatch = useDispatch();
     const { user } = useSelector(auth);
+
+    const { enqueueSnackbar } = useSnackbar();
 
     const [updateUser, { isLoading }] = useUpdateUserMutation();
 
@@ -32,7 +40,7 @@ const UserEditForm = () => {
     );
 
     const handleSubmit = async () => {
-        const { data } = await updateUser({
+        const { data, error } = await updateUser({
             userId: user.id,
             body: {
                 firstName: firstName.value,
@@ -42,10 +50,18 @@ const UserEditForm = () => {
             },
         });
 
-        if (data) {
-            dispatch(updateUserLocal(data));
-            localStorage.setItem('user', JSON.stringify(data));
+        if (error) {
+            enqueueSnackbar(ERROR_ON_CHANGE, {
+                variant: 'error',
+            });
+            return;
         }
+
+        dispatch(updateUserLocal(data));
+        localStorage.setItem('user', JSON.stringify(data));
+        enqueueSnackbar(PROFILE_CHANGED, {
+            variant: 'success',
+        });
     };
 
     return (

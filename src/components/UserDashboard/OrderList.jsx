@@ -75,12 +75,27 @@ const OrderList = () => {
                                 color: 'text.secondary',
                             }}
                         >
+                            Дата заказа
+                        </Typography>
+                        <Typography
+                            variant="h6"
+                            sx={{
+                                flex: '1 1 0',
+                                color: 'text.secondary',
+                            }}
+                        >
                             Общая сумма
                         </Typography>
                     </Box>
                     {data.apiResponse.map((order) => (
                         <OrderItem key={order.id} {...order} />
                     ))}
+
+                    <Pagination
+                        count={Math.ceil(data?.totalCount / LIMIT)}
+                        page={page}
+                        handleChange={(event, value) => setPage(value)}
+                    />
                 </>
             ) : (
                 <Box
@@ -102,12 +117,6 @@ const OrderList = () => {
                     </Button>
                 </Box>
             )}
-
-            <Pagination
-                count={Math.ceil(data?.totalCount / LIMIT)}
-                page={page}
-                handleChange={(event, value) => setPage(value)}
-            />
         </>
     );
 };

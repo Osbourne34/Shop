@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
+import { PENDING, CANCELED, SUCCESS } from '../../constants/statuses';
+
 import { Typography, Paper, Chip } from '@mui/material';
 
-const OrderItem = ({ id, status, totalPrice }) => {
+const OrderItem = ({ id, status, totalPrice, orderDate }) => {
     return (
         <Paper
             component={RouterLink}
@@ -33,13 +35,19 @@ const OrderItem = ({ id, status, totalPrice }) => {
                     color: 'text.primary',
                 }}
             >
-                {status === 'pending' && <Chip label="Ожидание" />}
-                {status === 'cancelled' && (
-                    <Chip label="Cancelled" color="error" />
+                {status === PENDING && <Chip label="Ожидание" />}
+                {status === CANCELED && <Chip label="Отменен" color="error" />}
+                {status === SUCCESS && (
+                    <Chip label="Выполнен" color="success" />
                 )}
-                {status === 'success' && (
-                    <Chip label="Success" color="success" />
-                )}
+            </Typography>
+            <Typography
+                sx={{
+                    flex: '1 1 0',
+                    color: 'text.primary',
+                }}
+            >
+                {orderDate.date}
             </Typography>
             <Typography
                 sx={{

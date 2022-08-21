@@ -9,7 +9,7 @@ export const orderApi = createApi({
         getUserOrder: build.query({
             query: ({ userId, page, limit }) => {
                 return {
-                    url: `/orders?userId${userId}&_page=${page}&_limit=${limit}`,
+                    url: `/orders?userId=${userId}&_page=${page}&_limit=${limit}`,
                 };
             },
             transformResponse(apiResponse, meta) {

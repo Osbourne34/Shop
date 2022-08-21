@@ -11,3 +11,7 @@ export const INVALID_EMAIL = 'Невалидный Email';
 export const PRODUCT_ADDED_TO_CART = 'Товар добавлен в корзину';
 export const PRODUCT_REMOVED_FROM_CART = 'Товар удален из корзины';
 export const ERROR_CART = 'Ошибка при добавлений товара';
+
+//profileEdit message
+export const PROFILE_CHANGED = 'Профиль изменен';
+export const ERROR_ON_CHANGE = 'Ошибка при сохранений';

@@ -10,6 +10,7 @@ import { empty } from '../../utils/validateUtils';
 
 import { EMPTY_ERROR } from '../../constants/messages';
 import { CARD, CASH } from '../../constants/ui';
+import { PENDING } from '../../constants/statuses';
 
 import {
     Paper,
@@ -68,7 +69,11 @@ const PaymentForm = () => {
             totalCount,
             orderInfo,
             payment,
-            status: 'pending',
+            status: PENDING,
+            orderDate: {
+                date: new Date().toLocaleDateString(),
+                time: new Date().toLocaleTimeString(),
+            },
             userId: user.id,
             user,
         });
