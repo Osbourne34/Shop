@@ -13,46 +13,40 @@ import { AuthRoutes } from '../routes';
 import { UserRoutes } from '../routes';
 
 const AppRouter = () => {
-    const { user } = useSelector(auth);
-    return (
-        <Routes>
-            <Route element={<MainLayout />}>
-                <Route path="/" element={<Shop />}>
-                    {ShopPublicRoutes.map(({ path, Component }, index) => (
-                        <Route
-                            key={index}
-                            path={path ? path : ''}
-                            element={<Component />}
-                        />
-                    ))}
-                    {user &&
-                        ShopProtectedRoutes.map(
-                            ({ path, Component }, index) => (
-                                <Route
-                                    key={index}
-                                    path={path}
-                                    element={<Component />}
-                                />
-                            ),
-                        )}
-                    {user && (
-                        <Route path="profile" element={<UserDashBoardLayout />}>
-                            {UserRoutes.map(({ path, Component }, index) => (
-                                <Route
-                                    key={index}
-                                    path={path ? path : ''}
-                                    element={<Component />}
-                                />
-                            ))}
-                        </Route>
-                    )}
-                </Route>
-            </Route>
-            {AuthRoutes.map(({ path, Component }, index) => (
-                <Route key={index} path={path} element={<Component />} />
+  const { user } = useSelector(auth);
+  return (
+    <Routes>
+      <Route element={<MainLayout />}>
+        <Route path="/" element={<Shop />}>
+          {ShopPublicRoutes.map(({ path, Component }, index) => (
+            <Route
+              key={index}
+              path={path ? path : ''}
+              element={<Component />}
+            />
+          ))}
+          {user &&
+            ShopProtectedRoutes.map(({ path, Component }, index) => (
+              <Route key={index} path={path} element={<Component />} />
             ))}
-        </Routes>
-    );
+          {user && (
+            <Route path="profile" element={<UserDashBoardLayout />}>
+              {UserRoutes.map(({ path, Component }, index) => (
+                <Route
+                  key={index}
+                  path={path ? path : ''}
+                  element={<Component />}
+                />
+              ))}
+            </Route>
+          )}
+        </Route>
+      </Route>
+      {AuthRoutes.map(({ path, Component }, index) => (
+        <Route key={index} path={path} element={<Component />} />
+      ))}
+    </Routes>
+  );
 };
 
 export default AppRouter;

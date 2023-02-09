@@ -21,6 +21,10 @@ const Registration = () => {
         if (data) navigate('/login');
     };
 
+    if (user?.role === 'ADMIN') {
+        return <Navigate to="/admin" replace={true} />;
+    }
+
     if (user) {
         return <Navigate to="/" />;
     }

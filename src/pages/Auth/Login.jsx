@@ -23,12 +23,20 @@ const Login = () => {
         if (data) {
             dispatch(updateUser(data.user));
             localStorage.setItem('user', JSON.stringify(data.user));
+            if (data.user.role === 'ADMIN') {
+                navigate('/admin', { replace: true });
+                return;
+            }
             navigate('/', { replace: true });
         }
     };
 
+    if (user?.role === 'ADMIN') {
+        return <Navigate to="/admin" replace={true} />;
+    }
+
     if (user) {
-        return <Navigate to="/" />;
+        return <Navigate to="/" replace={true} />;
     }
 
     return (
